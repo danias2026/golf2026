@@ -1,10 +1,22 @@
-// Golf & Games Classic landing: reveals, gold-line drawing, parallax, signup placeholder.
+// Golf & Games Classic landing (Art Deco): fan dividers, reveals, gold-line drawing, signup placeholder.
 (function () {
   document.documentElement.classList.add('js');
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // Reveal sections and start their gold lines when they scroll into view
-  var targets = document.querySelectorAll('.reveal, .seam, .teams');
+  // Fan rays for the deco dividers
+  document.querySelectorAll('.divider .fan').forEach(function (g) {
+    var n = 7, r = 26, html = '';
+    for (var i = 0; i < n; i++) {
+      if (i % 2) continue;
+      var a0 = (-180 + i * 180 / n) * Math.PI / 180, a1 = (-180 + (i + 1) * 180 / n) * Math.PI / 180;
+      html += '<path fill="#C9963E" d="M0 0 L' + (Math.cos(a0) * r).toFixed(1) + ' ' + (Math.sin(a0) * r).toFixed(1) +
+        ' A' + r + ' ' + r + ' 0 0 1 ' + (Math.cos(a1) * r).toFixed(1) + ' ' + (Math.sin(a1) * r).toFixed(1) + ' Z"/>';
+    }
+    g.innerHTML = html;
+  });
+
+  // Reveal sections and draw the gold lines when they scroll into view
+  var targets = document.querySelectorAll('.reveal, .divider');
   if ('IntersectionObserver' in window && !reduce) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); } });
@@ -12,23 +24,6 @@
     targets.forEach(function (t) { io.observe(t); });
   } else {
     targets.forEach(function (t) { t.classList.add('in-view'); });
-  }
-
-  // Slow parallax on the scene backgrounds
-  if (!reduce) {
-    var layers = document.querySelectorAll('[data-parallax]');
-    var ticking = false;
-    var update = function () {
-      layers.forEach(function (el) {
-        var r = el.parentElement.getBoundingClientRect();
-        if (r.bottom < 0 || r.top > window.innerHeight) return;
-        var k = parseFloat(el.getAttribute('data-parallax')) || 0.2;
-        el.style.transform = 'translate3d(0,' + (-r.top * k).toFixed(1) + 'px,0)';
-      });
-      ticking = false;
-    };
-    window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
-    update();
   }
 
   // Signup placeholder: no backend yet (see the TODO comment in index.html)

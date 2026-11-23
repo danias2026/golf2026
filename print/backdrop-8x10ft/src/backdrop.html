@@ -1,0 +1,175 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Limelight&family=Josefin+Sans:wght@600;700&family=Playfair+Display:ital,wght@1,700;1,900&family=Noto+Serif+TC:wght@900&display=swap">
+<style>
+@page{size:98in 122in;margin:0}
+html,body{margin:0;background:#F3E7CF}
+#art{display:block;width:98in;height:122in}
+.caps{font-family:'Josefin Sans',sans-serif;font-weight:700;text-transform:uppercase}
+.lime{font-family:Limelight,serif}
+</style></head><body>
+<!-- 1 unit = 0.1 in. Canvas 980 x 1220 = 98 x 122 in (96 x 120 trim + 1 in bleed each side). Trim box: 10..970 x 10..1210 -->
+<svg id="art" viewBox="0 0 980 1220" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <clipPath id="cNavy"><rect x="0" y="0" width="390" height="150"/></clipPath>
+  <clipPath id="cArch"><path d="M190 940 V640 A300 300 0 0 1 790 640 V940 Z"/></clipPath>
+</defs>
+<rect width="980" height="1220" fill="#F3E7CF"/>
+
+<!-- TOP BAND (bleeds off top and sides) -->
+<rect x="0" y="0" width="390" height="150" fill="#002838"/>
+<g clip-path="url(#cNavy)"><g transform="translate(195 150)" id="rBand"></g></g>
+<rect x="390" y="0" width="170" height="150" fill="#006868"/>
+<rect x="560" y="0" width="80" height="150" fill="#E02850"/>
+<rect x="640" y="0" width="210" height="150" fill="#F0B870"/>
+<rect x="850" y="0" width="130" height="150" fill="#F89090"/>
+<g id="scBand" fill="#009098"></g>
+<path d="M0 156 H980 M0 164 H980" stroke="#C9963E" stroke-width="2.4"/>
+
+<!-- CONTINUOUS SIDE FRAME -->
+<g stroke="#C9963E" stroke-width="2.4" fill="none">
+  <path d="M60 180 V1090 M70 180 V1090 M910 180 V1090 M920 180 V1090"/>
+  <path d="M60 180 H130 V200 M920 180 H850 V200"/>
+</g>
+
+<!-- HOSTS -->
+<image href="marjcc-teal.png" x="336" y="190" height="68" width="109"/>
+<rect x="465" y="192" width="1.6" height="64" fill="#006868" opacity=".5"/>
+<image href="mbjcc-teal.png" x="487" y="197" height="54" width="158"/>
+
+<!-- SAVE THE DATE -->
+<text class="caps" x="490" y="312" text-anchor="middle" font-size="30" letter-spacing="9" fill="#8A5F18" dx="4.5">SAVE THE DATE</text>
+
+<!-- ARCH -->
+<g clip-path="url(#cArch)"><rect x="190" y="300" width="600" height="700" fill="#F3E7CF"/><g transform="translate(490 690)" id="rArch"></g></g>
+<path d="M190 940 V640 A300 300 0 0 1 790 640 V940" fill="none" stroke="#C9963E" stroke-width="5"/>
+<path d="M208 930 V640 A282 282 0 0 1 772 640 V930" fill="none" stroke="#C9963E" stroke-width="1.8"/>
+<path d="M466 333 H514 L502 356 H478 Z" fill="#E02850"/>
+<!-- stepped shoulders + base -->
+<g fill="none" stroke="#C9963E" stroke-width="2.4">
+  <path d="M190 760 H150 V830 H110 V950 H870 V830 H830 V760 H790"/>
+  <path d="M190 790 H165 V860 H125 V938 H855 V860 H815 V790 H790"/>
+</g>
+
+<svg id="LOGO" x="230" y="388" width="520" height="351" viewBox="0 0 1600 1080">
+<defs>
+  <radialGradient id="ball" cx="40%" cy="35%" r="70%">
+    <stop offset="0" stop-color="#FFFFFF"/><stop offset=".65" stop-color="#F3EEE6"/><stop offset="1" stop-color="#C9C3B8"/>
+  </radialGradient>
+  <pattern id="dimples" width="22" height="22" patternUnits="userSpaceOnUse">
+    <circle cx="11" cy="11" r="5.5" fill="#B9B2A6" opacity=".55"/>
+    <circle cx="0" cy="0" r="5.5" fill="#B9B2A6" opacity=".55"/><circle cx="22" cy="0" r="5.5" fill="#B9B2A6" opacity=".55"/>
+    <circle cx="0" cy="22" r="5.5" fill="#B9B2A6" opacity=".55"/><circle cx="22" cy="22" r="5.5" fill="#B9B2A6" opacity=".55"/>
+  </pattern>
+  <clipPath id="ballclip"><circle cx="800" cy="300" r="118"/></clipPath>
+  <clipPath id="archclip"><path d="M548 420 V330 A252 252 0 0 1 1052 330 V420 Z"/></clipPath>
+</defs>
+
+<!-- BADGE -->
+<g class="badge">
+  <!-- outer gold silhouette -->
+  <path class="gold-fill" fill="#D9A653" d="M530 330 A270 270 0 0 1 1070 330 V360 H1250 V400 H1420 V440 H1550 V860 H1500 V900 H1300 V940 H300 V900 H100 V860 H50 V440 H180 V400 H350 V360 H530 Z"/>
+  <!-- cream body -->
+  <path class="cream" fill="#F8F0E0" d="M542 342 A258 258 0 0 1 1058 342 V372 H1238 V412 H1408 V452 H1538 V848 H1488 V888 H1288 V928 H312 V888 H112 V848 H62 V452 H192 V412 H362 V372 H542 Z"/>
+  <!-- inner hairline -->
+  <path class="gold-line" fill="none" stroke="#D9A653" stroke-width="3" d="M560 360 A240 240 0 0 1 1040 360 V390 H1220 V430 H1390 V470 H1520 V830 H1470 V870 H1270 V910 H330 V870 H130 V830 H80 V470 H210 V430 H380 V390 H560 Z"/>
+</g>
+
+<!-- SUNBURST inside the arch -->
+<g clip-path="url(#archclip)" class="burst">
+  <g transform="translate(800 420)">
+    <path class="ray-gold" fill="#F0C078" d="M0 0 L-300 -60 L-300 -120 Z"/>
+    <path class="ray-teal" fill="#006868" d="M0 0 L-300 -170 L-260 -260 Z"/>
+    <path class="ray-gold" fill="#F0C078" d="M0 0 L-200 -320 L-120 -330 Z"/>
+    <path class="ray-teal" fill="#009098" d="M0 0 L-50 -340 L50 -340 Z"/>
+    <path class="ray-gold" fill="#F0C078" d="M0 0 L120 -330 L200 -320 Z"/>
+    <path class="ray-teal" fill="#006868" d="M0 0 L260 -260 L300 -170 Z"/>
+    <path class="ray-gold" fill="#F0C078" d="M0 0 L300 -120 L300 -60 Z"/>
+  </g>
+</g>
+
+<!-- TEE -->
+<path id="L-tee" class="navy" fill="#002838" d="M770 410 H830 Q811 426 807 446 L804 515 Q800 526 796 515 L793 446 Q789 426 770 410 Z"/>
+<!-- GOLF BALL -->
+<g class="ball" id="L-ball">
+  <circle cx="800" cy="300" r="118" fill="url(#ball)"/>
+  <rect x="660" y="160" width="280" height="280" fill="url(#dimples)" clip-path="url(#ballclip)"/>
+  <circle cx="800" cy="300" r="118" fill="none" stroke="#002838" stroke-width="5"/>
+</g>
+
+<!-- MAHJONG TILE -->
+<g transform="rotate(-14 470 380)" class="tile" id="L-tile">
+  <rect x="372" y="250" width="200" height="250" rx="26" fill="#006868"/>
+  <rect x="384" y="250" width="176" height="226" rx="20" fill="#FFF9EE" stroke="#002838" stroke-width="5"/>
+  <text x="472" y="410" text-anchor="middle" font-family="'Noto Serif TC', serif" font-weight="900" font-size="140" fill="#002838">中</text>
+</g>
+
+<!-- MAHJONG TILES (right) -->
+<g class="cards" id="L-tiles">
+  <g transform="rotate(10 1100 370)">
+    <rect x="1000" y="240" width="190" height="240" rx="24" fill="#006868"/>
+    <rect x="1012" y="240" width="166" height="216" rx="18" fill="#FFF9EE" stroke="#002838" stroke-width="5"/>
+    <text x="1095" y="392" text-anchor="middle" font-family="'Noto Serif TC', serif" font-weight="900" font-size="124" fill="#006868">發</text>
+  </g>
+  <g transform="translate(34 14) rotate(22 1170 420)">
+    <rect x="1080" y="290" width="190" height="240" rx="24" fill="#006868"/>
+    <rect x="1092" y="290" width="166" height="216" rx="18" fill="#FFF9EE" stroke="#002838" stroke-width="5"/>
+    <g>
+      <circle cx="1130" cy="330" r="22" fill="#002838"/><circle cx="1130" cy="330" r="10" fill="#FFF9EE"/><circle cx="1130" cy="330" r="5" fill="#E02850"/>
+      <circle cx="1175" cy="398" r="22" fill="#E02850"/><circle cx="1175" cy="398" r="10" fill="#FFF9EE"/><circle cx="1175" cy="398" r="5" fill="#002838"/>
+      <circle cx="1220" cy="466" r="22" fill="#006868"/><circle cx="1220" cy="466" r="10" fill="#FFF9EE"/><circle cx="1220" cy="466" r="5" fill="#E02850"/>
+    </g>
+  </g>
+</g>
+
+<!-- WORDMARK -->
+<text id="golf" x="133.79296875" y="700" font-family="Limelight, serif" font-size="176" fill="#002838">GOLF</text>
+<text id="amp" x="617.31640625" y="712" font-family="'Playfair Display', serif" font-style="italic" font-weight="900" font-size="230" fill="#006868">&amp;</text>
+<text id="games" x="840.31640625" y="700" font-family="Limelight, serif" font-size="176" fill="#002838">GAMES</text>
+
+<!-- CLASSIC with gold rules -->
+<g class="gold-stroke" stroke="#D9A653" stroke-width="4">
+  <line x1="230" y1="772" x2="440" y2="772"/><line x1="250" y1="784" x2="440" y2="784"/>
+  <line x1="1160" y1="772" x2="1370" y2="772"/><line x1="1160" y1="784" x2="1350" y2="784"/>
+</g>
+<text id="classic" x="800" y="808" text-anchor="middle" font-family="'Josefin Sans', sans-serif" font-weight="600" font-size="86" letter-spacing="34" fill="#E02850">CLASSIC</text>
+
+<!-- PLAQUE -->
+<path class="gold-fill" fill="#D9A653" d="M470 960 L520 900 H1080 L1130 960 L1080 1020 H520 Z"/>
+<path class="cream" fill="#FFF9EE" d="M482 960 L527 908 H1073 L1118 960 L1073 1012 H527 Z"/>
+<text x="800" y="982" text-anchor="middle" font-family="'Josefin Sans', sans-serif" font-weight="700" font-size="58" letter-spacing="4" fill="#002838"><tspan>MARJCC</tspan><tspan font-family="'Playfair Display', serif" font-style="italic" font-weight="700" fill="#E02850" font-size="54" dx="22">vs</tspan><tspan dx="22">MBJCC</tspan></text>
+</svg>
+
+<g transform="translate(0 -25)"><!-- DATE PLAQUE -->
+<path d="M220 790 H262 V774 H304 V758 H676 V774 H718 V790 H760 V880 H718 V896 H676 V912 H304 V896 H262 V880 H220 Z" fill="#002838" stroke="#C9963E" stroke-width="4"/>
+<path d="M234 800 H272 V784 H314 V770 H666 V784 H708 V800 H746 V870 H708 V886 H666 V900 H314 V886 H272 V870 H234 Z" fill="none" stroke="#C9963E" stroke-width="1.6"/>
+<text class="lime" x="490" y="860" text-anchor="middle" font-size="64" fill="#F0C078">March 12, 2027</text>
+</g>
+<text class="caps" x="490" y="913" text-anchor="middle" font-size="16" letter-spacing="7" dx="3.5" fill="#006868">MIAMI BEACH GOLF CLUB</text>
+
+<!-- FAN DIVIDER -->
+<g stroke="#C9963E" stroke-width="2.4"><path d="M160 977 H430 M160 985 H430 M550 977 H820 M550 985 H820"/></g>
+<g transform="translate(490 996)" id="rFan"></g>
+<path d="M440 981 L448 973 L456 981 L448 989 Z M524 981 L532 973 L540 981 L532 989 Z" fill="#006868"/>
+
+<!-- MATCHUP PLAQUE -->
+<path d="M200 1040 L240 1008 H740 L780 1040 L740 1072 H240 Z" fill="#006868" stroke="#C9963E" stroke-width="3.5"/>
+<path d="M216 1040 L246 1016 H734 L764 1040 L734 1064 H246 Z" fill="none" stroke="#F0C078" stroke-width="1.4"/>
+<text class="caps" x="490" y="1049" text-anchor="middle" font-size="24" letter-spacing="4" dx="2" fill="#F3E7CF">TEAM MARJCC <tspan class="lime" font-size="26" letter-spacing="0" fill="#F0C078" style="text-transform:none">vs.</tspan> TEAM MBJCC</text>
+<text class="caps" x="490" y="1100" text-anchor="middle" font-size="15" letter-spacing="6" dx="3" fill="#8A5F18">GOLF &amp; MAHJONG TOURNAMENT</text>
+
+<!-- SCALLOPS (bleed sides) -->
+<g id="waves"></g>
+
+<!-- GMJF -->
+<image href="gmjf-logo-black.png" x="450" y="1166" height="38" width="80"/>
+</svg>
+<script>
+function rays(id,n,r,spread,cols){const g=document.getElementById(id);let s='';for(let i=0;i<n;i++){const a0=-90-spread/2+i*spread/n,a1=a0+spread/n;const p=a=>[Math.cos(a*Math.PI/180)*r,Math.sin(a*Math.PI/180)*r];const[a,b]=p(a0),[c,d]=p(a1);s+=`<path d="M0 0 L${a} ${b} A${r} ${r} 0 0 1 ${c} ${d} Z" fill="${cols[i%cols.length]}"/>`;}g.innerHTML=s;}
+rays('rBand',14,500,180,['#F3E7CF','#002838']);
+rays('rArch',22,700,180,['#EAD7AE','#F3E7CF']);
+rays('rFan',7,26,180,['#C9963E','#F3E7CF']);
+let sc='';for(let x=640;x<1000;x+=26){sc+=`<path d="M${x} 150 a13 13 0 0 1 26 0 z"/>`;}document.getElementById('scBand').innerHTML=sc;
+let w='';const R=26;[[1140,'#009098'],[1155,'#006868']].forEach(([y,c],ri)=>{const off=(ri%2)*R;for(let x=-R+off;x<980+R;x+=2*R){w+=`<path d="M${x-R} ${y} a${R} ${R} 0 0 1 ${2*R} 0 z" fill="${c}" stroke="#C9963E" stroke-width="1.4"/>`;}});
+document.getElementById('waves').innerHTML=w;
+document.fonts.ready.then(()=>{window.__ready=true});
+</script></body></html>

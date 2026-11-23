@@ -1,0 +1,272 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Limelight&family=Josefin+Sans:wght@600;700&family=Playfair+Display:ital,wght@1,700;1,900&family=Noto+Serif+TC:wght@900&display=swap">
+<style>
+html,body{margin:0;background:#F3E7CF;overflow:hidden}
+svg{display:block}
+.lime{font-family:Limelight,serif}
+.caps{font-family:'Josefin Sans',sans-serif;font-weight:700;text-transform:uppercase}
+</style></head>
+<body>
+<svg id="S" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"></svg>
+<template id="logoTpl">{{LOGO}}</template>
+<script>
+// ---------- palette ----------
+const C={navy:'#002838',teal:'#006868',ocean:'#009098',red:'#E02850',gold:'#F0B870',pink:'#F89090',cream:'#F3E7CF',tan:'#EAD7AE',line:'#C9963E',goldText:'#8A5F18',dateGold:'#F0C078',marjcc:'#006478',mbjcc:'#4078BC',ink:'#3C5560'};
+const V=new URLSearchParams(location.search).get('v')||'std';
+const W=1080,H=V==='loop'?1350:1920;
+const S=document.getElementById('S');S.setAttribute('width',W);S.setAttribute('height',H);S.setAttribute('viewBox',`0 0 ${W} ${H}`);
+const NS='http://www.w3.org/2000/svg';
+// ---------- helpers ----------
+const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const P=(t,a,b)=>clamp((t-a)/(b-a));
+const eo=x=>1-Math.pow(1-x,3);                       // easeOutCubic
+const eio=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;     // easeInOutCubic
+const ex=x=>x===1?1:1-Math.pow(2,-10*x);              // easeOutExpo
+const eb=x=>{const c1=1.70158,c3=c1+1;return 1+c3*Math.pow(x-1,3)+c1*Math.pow(x-1,2);}; // easeOutBack
+function el(tag,attrs={},parent=S,html){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);if(html!==undefined)e.innerHTML=html;parent.appendChild(e);return e;}
+function g(attrs={},parent=S){return el('g',attrs,parent);}
+function set(e,attrs){for(const k in attrs)e.setAttribute(k,attrs[k]);}
+function rays(parent,n,r,a0deg,spread,cols){let s='';for(let i=0;i<n;i++){const a0=(a0deg+i*spread/n)*Math.PI/180,a1=(a0deg+(i+1)*spread/n)*Math.PI/180;s+=`<path d="M0 0 L${Math.cos(a0)*r} ${Math.sin(a0)*r} A${r} ${r} 0 0 1 ${Math.cos(a1)*r} ${Math.sin(a1)*r} Z" fill="${cols[i%cols.length]}"/>`;}parent.innerHTML=s;return [...parent.children];}
+function draw(path,p){path.setAttribute('pathLength',1);path.setAttribute('stroke-dasharray',1);path.setAttribute('stroke-dashoffset',1-p);}
+function txt(parent,str,x,y,o={}){const ls=o.ls||0;const e=el('text',{x:x+ls/2,y,'text-anchor':'middle',class:o.cls||'lime','font-size':o.size||40,fill:o.fill||C.navy,'letter-spacing':ls},parent);e.textContent=str;return e;}
+function img(parent,href,x,y,w,h){return el('image',{href,x,y,width:w,height:h},parent);}
+const defs=el('defs');
+let uid=0;const id=p=>p+(++uid);
+
+// ---------- building blocks ----------
+// Top color band (navy sunburst panel + blocks + scallops + gold double rule)
+function Band(){
+  const root=g();const h=170;
+  const cp=el('clipPath',{id:'bandClip'},defs);el('rect',{x:0,y:0,width:414,height:h},cp);
+  const blocks=[[0,414,C.navy],[414,180,C.teal],[594,81,C.red],[675,261,C.gold],[936,144,C.pink]].map(([x,w,f])=>el('rect',{x,y:0,width:w,height:h,fill:f},root));
+  const rg=g({'clip-path':'url(#bandClip)'},root);const rr=g({transform:`translate(207 ${h})`},rg);
+  const ry=rays(rr,28,520,-180,360,[C.cream,C.navy]);
+  const sc=g({fill:C.ocean},root);const scs=[];for(let x=675;x<1080;x+=36){scs.push(el('path',{d:`M${x} ${h} a18 18 0 0 1 36 0 z`},sc));}
+  const r1=el('path',{d:`M0 ${h+8} H${W}`,stroke:C.line,'stroke-width':3,fill:'none'},root);
+  const r2=el('path',{d:`M0 ${h+16} H${W}`,stroke:C.line,'stroke-width':3,fill:'none'},root);
+  return {root,update(t,t0=0,spin=0){
+    blocks.forEach((b,i)=>{const p=eo(P(t,t0+i*.08,t0+.55+i*.08));b.setAttribute('transform',`translate(0 ${-(1-p)*h})`);});
+    const pr=ex(P(t,t0+.3,t0+1.2));rr.setAttribute('transform',`translate(207 ${h}) rotate(${spin}) scale(${pr})`);
+    scs.forEach((s,i)=>{const p=eb(P(t,t0+.7+i*.03,t0+1.05+i*.03));s.setAttribute('opacity',p>0?1:0);s.style.transformBox='fill-box';s.style.transformOrigin='50% 100%';s.style.transform=`scale(${Math.max(0,p)})`;});
+    draw(r1,eio(P(t,t0+.6,t0+1.3)));draw(r2,eio(P(t,t0+.7,t0+1.4)));
+  }};
+}
+// Vertical gold double frame lines
+function Frame(y0,y1){const root=g();const ls=[36,48,W-48,W-36].map(x=>el('path',{d:`M${x} ${y0} V${y1}`,stroke:C.line,'stroke-width':3,fill:'none'},root));
+  return {root,update(t,t0=0){ls.forEach((l,i)=>draw(l,eio(P(t,t0+(i%2)*.1,t0+1.2+(i%2)*.1))));}};}
+// Hosts (teal, no box)
+function Hosts(y,hM=76,dark=false){const root=g();const sfx=dark?'white':'teal';
+  const wM=hM*747/465,hB=hM*0.79,wB=hB*1997/684,gap=26,tot=wM+gap*2+2+wB,x0=W/2-tot/2;
+  img(root,`marjcc-${sfx}.png`,x0,y,wM,hM);
+  el('rect',{x:x0+wM+gap,y:y+4,width:2,height:hM-8,fill:dark?'#FFFFFF':C.teal,opacity:.5},root);
+  img(root,`mbjcc-${sfx}.png`,x0+wM+gap*2+2,y+(hM-hB)/2,wB,hB);
+  return {root,update(t,t0=0){const p=eo(P(t,t0,t0+.7));set(root,{opacity:p,transform:`translate(0 ${(1-p)*-16})`});}};}
+// GMJF footer
+function Gmjf(y,h=64){const root=g();const w=h*710/338;img(root,'gmjf-logo-black.png',W/2-w/2,y,w,h);
+  return {root,update(t,t0=0){set(root,{opacity:eo(P(t,t0,t0+.7))});}};}
+// Scallop rows (rolling)
+function Scallops(y,R=34,rows=3,clipW=W){const root=g();const cp=el('clipPath',{id:id('scl')},defs);el('rect',{x:0,y:y-R-4,width:clipW,height:R+rows*R*.8+8},cp);
+  const inner=g({'clip-path':`url(#${cp.id})`},root);const rowsG=[];
+  for(let r=0;r<rows;r++){const rg=g({},inner);const yy=y+r*R*.8;const col=r%2?C.teal:C.ocean;
+    for(let x=-4*R;x<W+4*R;x+=2*R){el('path',{d:`M${x-R} ${yy} a${R} ${R} 0 0 1 ${2*R} 0 z`,fill:col,stroke:C.line,'stroke-width':2},rg);}rowsG.push(rg);}
+  return {root,update(t,t0=0,roll=0){rowsG.forEach((rg,r)=>{const p=eo(P(t,t0+r*.12,t0+.8+r*.12));const off=((r%2?R:0)+(r%2?-1:1)*roll*2*R)%(2*R);set(rg,{transform:`translate(${off} ${(1-p)*120})`,opacity:p});});}};}
+// Fan divider with diamonds
+function FanDivider(y){const root=g();const ls=[[160,y-5,470],[160,y+5,470],[610,y-5,920],[610,y+5,920]].map(([x1,yy,x2])=>el('path',{d:`M${x1} ${yy} H${x2}`,stroke:C.line,'stroke-width':3,fill:'none'},root));
+  const fan=g({transform:`translate(540 ${y+22})`},root);rays(fan,7,46,-180,180,[C.line,C.cream]);
+  const tri=el('path',{d:`M526 ${y+22} L540 ${y+8} L554 ${y+22} Z`,fill:C.red},root);
+  const dm=[476,604].map(x=>el('path',{d:`M${x-11} ${y} L${x} ${y-11} L${x+11} ${y} L${x} ${y+11} Z`,fill:C.teal},root));
+  return {root,update(t,t0=0){ls.forEach((l,i)=>{const p=eio(P(t,t0,t0+.7));draw(l,p);});const pf=eb(P(t,t0+.2,t0+.7));set(fan,{transform:`translate(540 ${y+22}) scale(${Math.max(0,pf)})`});set(tri,{opacity:P(t,t0+.4,t0+.6)});dm.forEach(d=>set(d,{opacity:P(t,t0+.5,t0+.8)}));}};}
+// Teal pointed matchup plaque
+function MatchPlaque(cx,cy,w,h,label){const root=g();const inner=g({},root);
+  const hw=w/2,hh=h/2,pt=h*.55;
+  el('path',{d:`M${-hw} 0 L${-hw+pt} ${-hh} H${hw-pt} L${hw} 0 L${hw-pt} ${hh} H${-hw+pt} Z`,fill:C.teal,stroke:C.line,'stroke-width':5},inner);
+  el('path',{d:`M${-hw+20} 0 L${-hw+pt+8} ${-hh+12} H${hw-pt-8} L${hw-20} 0 L${hw-pt-8} ${hh-12} H${-hw+pt+8} Z`,fill:'none',stroke:C.dateGold,'stroke-width':2},inner);
+  const tg=g({},inner);
+  if(label==='vs'){txt(tg,'vs.',0,hh*.42,{size:h*.62,fill:C.dateGold});}
+  else{const t1=el('text',{x:0,y:h*.13,'text-anchor':'middle',class:'caps','font-size':h*.33,fill:C.cream,'letter-spacing':h*.06},tg);t1.innerHTML=`<tspan>TEAM MARJCC </tspan><tspan class="lime" style="text-transform:none" fill="${C.dateGold}" letter-spacing="0">vs.</tspan><tspan> TEAM MBJCC</tspan>`;}
+  return {root,update(t,t0=0){const p=ex(P(t,t0,t0+.8));set(root,{transform:`translate(${cx} ${cy})`,opacity:P(t,t0,t0+.2)});set(inner,{transform:`scale(${.25+.75*p} 1)`});set(tg,{opacity:P(t,t0+.45,t0+.8)});}};}
+// Stepped navy date plaque
+function DatePlaque(cx,cy,w,h,str,size){const root=g();const inner=g({},root);const hw=w/2,hh=h/2,s1=w*.085,s2=h*.1;
+  const d=(o)=>`M${-hw+o} ${-hh+2*s2+o} H${-hw+s1+o} V${-hh+s2+o} H${-hw+2*s1+o} V${-hh+o} H${hw-2*s1-o} V${-hh+s2+o} H${hw-s1-o} V${-hh+2*s2+o} H${hw-o} V${hh-2*s2-o} H${hw-s1-o} V${hh-s2-o} H${hw-2*s1-o} V${hh-o} H${-hw+2*s1+o} V${hh-s2-o} H${-hw+s1+o} V${hh-2*s2-o} H${-hw+o} Z`;
+  el('path',{d:d(0),fill:C.navy,stroke:C.line,'stroke-width':5},inner);
+  const l2=el('path',{d:d(14),fill:'none',stroke:C.line,'stroke-width':2},inner);
+  const tx=txt(inner,str,0,size*.36,{size,fill:C.dateGold});
+  const sweep=el('rect',{x:-hw,y:-hh,width:60,height:h,fill:'#FFF6DC',opacity:0,transform:'skewX(-20)'},inner);
+  const cp=el('clipPath',{id:id('dpc')},defs);el('path',{d:d(0)},cp);sweep.setAttribute('clip-path',`url(#${cp.id})`);
+  return {root,update(t,t0=0){const p1=eo(P(t,t0,t0+.35)),p2=eo(P(t,t0+.2,t0+.6));set(root,{transform:`translate(${cx} ${cy})`,opacity:P(t,t0,t0+.15)});
+    // stepped open: width first then height, in steps
+    const sx=Math.ceil(p1*4)/4*.7+p1*.3, sy=Math.ceil(p2*3)/3*.6+p2*.4;set(inner,{transform:`scale(${sx} ${Math.max(.04,sy)})`});
+    draw(l2,eio(P(t,t0+.45,t0+1.1)));set(tx,{opacity:P(t,t0+.5,t0+.8)});
+    const ps=P(t,t0+.9,t0+1.6);set(sweep,{opacity:ps>0&&ps<1?.35:0,x:-hw-120+ps*(w+240)});},sweepAt(t,a){const ps=P(t,a,a+.8);set(sweep,{opacity:ps>0&&ps<1?.35:0,x:-hw-120+ps*(w+240)});}};}
+// The event logo, assembled from its parts
+function Logo(cx,top,w){const s=w/1600;const root=g({transform:`translate(${cx-w/2} ${top}) scale(${s})`});
+  const holder=g({},root);holder.innerHTML=document.getElementById('logoTpl').innerHTML;
+  const q=sel=>holder.querySelector(sel);
+  const badge=q('.badge'),burst=q('.burst'),tee=q('path.navy'),ball=q('g.ball'),tile=q('g.tile'),cards=q('g.cards');
+  const golf=q('#golf'),amp=q('#amp'),games=q('#games'),classic=q('#classic'),gs=q('.gold-stroke');
+  const kids=[...holder.children];const plaqueEls=kids.slice(kids.indexOf(classic)+1);
+  const rayEls=[...burst.querySelectorAll('path')];const tileT=tile.getAttribute('transform');
+  const badgeLine=badge.querySelector('.gold-line');
+  // wordmark reveal clip + gold sweep
+  const wcp=el('clipPath',{id:id('wm')},defs);const wrect=el('rect',{x:0,y:520,width:0,height:240},wcp);
+  [golf,amp,games].forEach(e=>e.setAttribute('clip-path',`url(#${wcp.id})`));
+  const tcp=el('clipPath',{id:id('wt')},defs);['golf','amp','games'].forEach(k=>el('use',{href:'#'+k},tcp));
+  const sweep=el('rect',{x:-200,y:520,width:120,height:240,fill:'#FFF3D6',opacity:.55,transform:'skewX(-18)','clip-path':`url(#${tcp.id})`},holder);
+  const o=(e,v)=>e.setAttribute('opacity',v);
+  return {root,update(t,t0=0,full=false){
+    if(full){t=t0+20;}
+    const pb=eo(P(t,t0,t0+.7));set(badge,{transform:`translate(800 600) scale(${.55+.45*pb}) translate(-800 -600)`});o(badge,pb);
+    draw(badgeLine,eio(P(t,t0+.2,t0+1.2)));
+    rayEls.forEach((r,i)=>{const p=ex(P(t,t0+.4+i*.06,t0+.9+i*.06));r.setAttribute('transform',`scale(${p})`);});
+    const pt=eo(P(t,t0+.6,t0+1.0));o(tee,pt);set(tee,{transform:`translate(0 ${(1-pt)*40})`});
+    const pd=P(t,t0+.8,t0+1.35);const bounce=pd<1?(1-Math.pow(1-pd,2))*1:1;const by=pd<.75?-(1-eio(pd/.75))*900:-Math.sin((pd-.75)/.25*Math.PI)*28;
+    o(ball,pd>0?1:0);set(ball,{transform:`translate(0 ${by})`});
+    const fl=(p)=>Math.max(.001,Math.abs(Math.cos((1-p)*Math.PI/2*2))*(p<.5?-1:1));
+    const p1=eo(P(t,t0+1.2,t0+1.75));o(tile,p1>0?1:0);tile.setAttribute('transform',`${tileT} translate(470 375) scale(${Math.max(.001,Math.sin(p1*Math.PI/2))} 1) translate(-470 -375) translate(0 ${(1-p1)*-60})`);
+    const p2=eo(P(t,t0+1.4,t0+1.95));o(cards,p2>0?1:0);cards.setAttribute('transform',`translate(1150 400) scale(${Math.max(.001,Math.sin(p2*Math.PI/2))} 1) translate(-1150 -400) translate(0 ${(1-p2)*-60})`);
+    const pw=eio(P(t,t0+1.8,t0+2.6));set(wrect,{width:1600*pw});
+    const ps=P(t,t0+2.5,t0+3.3);set(sweep,{x:-300+ps*2100,opacity:ps>0&&ps<1?.55:0});
+    const pc=eo(P(t,t0+2.4,t0+3.0));o(classic,pc);classic.setAttribute('letter-spacing',34+(1-pc)*40);o(gs,pc);
+    const pp=eb(P(t,t0+2.7,t0+3.3));plaqueEls.forEach(e=>{o(e,P(t,t0+2.7,t0+2.9));e.setAttribute('transform',`translate(800 960) scale(${Math.max(.2,pp)} 1) translate(-800 -960)`);});
+  },sweepAt(t,a){const ps=P(t,a,a+1.2);set(sweep,{x:-300+ps*2100,opacity:ps>0&&ps<1?.55:0});}};}
+// Deco arch with tan rays, shoulders, keystone, base
+function Arch(cx,spring,R,base){const root=g();const ri=R-24;
+  const cp=el('clipPath',{id:id('arch')},defs);el('path',{d:`M${cx-R} ${base} V${spring} A${R} ${R} 0 0 1 ${cx+R} ${spring} V${base} Z`},cp);
+  const rg=g({'clip-path':`url(#${cp.id})`},root);const rr=g({},rg);const ry=rays(rr,36,1100,-180,360,[C.tan,C.cream]);
+  const outer=el('path',{d:`M${cx-R} ${base+12} V${spring} A${R} ${R} 0 0 1 ${cx+R} ${spring} V${base+12}`,fill:'none',stroke:C.line,'stroke-width':6},root);
+  const inner=el('path',{d:`M${cx-ri} ${base} V${spring} A${ri} ${ri} 0 0 1 ${cx+ri} ${spring} V${base}`,fill:'none',stroke:C.line,'stroke-width':2},root);
+  const sh1=el('path',{d:`M${cx-R} ${spring+140} H${cx-R-60} V${spring+240} H${cx-R-100} V${base+12} H${cx+R+100} V${spring+240} H${cx+R+60} V${spring+140} H${cx+R}`,fill:'none',stroke:C.line,'stroke-width':3},root);
+  const sh2=el('path',{d:`M${cx-R} ${spring+180} H${cx-R-40} V${spring+280} H${cx-R-80} V${base} H${cx+R+80} V${spring+280} H${cx+R+40} V${spring+180} H${cx+R}`,fill:'none',stroke:C.line,'stroke-width':2},root);
+  const top=spring-R;const key=el('path',{d:`M${cx-27} ${top-12} H${cx+27} L${cx+14} ${top+14} H${cx-14} Z`,fill:C.red},root);
+  return {root,update(t,t0=0,spin=0){draw(outer,eio(P(t,t0,t0+1.4)));draw(inner,eio(P(t,t0+.15,t0+1.5)));draw(sh1,eio(P(t,t0+.6,t0+1.6)));draw(sh2,eio(P(t,t0+.7,t0+1.7)));
+    const pr=ex(P(t,t0+.5,t0+1.6));set(rr,{transform:`translate(${cx} ${base-110}) rotate(${spin}) scale(${pr})`});
+    const pk=eb(P(t,t0+1.3,t0+1.7));set(key,{opacity:P(t,t0+1.3,t0+1.4),transform:`translate(0 ${(1-pk)*-40})`});}};}
+// Arch card (golf / mahjong)
+function Card(x,y,s,kind){const root=g({transform:`translate(${x} ${y}) scale(${s})`});const body=g({},root);
+  const outer=el('path',{d:'M0 700 V200 A220 200 0 0 1 440 200 V700 Z',fill:C.cream,stroke:C.line,'stroke-width':5},body);
+  const inner=el('path',{d:'M18 682 V204 A202 184 0 0 1 422 204 V682 Z',fill:'none',stroke:C.line,'stroke-width':2},body);
+  const fan=g({transform:'translate(220 196)'},body);const fr=[];for(let i=0;i<9;i+=2){const a0=(-180+i*20)*Math.PI/180,a1=(-180+i*20+20)*Math.PI/180;fr.push(el('path',{d:`M0 0 L${Math.cos(a0)*180} ${Math.sin(a0)*180} A180 180 0 0 1 ${Math.cos(a1)*180} ${Math.sin(a1)*180} Z`,fill:C.tan},fan));}
+  const rule=[el('path',{d:'M60 420 H380',stroke:C.line,'stroke-width':2},body),el('path',{d:'M60 430 H380',stroke:C.line,'stroke-width':2},body)];
+  const dia=el('path',{d:'M205 425 L220 410 L235 425 L220 440 Z',fill:C.red},body);
+  const art=g({},body);let clubs,ball,t1,t2;
+  if(kind==='golf'){
+    clubs=[g({},art),g({},art)];
+    clubs[0].innerHTML=`<line x1="102" y1="66" x2="318" y2="362" stroke="${C.navy}" stroke-width="7" stroke-linecap="round"/><line x1="102" y1="66" x2="138" y2="116" stroke="${C.navy}" stroke-width="16" stroke-linecap="round"/><line x1="132" y1="108" x2="142" y2="122" stroke="${C.line}" stroke-width="18"/><path d="M310 350 L356 354 L364 384 L306 384 Z" fill="${C.navy}" stroke="${C.line}" stroke-width="3" stroke-linejoin="round"/><path d="M316 366 H356 M314 374 H358" stroke="${C.line}" stroke-width="2"/>`;
+    clubs[1].innerHTML=`<line x1="338" y1="66" x2="128" y2="358" stroke="${C.navy}" stroke-width="7" stroke-linecap="round"/><line x1="338" y1="66" x2="302" y2="116" stroke="${C.navy}" stroke-width="16" stroke-linecap="round"/><line x1="308" y1="108" x2="298" y2="122" stroke="${C.line}" stroke-width="18"/><path d="M132 350 C 110 344, 76 352, 74 370 C 72 386, 102 390, 132 382 C 142 378, 144 358, 132 350 Z" fill="${C.navy}" stroke="${C.line}" stroke-width="3"/><path d="M84 372 C 100 378, 120 376, 132 370" fill="none" stroke="${C.line}" stroke-width="2"/>`;
+    ball=img(art,'ball.png',102,90,235.5,300);
+    t1=txt(body,'GOLF',220,463,{cls:'caps',size:24,fill:C.goldText,ls:9.6});
+    t2=[txt(body,'May the best',220,532,{size:44}),txt(body,'team win!',220,583,{size:44})];
+  }else{
+    ball=[img(art,'tile.png',35,120,230*532/606,230),img(art,'tiles.png',200,110,250*750/720,250)];
+    t1=txt(body,'MAHJONG',220,463,{cls:'caps',size:24,fill:C.goldText,ls:9.6});
+    t2=[txt(body,'Everyone plays',220,532,{size:44}),txt(body,'together!',220,583,{size:44})];
+  }
+  return {root,update(t,t0=0){draw(outer,eio(P(t,t0,t0+1.0)));outer.setAttribute('fill-opacity',P(t,t0+.4,t0+.9));draw(inner,eio(P(t,t0+.2,t0+1.1)));
+    fr.forEach((f,i)=>{const p=ex(P(t,t0+.5+i*.05,t0+1.0+i*.05));f.setAttribute('transform',`scale(${p})`);});
+    rule.forEach(r=>draw(r,eio(P(t,t0+.7,t0+1.2))));set(dia,{opacity:P(t,t0+1.0,t0+1.15)});
+    if(kind==='golf'){const pd=P(t,t0+.8,t0+1.3);const by=pd<1?-(1-eo(pd))*420:0;set(ball,{opacity:pd>0?1:0,transform:`translate(0 ${by})`});
+      const pc=eb(P(t,t0+1.1,t0+1.6));set(clubs[0],{opacity:pc>0?1:0,transform:`rotate(${(1-pc)*-40} 220 380)`});set(clubs[1],{opacity:pc>0?1:0,transform:`rotate(${(1-pc)*40} 220 380)`});}
+    else{ball.forEach((b,i)=>{const p=eo(P(t,t0+.8+i*.15,t0+1.3+i*.15));const cx=i?200+130:35+100;set(b,{opacity:p>0?1:0,transform:`translate(${cx} 230) scale(${Math.max(.001,Math.sin(p*Math.PI/2))} 1) translate(${-cx} -230) translate(0 ${(1-p)*-40})`});});}
+    const pt=eo(P(t,t0+1.2,t0+1.6));set(t1,{opacity:pt});t2.forEach((e,i)=>{const p=eo(P(t,t0+1.3+i*.1,t0+1.8+i*.1));set(e,{opacity:p,transform:`translate(0 ${(1-p)*14})`});});}};}
+// Navy half-sun with text
+function HalfSun(cx,base,R,lines){const root=g();const cp=el('clipPath',{id:id('hs')},defs);el('path',{d:`M${cx-R} ${base} A${R} ${R} 0 0 1 ${cx+R} ${base} Z`},cp);
+  const fill=g({'clip-path':`url(#${cp.id})`},root);el('rect',{x:cx-R,y:base-R,width:2*R,height:R,fill:C.navy},fill);const rr=g({},fill);rays(rr,16,R*1.6,-180,180,['#0A3346',C.navy]);
+  const o=el('path',{d:`M${cx-R} ${base} A${R} ${R} 0 0 1 ${cx+R} ${base}`,fill:'none',stroke:C.line,'stroke-width':5},root);
+  const i2=el('path',{d:`M${cx-R+24} ${base} A${R-24} ${R-24} 0 0 1 ${cx+R-24} ${base}`,fill:'none',stroke:C.line,'stroke-width':2},root);
+  const ts=lines.map((l,i)=>txt(root,l[0],cx,base-R*.42+i*(l[2]*1.1),{size:l[2],fill:l[1]}));
+  return {root,update(t,t0=0){const p=eo(P(t,t0,t0+.9));set(fill,{transform:`translate(0 ${(1-p)*R})`});draw(o,eio(P(t,t0+.2,t0+1.1)));draw(i2,eio(P(t,t0+.3,t0+1.2)));
+    set(rr,{transform:`translate(${cx} ${base}) scale(${ex(P(t,t0+.4,t0+1.2))})`});ts.forEach((e,i)=>{const pp=eo(P(t,t0+.8+i*.2,t0+1.3+i*.2));set(e,{opacity:pp,transform:`translate(0 ${(1-pp)*16})`});});}};}
+// Stepped curtain transition: five brand columns drop then lift
+function Curtain(){const root=g();const cols=[[0,414,C.navy],[414,180,C.teal],[594,81,C.red],[675,261,C.gold],[936,144,C.pink]];
+  const rs=cols.map(([x,w,f])=>el('rect',{x,y:0,width:w,height:H,fill:f},root));
+  const ry=g({},root);rays(ry,14,H,-180,180,[C.cream,C.navy]).forEach(r=>r.setAttribute('opacity',.0));
+  return {root,update(t,a,b){ // a: start dropping, b: start lifting (each .45s)
+    rs.forEach((r,i)=>{const d=eio(P(t,a+i*.05,a+.4+i*.05)),u=eio(P(t,b+i*.05,b+.4+i*.05));const top=-H*(1-d)+H*u;set(r,{y:top});});}};}
+// Text line with mask reveal (rises from a line)
+function RevealText(str,y,o){const root=g();const cp=el('clipPath',{id:id('rt')},defs);el('rect',{x:0,y:y-o.size*1.05,width:W,height:o.size*1.35},cp);
+  const inner=g({'clip-path':`url(#${cp.id})`},root);const tg=g({},inner);const e=txt(tg,str,o.x||W/2,y,o);
+  return {root,update(t,t0=0,out=99){const p=ex(P(t,t0,t0+.8));const q=eio(P(t,out,out+.5));set(tg,{transform:`translate(0 ${(1-p)*o.size*1.2-q*o.size*1.3})`});}};}
+
+// ---------- scenes ----------
+const scenes={};
+scenes.std=()=>{window.__dur=15;
+  const band=Band(),frame=Frame(205,1330),hosts=Hosts(268);
+  const hero=g();const arch=Arch(540,760,330,1250);hero.appendChild(arch.root);
+  const std=g({},hero);const stdT=txt(std,'SAVE THE DATE',540,537,{cls:'caps',size:26,fill:C.goldText,ls:7.3});
+  const logo=Logo(540,560,620);hero.appendChild(logo.root);
+  const plaque=DatePlaque(540,1085,630,180,'March 12, 2027',78);hero.appendChild(plaque.root);
+  const club=txt(hero,'MIAMI BEACH GOLF CLUB',540,1222,{cls:'caps',size:22,fill:C.teal,ls:8.8});
+  // scene 2
+  const s2=g({opacity:0});
+  const h1=RevealText('Two JCCs.',420,{size:66,fill:C.teal}),h2=RevealText('One Tournament.',498,{size:66,fill:C.teal}),h3=RevealText('One Friendly Rivalry!',576,{size:66,fill:C.navy});
+  [h1,h2,h3].forEach(h=>s2.appendChild(h.root));
+  const fanD=FanDivider(622);s2.appendChild(fanD.root);
+  const mp=MatchPlaque(540,705,700,78);s2.appendChild(mp.root);
+  const c1=Card(206,770,.72,'golf'),c2=Card(558,770,.72,'mahjong');s2.appendChild(c1.root);s2.appendChild(c2.root);
+  const more=txt(s2,'MORE DETAILS COMING SOON!',540,1318,{cls:'caps',size:22,fill:C.goldText,ls:7});
+  const scl=Scallops(1395,32,3),gm=Gmjf(1492,64);
+  const cur=Curtain();
+  window.render=(t)=>{band.update(t,0);frame.update(t,.4);hosts.update(t,1.0);
+    arch.update(t,.8,t*1.2);logo.update(t,2.0);
+    set(std,{opacity:eo(P(t,5.2,5.8))});stdT.setAttribute('letter-spacing',7.3+(1-eo(P(t,5.2,6)))*14);
+    plaque.update(t,5.6);set(club,{opacity:eo(P(t,6.4,7.0))});
+    scl.update(t,1.4,t/6);gm.update(t,1.6);
+    // transition to scene 2
+    cur.update(t,8.6,9.25);
+    const sw=t>=9.2;set(hero,{opacity:sw?0:1});set(s2,{opacity:sw?1:0});
+    h1.update(t,9.5);h2.update(t,9.7);h3.update(t,9.9);fanD.update(t,10.3);mp.update(t,10.6);c1.update(t,11.0);c2.update(t,11.25);
+    set(more,{opacity:eo(P(t,12.9,13.4))});};
+};
+scenes.riv=()=>{window.__dur=13;
+  const band=Band(),frame=Frame(205,1340),hosts=Hosts(268);
+  const A=g();const a1=RevealText('Two JCCs.',640,{size:128,fill:C.navy}),a2=RevealText('One Tournament.',780,{size:92,fill:C.teal}),a3=RevealText('One Friendly Rivalry!',900,{size:70,fill:C.navy});
+  [a1,a2,a3].forEach(x=>A.appendChild(x.root));const fA=FanDivider(975);A.appendChild(fA.root);
+  // team fields
+  const B=g({opacity:0});
+  const L=g({},B),Rr=g({},B);
+  const lp='M60 400 H470 V440 H500 V1240 H470 V1280 H60 Z',rp='M1020 400 H610 V440 H580 V1240 H610 V1280 H1020 Z';
+  el('path',{d:lp,fill:C.marjcc,stroke:C.line,'stroke-width':5},L);el('path',{d:'M78 418 H456 V454 H482 V1226 H456 V1262 H78 Z',fill:'none',stroke:C.dateGold,'stroke-width':2},L);
+  el('path',{d:rp,fill:C.mbjcc,stroke:C.line,'stroke-width':5},Rr);el('path',{d:'M1002 418 H624 V454 H598 V1226 H624 V1262 H1002 Z',fill:'none',stroke:C.dateGold,'stroke-width':2},Rr);
+  const lr=g({},L),rrg=g({},Rr);
+  const lc=el('clipPath',{id:'lc'},defs);el('path',{d:lp},lc);const rc=el('clipPath',{id:'rc'},defs);el('path',{d:rp},rc);
+  const lray=g({'clip-path':'url(#lc)'},L);const lrr=g({transform:'translate(280 1280)'},lray);rays(lrr,12,900,-180,180,['rgba(255,255,255,.07)','rgba(255,255,255,0)']);
+  const rray=g({'clip-path':'url(#rc)'},Rr);const rrr=g({transform:'translate(800 1280)'},rray);rays(rrr,12,900,-180,180,['rgba(255,255,255,.07)','rgba(255,255,255,0)']);
+  img(L,'marjcc-white.png',280-80,560,160,160*465/747);img(Rr,'mbjcc-white.png',800-130,575,260,260*684/1997);
+  txt(L,'TEAM',280,860,{cls:'caps',size:30,fill:C.cream,ls:9});txt(L,'MARJCC',280,950,{size:72,fill:C.cream});
+  txt(Rr,'TEAM',800,860,{cls:'caps',size:30,fill:C.cream,ls:9});txt(Rr,'MBJCC',800,950,{size:72,fill:C.cream});
+  const vs=MatchPlaque(540,840,230,120,'vs');B.appendChild(vs.root);
+  // cards + half sun
+  const Cc=g({opacity:0});const c1=Card(100,380,.86,'golf'),c2=Card(602,380,.86,'mahjong');Cc.appendChild(c1.root);Cc.appendChild(c2.root);
+  const hs=HalfSun(540,1345,300,[['Two communities.',C.cream,46],['One unforgettable day!',C.dateGold,46]]);Cc.appendChild(hs.root);
+  // end card
+  const D=g({opacity:0});const arch=Arch(540,760,330,1250);D.appendChild(arch.root);const sd=txt(D,'SAVE THE DATE',540,537,{cls:'caps',size:26,fill:C.goldText,ls:7.3});
+  const logo=Logo(540,560,620);D.appendChild(logo.root);const dp=DatePlaque(540,1085,630,180,'March 12, 2027',78);D.appendChild(dp.root);
+  const club=txt(D,'MIAMI BEACH GOLF CLUB',540,1222,{cls:'caps',size:22,fill:C.teal,ls:8.8});
+  const scl=Scallops(1395,32,3),gm=Gmjf(1492,64);const cur=Curtain();
+  window.render=(t)=>{band.update(t,0);frame.update(t,.3);hosts.update(t,.6);scl.update(t,1.0,t/6);gm.update(t,1.2);
+    a1.update(t,.9);a2.update(t,1.3);a3.update(t,1.7);fA.update(t,2.2);
+    if(t<5.5)cur.update(t,3.4,4.05);else if(t<8.8)cur.update(t,7.0,7.65);else cur.update(t,9.6,10.25);
+    const ph=t<4.02?0:t<7.62?1:t<10.22?2:3;
+    set(A,{opacity:ph===0?1:0});set(B,{opacity:ph===1?1:0});set(Cc,{opacity:ph===2?1:0});set(D,{opacity:ph===3?1:0});
+    const pl=eo(P(t,4.1,4.9)),pr=eo(P(t,4.25,5.05));set(L,{transform:`translate(${-(1-pl)*560} 0)`});set(Rr,{transform:`translate(${(1-pr)*560} 0)`});
+    set(lrr,{transform:`translate(280 1280) rotate(${t*4})`});set(rrr,{transform:`translate(800 1280) rotate(${-t*4})`});
+    vs.update(t,5.0);
+    c1.update(t,7.9);c2.update(t,8.15);hs.update(t,8.7);
+    arch.update(t,10.2,(t-10)*1.2);logo.update(10.35+Math.max(0,t-10.35)*1.8,10.35);set(sd,{opacity:eo(P(t,11.5,11.9))});dp.update(t,11.1);set(club,{opacity:eo(P(t,11.7,12.1))});};
+};
+scenes.loop=()=>{window.__dur=6;
+  const band=Band(),frame=Frame(196,1120),hosts=Hosts(198,60);
+  const arch=Arch(540,640,300,1095);const sd=txt(S,'SAVE THE DATE',540,446,{cls:'caps',size:24,fill:C.goldText,ls:6.7});
+  const logo=Logo(540,462,560);const dp=DatePlaque(540,945,580,166,'March 12, 2027',72);
+  const club=txt(S,'MIAMI BEACH GOLF CLUB',540,1066,{cls:'caps',size:20,fill:C.teal,ls:8});
+  const scl=Scallops(1160,30,3),gm=Gmjf(1262,52);
+  window.render=(t)=>{const T=t%6;band.update(99,0,(T/6)*(720/28));frame.update(99);hosts.update(99);
+    arch.update(99,0,(T/6)*20);logo.update(99,0,true);logo.sweepAt(T,1.2);dp.update(99,0);dp.sweepAt(T,3.4);
+    set(club,{opacity:1});set(sd,{opacity:1});scl.update(99,0,T/6);gm.update(99);};
+};
+scenes[V]();
+// hosts must be above; move band to front of z? band at top already. Curtain must be on top of all.
+document.fonts.ready.then(()=>{document.fonts.load('900 40px "Noto Serif TC"').then(()=>{render(0);window.__ready=true;});});
+</script>
+</body></html>

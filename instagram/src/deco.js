@@ -235,14 +235,13 @@ function gameCard(kind) {
     html += text('Golf', { w: W, top: 806, size: 30, font: 'caps', color: C.goldText, ls: 0.42 });
     html += text('May the best<br>team win!', { w: W, top: 858, size: 70, color: C.navy, lh: 1.08 });
   } else {
-    html += img('tile.png', { left: 290, top: 380, height: 280 });
-    html += img('tiles.png', { left: 498, top: 360, height: 300 });
+    html += img('tile.png', { left: 280, top: 380, height: 280 });
+    html += img('tiles.png', { left: 488, top: 360, height: 300 });
     html += text('Mahjong', { w: W, top: 806, size: 30, font: 'caps', color: C.goldText, ls: 0.42 });
     html += text('Everyone plays<br>together!', { w: W, top: 858, size: 70, color: C.navy, lh: 1.08 });
   }
   const b = postBottom(W);
   svg += b.svg;
-  html += text(`March 12, 2027 &nbsp;·&nbsp; Miami Beach Golf Club`, { w: W, top: 1090, size: 17, font: 'caps', color: C.teal, ls: 0.22, extra: 'display:none' });
   html += b.html;
   return page(W, H, svg, html);
 }

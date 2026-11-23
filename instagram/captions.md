@@ -40,4 +40,7 @@ Mark your calendar! March 12, 2027. ⛳
 
 **stories/03-which-team.png**
 Which team are you on? Team MARJCC or Team MBJCC.
-(Add a poll sticker in the app: "Team MARJCC" / "Team MBJCC", placed in the cream area above the GMJF logo.)
+(Add a poll sticker in the app: "Team MARJCC" / "Team MBJCC", placed in the beige area above the GMJF logo.)
+
+---
+Images are built with `node src/deco.js` (official Art Deco beige style). `node src/deco.js 03-golf` renders a single piece.

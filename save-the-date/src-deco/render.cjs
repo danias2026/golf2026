@@ -1,0 +1,12 @@
+const { chromium } = require('playwright');
+const OUT = __dirname + '/..';
+(async()=>{const b=await chromium.launch();
+let p=await b.newPage({viewport:{width:1200,height:1553},deviceScaleFactor:2.125});
+await p.goto('file://'+__dirname+'/flyer.html');await p.waitForFunction(()=>window.__ready);await p.waitForTimeout(400);
+await p.screenshot({path:OUT+'/save-the-date-flyer.png',clip:{x:0,y:0,width:1200,height:1552.94}});
+await p.pdf({path:OUT+'/save-the-date-flyer.pdf',width:'8.5in',height:'11in',scale:816/1200,printBackground:true,pageRanges:'1'});
+await p.close();
+p=await b.newPage({viewport:{width:1080,height:1350},deviceScaleFactor:1});
+await p.goto('file://'+__dirname+'/square.html');await p.waitForFunction(()=>window.__ready);await p.waitForTimeout(400);
+await p.screenshot({path:OUT+'/save-the-date-1080x1350.png'});
+await b.close();})();
