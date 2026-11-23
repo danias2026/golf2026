@@ -5,7 +5,7 @@
 const NS='http://www.w3.org/2000/svg';
 function E(tag,attrs,parent){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);if(parent)parent.appendChild(e);return e}
 window.buildScene=function(host,o){
-  const {W,H,glow=null,bundles=[],fadeToPaper=0,fadeSides=0,ground='#002838'}=o;
+  const {W,H,glow=null,bundles=[],fadeToPaper=0,fadeSides=0,ground='#002838',curveBottom=null}=o;
   const svg=E('svg',{width:W,height:H,viewBox:`0 0 ${W} ${H}`});
   svg.style.cssText='position:absolute;inset:0;display:block';
   const d=E('defs',{},svg);
@@ -24,6 +24,12 @@ window.buildScene=function(host,o){
       E('path',{d:`M${P(b.from,k*.4)} C${P(b.c1,k2)} ${P(b.c2,-k2*.8)} ${P(b.to,k*.3)}`,fill:'none',stroke:`url(#g${bi})`,
         'stroke-width':(b.width||1.4)*(i===Math.floor(n/2)?1.6:1),opacity:(b.opacity||.9)*(1-Math.abs(t)/(n)),'stroke-linecap':'round',filter:'url(#gl)'},svg)}
   });
+  if(curveBottom){const [a,c1,c2,b]=curveBottom.map(v=>v*H);
+    const path=`M0,${a} C${W*.33},${c1} ${W*.66},${c2} ${W},${b}`;
+    E('path',{d:path+` L${W},${H} L0,${H} Z`,fill:'#FFF9EE'},svg);
+    const cg=E('linearGradient',{id:'cg',x1:0,y1:0,x2:1,y2:0},d);
+    [[0,'#C98F3A',.2],[.5,'#FFE3A6',1],[1,'#C98F3A',.2]].forEach(([o2,c,op])=>E('stop',{offset:o2,'stop-color':c,'stop-opacity':op},cg));
+    E('path',{d:path,fill:'none',stroke:'url(#cg)','stroke-width':2.2,filter:'url(#gl)'},svg)}
   if(fadeToPaper){const fp=E('linearGradient',{id:'fp',x1:0,y1:0,x2:0,y2:1},d);
     [[0,'#FFF9EE',0],[.6,'#FFF9EE',.75],[1,'#FFF9EE',1]].forEach(([a,c,op])=>E('stop',{offset:a,'stop-color':c,'stop-opacity':op},fp));
     E('rect',{x:0,y:H-fadeToPaper,width:W,height:fadeToPaper,fill:'url(#fp)'},svg)}
