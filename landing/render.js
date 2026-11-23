@@ -8,7 +8,7 @@ const path = require('path');
     await p.goto(url, { waitUntil: 'load' });
     await p.evaluate(() => document.fonts.ready);
     // show the finished state: lines drawn, sections revealed
-    await p.addStyleTag({ content: '*{animation-delay:-60s!important;animation-play-state:running!important;transition:none!important}.js .reveal{opacity:1!important;transform:none!important}' });
+    await p.addStyleTag({ content: '*{animation-delay:-60s!important;animation-play-state:running!important;transition:none!important}.js .reveal{opacity:1!important;transform:none!important}.js .divider .draw{stroke-dashoffset:0!important}.js .divider .fan path{transform:scale(1)!important}' });
     await p.waitForTimeout(600);
   };
   for (const [name, w, h] of [['preview-desktop', 1440, 900], ['preview-mobile', 390, 844]]) {
