@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600;700&family=Limelight&family=Mulish:wght@400;600;700&family=Playfair+Display:ital,wght@1,700&display=swap");
+*{box-sizing:border-box}
+html,body{margin:0}
+:root{--navy:#002838;--teal:#006868;--ocean:#009098;--red:#E02850;--gold:#F0C078;--gold2:#D9A653;--goldtext:#8A5F18;--cream:#F8F0E0;--paper:#FFF9EE;--pink:#F89090;--sky:#40A8C0;--sun:#F8E098;--muted:#3C5560}
+.page{position:relative;background:var(--cream);color:var(--navy);font-family:Mulish,Arial,sans-serif;overflow:hidden;display:flex;flex-direction:column}
+.sky{background:linear-gradient(180deg,var(--sky) 0%,#7FB9C4 30%,var(--pink) 72%,var(--sun) 100%);position:relative}
+.sky .sun{position:absolute;left:50%;bottom:-1px;transform:translateX(-50%);background:var(--sun);border-radius:999px 999px 0 0}
+.std{font-family:Limelight,Georgia,serif;color:var(--navy);margin:0;text-align:center;line-height:1}
+.dbl{height:6px;border-top:1.5px solid var(--gold2);border-bottom:1.5px solid var(--gold2)}
+.eyebrow{font-family:'Josefin Sans',sans-serif;font-weight:600;text-transform:uppercase;color:var(--goldtext);letter-spacing:.28em;margin:0;text-align:center}
+.caps{font-family:'Josefin Sans',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin:0;text-align:center}
+.date{font-family:'Josefin Sans',sans-serif;font-weight:700;color:var(--red);letter-spacing:.12em;text-transform:uppercase;margin:0;text-align:center;line-height:1}
+.vs{font-family:'Playfair Display',serif;font-style:italic;color:var(--red);text-transform:lowercase;letter-spacing:0}
+.waves{background:
+  radial-gradient(circle at 50% 100%, var(--teal) 0 var(--r1), transparent calc(var(--r1) + 1px)) 0 100% / var(--w) var(--h1) repeat-x,
+  radial-gradient(circle at 50% 100%, var(--ocean) 0 var(--r2), transparent calc(var(--r2) + 1px)) calc(var(--w) / 2) 100% / var(--w) var(--h2) repeat-x;}
+.hosts{background:#fff;display:flex;align-items:center;justify-content:center}
+.hosts img{display:block}
+.hosts .div{width:1.5px;align-self:stretch;background:var(--gold2)}
+.foot{display:flex;justify-content:center;align-items:center}
+.foot img{display:block}

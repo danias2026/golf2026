@@ -1,17 +1,24 @@
 The brand for the **Golf & Games Classic**, a golf and mahjong tournament on **March 12, 2027** at the **Miami Beach Golf Club**, played between two JCCs: **Team MARJCC** (Michael-Ann Russell JCC) and **Team Miami Beach JCC** (The Galbut Family Miami Beach JCC on the Simkins Family Campus). Use this book for the landing page, emails, social media, print and signage. All event materials are in **English**.
 
-![Golf & Games Classic key art](/_blob/9dbf5bdba5361f14ead58c09c810bc1e)
+![Golf & Games Classic logo](/_blob/a3a4817e02e8d867ebf3e7e6ac3e9162)
 
-## The three-logo rule
+## The logo
 
-**Every piece carries all three partner logos: MARJCC, MBJCC and the Greater Miami Jewish Federation (GMJF).** No exceptions: landing page, every email, every social post and story, flyers, banners, hole signs, name badges, slides.
+The event logo is `golf-games-classic-logo.png` (4800 x 3240, transparent outside the badge) and `golf-games-classic-logo.pdf` (vector, for print). The badge carries its own cream ground, so it works on cream, navy, photos and the sunset art.
 
-- Use the `PartnerLogoStrip` component. Order, left to right: **MARJCC, MBJCC, GMJF**. On a vertical layout, the same order top to bottom.
-- The strip sits on `partner-ground` (white) in both themes. Never place the full-color partner logos directly on the sunset art, on photos, or on navy.
-- Give all three the same optical size: match the height of the MARJCC star to the MBJCC capitals and the GMJF snowflake star. In practice: MARJCC 72px tall, MBJCC 52px, GMJF 60px on web.
-- Keep clear space around each logo equal to half its height. Thin `rule` dividers between the logos are optional.
-- Never recolor, stretch, crop, outline or add effects to a partner logo. On a dark ground with no white strip, use the white versions (`mbjcc-logo-white.png`, `gmjf-logo-white.png`); MARJCC has no white version in this kit yet, so keep the white strip.
-- The event key art already shows MARJCC and MBJCC. When you use the key art, the strip with all three still goes on the piece, because GMJF is not in the art.
+- The games are **mahjong only**. The logo shows mahjong tiles (中, 發 and a circles tile) and a golf ball on a tee. Never add playing cards, card suits or dice to any piece.
+- Minimum width: 240px on screen, 2 in in print.
+- Never retype, recolor, stretch or crop the logo. Clear space around it equals the height of the word CLASSIC.
+
+## Logo rule: hosts on top, GMJF at the bottom
+
+**Every piece carries all three partner logos.** No exceptions: landing page, every email, every social post and story, every video end card, flyers, banners, hole signs, name badges, slides.
+
+- **The hosts:** MARJCC and MBJCC appear together, side by side, MARJCC first, in the `PartnerLogoStrip`. Give them the same optical size: MARJCC 72px tall, MBJCC 52px on web.
+- **GMJF:** the Greater Miami Jewish Federation logo always goes **alone, at the very bottom of the piece**, like a footer, centered, in the `gg-gmjf` footer. Nothing comes after it: in an email it sits under the legal line; on a post or story it is the last band (above the bottom safe zone on stories); on a video it closes the end card.
+- No label such as "presented by" over any of the logos.
+- Logos sit on `partner-ground` (white). On navy, use the white versions (`mbjcc-logo-white.png`, `gmjf-logo-white.png`). MARJCC has no white version in this kit yet, so keep it on white.
+- Never recolor, stretch, crop, outline or add effects to a partner logo.
 
 ## Name and copy
 
@@ -71,25 +78,25 @@ Art Deco Miami Beach: stepped frames, a sunburst fan, gold double lines, and tea
 
 ## Imagery
 
-- The key art (`golf-games-key-art.jpg`) is the hero image of the campaign. Use the full art for flyers and the hero; use `golf-games-logo-badge.jpg` (the logo badge cropped from the art) for square social posts and email headers.
+- The logo is the hero of the campaign. The original sunset key art (`golf-games-key-art.jpg`) shows playing cards, so do not use it in new pieces; keep it only as a color and mood reference.
 - Photos: real people from both communities on the course and at the mahjong tables, smiling, in sun. Golden-hour light fits the palette. Avoid stock photos of empty golf courses.
-- The playing cards in the logo stand for "games". In copy, the games are mahjong.
+- Illustration: Miami Beach Art Deco (sunburst, stepped frames, waves, palms) in the brand colors.
 
 ## Channel specs
 
 | Channel | Size | Notes |
 |---|---|---|
-| Landing page hero | full width, art up to 1400px | Key art, then name, date, venue, button, partner strip. See `LandingHero`. |
-| Email | 600px wide | Badge header image, cream body, one red button, partner strip in the footer. See `EmailTemplate`. |
-| Instagram / Facebook post | 1080 x 1080 | Badge or photo on top, headline, partner strip at the bottom. See `SocialPost`. |
+| Landing page hero | full width | Logo, then date, venue, button, host strip; GMJF closes the page footer. See `LandingHero`. |
+| Email | 600px wide | Logo header image, cream body, one red button, host strip, legal line, GMJF last. See `EmailTemplate`. |
+| Instagram / Facebook post | 1080 x 1080 | Logo or photo on top, headline, host strip, GMJF as the last band. See `SocialPost`. |
 | Instagram portrait post | 1080 x 1350 | Same as the square, with more room for the headline. |
-| Story / Reel cover | 1080 x 1920 | Keep the top 250px and bottom 340px free of text (app buttons cover them). Partner strip just above the bottom safe zone. |
-| Facebook event cover | 1920 x 1005 | Key art centered; strip on the right or bottom. |
+| Story / Reel cover | 1080 x 1920 | Keep the top 250px and bottom 340px free of text (app buttons cover them). Host strip and GMJF just above the bottom safe zone. |
+| Facebook event cover | 1920 x 1005 | Logo centered on navy or cream; hosts and GMJF along the bottom. |
 | Hole sign / sponsor sign | 24 x 18 in | Navy or cream, sponsor logo in the center, partner strip at the bottom. |
 
 ## Iconography
 
-The brand has no icon set of its own. Use the three game objects from the logo (golf ball on a tee, mahjong tile, playing cards) only as they appear in the key art. For interface icons on the landing page (calendar, map pin, clock), use a simple 2px line icon set such as Lucide, in `ink`.
+The brand has no icon set of its own. Use the game objects from the logo (golf ball on a tee, mahjong tiles) only as they appear in the logo. For interface icons on the landing page (calendar, map pin, clock), use a simple 2px line icon set such as Lucide, in `ink`.
 
 ## Still to confirm
 
@@ -101,5 +108,4 @@ These are not decided yet. Do not invent them in materials; write "More details 
 - Who benefits from the funds raised, and any fundraising goal
 - Contact person, phone and email
 - Official hashtag
-- GMJF's role on the event (presenting partner, sponsor or supporter), which decides any label above the logo strip
-- A transparent-background version of the event logo (today it exists only inside the key art), and higher-resolution MARJCC logo files
+- Higher-resolution MARJCC logo files, and a white MARJCC version for dark grounds

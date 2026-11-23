@@ -1,0 +1,12 @@
+{
+  "name": "golf-games-classic-emails",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "python3 build.py",
+    "send": "node send.mjs"
+  },
+  "dependencies": {
+    "resend": "^4.0.0"
+  }
+}

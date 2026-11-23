@@ -1,13 +1,13 @@
-The row of the three partner logos (MARJCC, MBJCC, GMJF) that goes on every single piece of the event.
+The host logos (MARJCC and MBJCC, side by side) plus the GMJF footer that closes every piece of the event.
 
 **Provide:** nothing but the container width. The logos, order and sizes are fixed.
 
-**Markup:** `div.gg-strip` holding three `img`: `.gg-logo-marjcc`, `.gg-logo-mbjcc`, `.gg-logo-gmjf`, in that order, with optional `span.gg-strip-divider` between them. Add `.gg-strip--compact` for email footers, social posts and stories.
+**Markup:** `div.gg-strip` holding two `img`: `.gg-logo-marjcc` then `.gg-logo-mbjcc`, with an optional `span.gg-strip-divider` between them. GMJF goes in its own `div.gg-gmjf` as the very last element of the piece (`.gg-gmjf--compact` on social). Add `.gg-strip--compact` for email footers, social posts and stories.
 
 **Do**
 - Put it on every page, email, post, story, flyer, sign and slide.
 - Keep it on `partner-ground` (white), full width, at the bottom of the piece (top is fine on a landing page header).
-- Keep the order MARJCC, MBJCC, GMJF.
+- Keep the hosts in the order MARJCC, MBJCC, and GMJF alone at the very bottom.
 
 **Don't**
 - Drop a logo because of space. Use the compact size instead.

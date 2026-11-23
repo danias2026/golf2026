@@ -1,0 +1,46 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="shared.css">
+<style>
+@page{size:8.5in 11in;margin:0}
+.page{width:816px;height:1056px}
+.frame{position:absolute;inset:18px;border:1.5px solid var(--gold2);pointer-events:none;z-index:3}
+.frame::after{content:"";position:absolute;inset:5px;border:1.5px solid var(--gold2)}
+.sky{height:128px;flex:none}
+.sky .sun{width:180px;height:70px}
+.sky h1{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding-bottom:22px;font-size:56px;color:var(--navy);letter-spacing:.02em}
+.body{flex:1;display:flex;flex-direction:column;align-items:center;padding:10px 80px 8px;gap:9px}
+.logo{width:470px}
+.date{font-size:36px}
+.when{font-family:'Josefin Sans',sans-serif;font-weight:600;font-size:17px;letter-spacing:.32em;color:var(--navy);text-transform:uppercase;margin:0}
+.dbl{width:100%}
+.tag{font-size:20px;line-height:1.35}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;width:100%}
+.duo div{border:1.5px solid var(--gold2);background:var(--paper);padding:12px;text-align:center;font-size:17px;line-height:1.35}
+.duo b{display:block;font-family:'Josefin Sans',sans-serif;font-size:14px;letter-spacing:.24em;color:var(--goldtext);text-transform:uppercase;margin-bottom:4px}
+.close{font-size:18px;margin:0;text-align:center}
+.close b{display:block;font-weight:700;font-size:19px}
+.close span{color:var(--muted);font-size:15px}
+.waves{--w:56px;--r1:18px;--h1:26px;--r2:26px;--h2:40px;height:40px;flex:none}
+.hosts{height:84px;gap:34px;flex:none}
+.hosts .mar{height:58px}.hosts .mb{height:42px}
+.foot{height:78px;background:var(--cream);flex:none;padding-bottom:24px}
+.foot img{height:38px}
+</style></head><body>
+<div class="page">
+  <div class="frame"></div>
+  <div class="sky"><div class="sun"></div><h1 class="std">Save the Date</h1></div>
+  <div class="body">
+    <img class="logo" src="../logo/golf-games-classic-logo.png" alt="Golf &amp; Games Classic">
+    <p class="date">Friday, March 12, 2027</p>
+    <p class="when">Miami Beach Golf Club</p>
+    <div class="dbl"></div>
+    <p class="eyebrow" style="font-size:15px">Golf &amp; Mahjong Tournament</p>
+    <p class="caps tag">Two JCCs. One Tournament.<br>One Friendly Rivalry!</p>
+    <p class="caps" style="font-size:16px;color:var(--teal)">Team MARJCC <span class="vs">vs.</span> Team Miami Beach JCC</p>
+    <div class="duo"><div><b>Golf</b>May the best team win!</div><div><b>Mahjong</b>Everyone plays together!</div></div>
+    <p class="close"><b>Two communities. One unforgettable day!</b><span>More details coming soon!</span></p>
+  </div>
+  <div class="waves"></div>
+  <div class="hosts"><img class="mar" src="../brand/assets/marjcc-logo.png" alt="Michael-Ann Russell JCC"><span class="div"></span><img class="mb" src="../brand/assets/mbjcc-logo.png" alt="Miami Beach JCC"></div>
+  <div class="foot"><img src="../brand/assets/gmjf-logo-black.png" alt="Greater Miami Jewish Federation"></div>
+</div>
+</body></html>

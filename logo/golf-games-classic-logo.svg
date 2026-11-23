@@ -1,0 +1,88 @@
+<svg id="logo" xmlns="http://www.w3.org/2000/svg" width="1600" height="1080" viewBox="0 0 1600 1080"><style>@import url('https://fonts.googleapis.com/css2?family=Limelight&amp;family=Josefin+Sans:wght@600;700&amp;family=Playfair+Display:ital,wght@1,700;1,900&amp;family=Noto+Serif+TC:wght@900&amp;display=swap');</style>
+<defs>
+  <radialGradient id="ball" cx="40%" cy="35%" r="70%">
+    <stop offset="0" stop-color="#FFFFFF"/><stop offset=".65" stop-color="#F3EEE6"/><stop offset="1" stop-color="#C9C3B8"/>
+  </radialGradient>
+  <pattern id="dimples" width="22" height="22" patternUnits="userSpaceOnUse">
+    <circle cx="11" cy="11" r="5.5" fill="#B9B2A6" opacity=".55"/>
+    <circle cx="0" cy="0" r="5.5" fill="#B9B2A6" opacity=".55"/><circle cx="22" cy="0" r="5.5" fill="#B9B2A6" opacity=".55"/>
+    <circle cx="0" cy="22" r="5.5" fill="#B9B2A6" opacity=".55"/><circle cx="22" cy="22" r="5.5" fill="#B9B2A6" opacity=".55"/>
+  </pattern>
+  <clipPath id="ballclip"><circle cx="800" cy="300" r="118"/></clipPath>
+  <clipPath id="archclip"><path d="M548 420 V330 A252 252 0 0 1 1052 330 V420 Z"/></clipPath>
+</defs>
+
+<!-- BADGE -->
+<g class="badge">
+  <!-- outer gold silhouette -->
+  <path class="gold-fill" fill="#D9A653" d="M530 330 A270 270 0 0 1 1070 330 V360 H1250 V400 H1420 V440 H1550 V860 H1500 V900 H1300 V940 H300 V900 H100 V860 H50 V440 H180 V400 H350 V360 H530 Z"/>
+  <!-- cream body -->
+  <path class="cream" fill="#F8F0E0" d="M542 342 A258 258 0 0 1 1058 342 V372 H1238 V412 H1408 V452 H1538 V848 H1488 V888 H1288 V928 H312 V888 H112 V848 H62 V452 H192 V412 H362 V372 H542 Z"/>
+  <!-- inner hairline -->
+  <path class="gold-line" fill="none" stroke="#D9A653" stroke-width="3" d="M560 360 A240 240 0 0 1 1040 360 V390 H1220 V430 H1390 V470 H1520 V830 H1470 V870 H1270 V910 H330 V870 H130 V830 H80 V470 H210 V430 H380 V390 H560 Z"/>
+</g>
+
+<!-- SUNBURST inside the arch -->
+<g clip-path="url(#archclip)" class="burst">
+  <g transform="translate(800 420)">
+    <path class="ray-gold" fill="#F0C078" d="M0 0 L-300 -60 L-300 -120 Z"/>
+    <path class="ray-teal" fill="#006868" d="M0 0 L-300 -170 L-260 -260 Z"/>
+    <path class="ray-gold" fill="#F0C078" d="M0 0 L-200 -320 L-120 -330 Z"/>
+    <path class="ray-teal" fill="#009098" d="M0 0 L-50 -340 L50 -340 Z"/>
+    <path class="ray-gold" fill="#F0C078" d="M0 0 L120 -330 L200 -320 Z"/>
+    <path class="ray-teal" fill="#006868" d="M0 0 L260 -260 L300 -170 Z"/>
+    <path class="ray-gold" fill="#F0C078" d="M0 0 L300 -120 L300 -60 Z"/>
+  </g>
+</g>
+
+<!-- TEE -->
+<path class="navy" fill="#002838" d="M770 410 H830 Q811 426 807 446 L804 515 Q800 526 796 515 L793 446 Q789 426 770 410 Z"/>
+<!-- GOLF BALL -->
+<g class="ball">
+  <circle cx="800" cy="300" r="118" fill="url(#ball)"/>
+  <rect x="660" y="160" width="280" height="280" fill="url(#dimples)" clip-path="url(#ballclip)"/>
+  <circle cx="800" cy="300" r="118" fill="none" stroke="#002838" stroke-width="5"/>
+</g>
+
+<!-- MAHJONG TILE -->
+<g transform="rotate(-14 470 380)" class="tile">
+  <rect x="372" y="250" width="200" height="250" rx="26" fill="#006868"/>
+  <rect x="384" y="250" width="176" height="226" rx="20" fill="#FFF9EE" stroke="#002838" stroke-width="5"/>
+  <text x="472" y="410" text-anchor="middle" font-family="'Noto Serif TC', serif" font-weight="900" font-size="140" fill="#002838">中</text>
+</g>
+
+<!-- MAHJONG TILES (right) -->
+<g class="cards">
+  <g transform="rotate(10 1100 370)">
+    <rect x="1000" y="240" width="190" height="240" rx="24" fill="#006868"/>
+    <rect x="1012" y="240" width="166" height="216" rx="18" fill="#FFF9EE" stroke="#002838" stroke-width="5"/>
+    <text x="1095" y="392" text-anchor="middle" font-family="'Noto Serif TC', serif" font-weight="900" font-size="124" fill="#006868">發</text>
+  </g>
+  <g transform="translate(34 14) rotate(22 1170 420)">
+    <rect x="1080" y="290" width="190" height="240" rx="24" fill="#006868"/>
+    <rect x="1092" y="290" width="166" height="216" rx="18" fill="#FFF9EE" stroke="#002838" stroke-width="5"/>
+    <g>
+      <circle cx="1130" cy="330" r="22" fill="#002838"/><circle cx="1130" cy="330" r="10" fill="#FFF9EE"/><circle cx="1130" cy="330" r="5" fill="#E02850"/>
+      <circle cx="1175" cy="398" r="22" fill="#E02850"/><circle cx="1175" cy="398" r="10" fill="#FFF9EE"/><circle cx="1175" cy="398" r="5" fill="#002838"/>
+      <circle cx="1220" cy="466" r="22" fill="#006868"/><circle cx="1220" cy="466" r="10" fill="#FFF9EE"/><circle cx="1220" cy="466" r="5" fill="#E02850"/>
+    </g>
+  </g>
+</g>
+
+<!-- WORDMARK -->
+<text id="golf" x="133.79296875" y="700" font-family="Limelight, serif" font-size="176" fill="#002838">GOLF</text>
+<text id="amp" x="617.31640625" y="712" font-family="'Playfair Display', serif" font-style="italic" font-weight="900" font-size="230" fill="#006868">&amp;</text>
+<text id="games" x="840.31640625" y="700" font-family="Limelight, serif" font-size="176" fill="#002838">GAMES</text>
+
+<!-- CLASSIC with gold rules -->
+<g class="gold-stroke" stroke="#D9A653" stroke-width="4">
+  <line x1="230" y1="772" x2="440" y2="772"/><line x1="250" y1="784" x2="440" y2="784"/>
+  <line x1="1160" y1="772" x2="1370" y2="772"/><line x1="1160" y1="784" x2="1350" y2="784"/>
+</g>
+<text id="classic" x="800" y="808" text-anchor="middle" font-family="'Josefin Sans', sans-serif" font-weight="600" font-size="86" letter-spacing="34" fill="#E02850">CLASSIC</text>
+
+<!-- PLAQUE -->
+<path class="gold-fill" fill="#D9A653" d="M470 960 L520 900 H1080 L1130 960 L1080 1020 H520 Z"/>
+<path class="cream" fill="#FFF9EE" d="M482 960 L527 908 H1073 L1118 960 L1073 1012 H527 Z"/>
+<text x="800" y="982" text-anchor="middle" font-family="'Josefin Sans', sans-serif" font-weight="700" font-size="58" letter-spacing="4" fill="#002838"><tspan>MARJCC</tspan><tspan font-family="'Playfair Display', serif" font-style="italic" font-weight="700" fill="#E02850" font-size="54" dx="22">vs</tspan><tspan dx="22">MBJCC</tspan></text>
+</svg>

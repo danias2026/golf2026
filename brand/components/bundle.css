@@ -37,6 +37,12 @@
 .gg-strip--compact .gg-logo-gmjf { height: 36px; }
 .gg-strip-divider { width: 1px; align-self: stretch; background: var(--rule); }
 
+/* GMJF footer: alone, always the last element of the piece */
+.gg-gmjf { background: var(--partner-ground); display: flex; justify-content: center; padding: 14px 16px 18px; border-top: 1px solid var(--rule); }
+.gg-gmjf img { display: block; height: 48px; width: auto; }
+.gg-gmjf--compact { padding: 8px 16px 10px; }
+.gg-gmjf--compact img { height: 30px; }
+
 /* Matchup plaque: pointed ends like the logo */
 .gg-plaque { position: relative; display: inline-flex; align-items: center; justify-content: center; gap: .5em; padding: 14px 44px; background: var(--surface-raised); color: var(--ink); font-family: var(--font-deco); font-weight: 700; font-size: 22px; letter-spacing: .06em; text-transform: uppercase; clip-path: polygon(22px 0, calc(100% - 22px) 0, 100% 50%, calc(100% - 22px) 100%, 22px 100%, 0 50%); }
 .gg-plaque-frame { display: inline-block; padding: 2px; background: var(--rule); clip-path: polygon(23px 0, calc(100% - 23px) 0, 100% 50%, calc(100% - 23px) 100%, 23px 100%, 0 50%); }
