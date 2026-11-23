@@ -2,3 +2,5 @@ node_modules/
 instagram/reels/frames*/
 logo/LOGO_V2_READY
 emails/.approvals/
+instagram/reels/src/frames*/
+**/frames*/
