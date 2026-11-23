@@ -1,0 +1,78 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Limelight&family=Josefin+Sans:wght@600;700&display=swap">
+<style>
+html,body{margin:0;background:transparent}
+.part{position:relative;width:1200px;overflow:hidden;background:#0B1F2A}
+svg{display:block}
+.caps{font-family:'Josefin Sans',sans-serif;font-weight:700;letter-spacing:.32em;text-transform:uppercase}
+</style></head><body>
+
+<!-- HEADER -->
+<div class="part" id="header" style="height:1180px">
+<svg width="1200" height="1180" viewBox="0 0 1200 1180" style="position:absolute;inset:0">
+  <defs>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F7DDA0"/><stop offset=".5" stop-color="#E0B060"/><stop offset="1" stop-color="#B8862E"/></linearGradient>
+    <clipPath id="arch"><path d="M180 1180 V560 A420 420 0 0 1 1020 560 V1180 Z"/></clipPath>
+  </defs>
+  <!-- outer stepped frame, double gold line -->
+  <g fill="none" stroke="url(#gold)">
+    <path stroke-width="4" d="M40 40 H1160 V1140 H40 Z"/>
+    <path stroke-width="2" d="M58 58 H1142 V1122 H58 Z"/>
+    <!-- stepped corners -->
+    <path stroke-width="3" d="M58 120 H120 V58 M1142 120 H1080 V58 M58 1060 H120 V1122 M1142 1060 H1080 V1122"/>
+    <path stroke-width="2" d="M58 150 H150 V58 M1142 150 H1050 V58 M58 1030 H150 V1122 M1142 1030 H1050 V1122"/>
+  </g>
+  <!-- arch with sunburst -->
+  <g clip-path="url(#arch)">
+    <rect x="180" y="140" width="840" height="1040" fill="#0F2B3A"/>
+    <g transform="translate(600 560)" id="rays"></g>
+    <path d="M180 1180 V930 H300 V900 H420 V870 H780 V900 H900 V930 H1020 V1180 Z" fill="#0B1F2A"/>
+    <path d="M180 930 H300 V900 H420 V870 H780 V900 H900 V930 H1020" fill="none" stroke="url(#gold)" stroke-width="3"/>
+  </g>
+  <path d="M180 1180 V560 A420 420 0 0 1 1020 560 V1180" fill="none" stroke="url(#gold)" stroke-width="5"/>
+  <path d="M206 1180 V560 A394 394 0 0 1 994 560 V1180" fill="none" stroke="url(#gold)" stroke-width="2"/>
+  <!-- stepped shoulders beside the arch -->
+  <g fill="none" stroke="url(#gold)" stroke-width="2">
+    <path d="M180 760 H120 V860 H80 M1020 760 H1080 V860 H1120"/>
+    <path d="M180 800 H140 V900 H80 M1020 800 H1060 V900 H1120"/>
+  </g>
+  <!-- small fans in top corners -->
+  <g id="fanL" transform="translate(150 1030)"></g>
+  <g id="fanR" transform="translate(1050 1030)"></g>
+</svg>
+<img src="marjcc-white.png" style="position:absolute;top:92px;left:410px;height:84px">
+<div style="position:absolute;top:96px;left:598px;width:2px;height:76px;background:#E0B060;opacity:.7"></div>
+<img src="mbjcc-white.png" style="position:absolute;top:104px;left:624px;height:66px">
+<div class="caps" style="position:absolute;top:236px;width:100%;text-align:center;color:#F3E7CF;font-size:30px;text-shadow:0 0 12px #0B1F2A">Save the Date</div>
+<img src="golf-games-classic-logo.png" style="position:absolute;top:330px;left:150px;width:900px">
+<div style="position:absolute;top:960px;width:100%;text-align:center">
+  <div style="font-family:Limelight,serif;font-size:96px;line-height:1;background:linear-gradient(#F7DDA0,#E0B060 55%,#B8862E);-webkit-background-clip:text;color:transparent">March 12, 2027</div>
+  <div class="caps" style="margin-top:28px;color:#F3E7CF;font-size:28px">Miami Beach Golf Club</div>
+</div>
+</div>
+
+<!-- DIVIDER: fan ornament -->
+<div class="part" id="divider" style="height:120px">
+<svg width="1200" height="120" viewBox="0 0 1200 120">
+  <defs><linearGradient id="g2" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#E0B060" stop-opacity="0"/><stop offset=".3" stop-color="#E0B060"/><stop offset=".7" stop-color="#E0B060"/><stop offset="1" stop-color="#E0B060" stop-opacity="0"/></linearGradient></defs>
+  <path d="M80 54 H520 M80 66 H520 M680 54 H1120 M680 66 H1120" stroke="url(#g2)" stroke-width="3"/>
+  <g transform="translate(600 104)" id="fanD"></g>
+  <path d="M560 60 L600 20 L640 60 L600 100 Z" fill="none" stroke="#E0B060" stroke-width="3"/>
+  <path d="M578 60 L600 38 L622 60 L600 82 Z" fill="#E02850"/>
+</svg>
+</div>
+
+<!-- SEIGAIHA band -->
+<div class="part" id="waves" style="height:220px"><canvas id="wc" width="1200" height="220"></canvas></div>
+
+<script>
+function rays(id,n,r,spread,cols){const g=document.getElementById(id);let s='';for(let i=0;i<n;i++){const a0=-90-spread/2+i*spread/n, a1=a0+spread/n;const p=(a)=>[Math.cos(a*Math.PI/180)*r,Math.sin(a*Math.PI/180)*r];const[a,b]=p(a0),[c,d]=p(a1);s+=`<path d="M0 0 L${a} ${b} A${r} ${r} 0 0 1 ${c} ${d} Z" fill="${cols[i%cols.length]}"/>`;}g.innerHTML=s;}
+rays('rays',24,900,360,['#13384A','#0D2735']);(function(){const g=document.getElementById('rays');let l='';for(let i=0;i<24;i++){const a=(i*15)*Math.PI/180;l+=`<line x1='0' y1='0' x2='${Math.cos(a)*900}' y2='${Math.sin(a)*900}' stroke='#E0B060' stroke-opacity='.55' stroke-width='2'/>`;}g.innerHTML+=l;})();
+rays('fanD',7,52,180,['#E0B060','#0B1F2A']);
+// seigaiha
+const c=document.getElementById('wc').getContext('2d');c.fillStyle='#0B1F2A';c.fillRect(0,0,1200,220);
+const R=60;const rowsY=[100,145,190,235];
+rowsY.forEach((y,ri)=>{const off=(ri%2)*R;for(let x=-R+off;x<1200+R;x+=2*R){[R,R*0.78,R*0.56,R*0.34].forEach((rr,k)=>{c.beginPath();c.arc(x,y,rr,Math.PI,0);c.closePath();c.fillStyle=k%2?'#0B1F2A':(ri%2?'#006868':'#009098');if(k==0)c.fillStyle=ri%2?'#006868':'#009098';c.fill();c.lineWidth=k==0?4:2;c.strokeStyle='#E0B060';c.stroke();});}});
+document.fonts.ready.then(()=>window.__ready=true);
+</script>
+</body></html>
