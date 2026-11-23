@@ -1,0 +1,111 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Limelight&family=Josefin+Sans:wght@600;700&display=swap">
+<style>html,body{margin:0;background:transparent}.part{position:relative;width:1200px;overflow:hidden;background:#F3E7CF}svg,canvas{display:block}
+.caps{font-family:'Josefin Sans',sans-serif;font-weight:700;letter-spacing:.32em;text-transform:uppercase}
+.abs{position:absolute}.c{width:100%;text-align:center}</style></head><body>
+<!-- palette: navy #002838 teal #006868 ocean #009098 red #E02850 gold #F0B870 pink #F89090 cream #F3E7CF tan #E6CFA0 goldline #C9963E -->
+
+<!-- 1. TOP: color band + arch hero -->
+<div class="part" id="top" style="height:1540px">
+<svg width="1200" height="1540" viewBox="0 0 1200 1540" class="abs" style="inset:0">
+  <defs>
+    <clipPath id="cb"><rect x="0" y="0" width="460" height="190"/></clipPath>
+    <clipPath id="arch"><path d="M230 1500 V720 A370 370 0 0 1 970 720 V1500 Z"/></clipPath>
+  </defs>
+  <!-- color block band -->
+  <rect x="0" y="0" width="460" height="190" fill="#002838"/>
+  <g clip-path="url(#cb)"><g transform="translate(230 190)" id="r1"></g></g>
+  <rect x="460" y="0" width="200" height="190" fill="#006868"/>
+  <rect x="660" y="0" width="90" height="190" fill="#E02850"/>
+  <rect x="750" y="0" width="290" height="190" fill="#F0B870"/>
+  <rect x="1040" y="0" width="160" height="190" fill="#F89090"/>
+  <g id="sc1" fill="#009098"></g>
+  <path d="M0 198 H1200 M0 207 H1200" stroke="#C9963E" stroke-width="3"/>
+  <!-- side stepped pilasters -->
+  <g fill="none" stroke="#C9963E" stroke-width="3">
+    <path d="M60 260 V1540 M78 260 V1540 M1140 260 V1540 M1122 260 V1540"/>
+    <path d="M60 260 H140 V300 H180 V340 M1140 260 H1060 V300 H1020 V340"/>
+  </g>
+  <!-- arch with tan sunburst -->
+  <g clip-path="url(#arch)"><rect x="230" y="300" width="740" height="1200" fill="#EFDDB8"/><g transform="translate(600 1120)" id="r2"></g></g>
+  <path d="M230 1500 V720 A370 370 0 0 1 970 720 V1500" fill="none" stroke="#C9963E" stroke-width="6"/>
+  <path d="M256 1500 V720 A344 344 0 0 1 944 720 V1500" fill="none" stroke="#C9963E" stroke-width="2"/>
+  <!-- stepped shoulders -->
+  <g fill="none" stroke="#C9963E" stroke-width="3">
+    <path d="M230 900 H170 V1000 H120 V1500 M970 900 H1030 V1000 H1080 V1500"/>
+    <path d="M230 940 H190 V1040 H140 V1500 M970 940 H1010 V1040 H1060 V1500"/>
+  </g>
+  <!-- keystone -->
+  <path d="M570 338 H630 L615 368 H585 Z" fill="#E02850"/>
+  <!-- date plaque (stepped) -->
+  <path d="M250 1270 H310 V1250 H370 V1230 H830 V1250 H890 V1270 H950 V1400 H890 V1420 H830 V1440 H370 V1420 H310 V1400 H250 Z" fill="#002838" stroke="#C9963E" stroke-width="5"/>
+  <path d="M268 1282 H322 V1262 H382 V1244 H818 V1262 H878 V1282 H932 V1388 H878 V1408 H818 V1426 H382 V1408 H322 V1388 H268 Z" fill="none" stroke="#C9963E" stroke-width="2"/>
+</svg>
+<img class="abs" src="marjcc-teal.png" style="top:240px;left:404px;height:84px">
+<div class="abs" style="top:244px;left:598px;width:2px;height:76px;background:#006868;opacity:.5"></div>
+<img class="abs" src="mbjcc-teal.png" style="top:252px;left:624px;height:66px">
+<div class="abs c caps" style="top:418px;color:#8A5F18;font-size:28px">Save the Date</div>
+<img class="abs" src="golf-games-classic-logo.png" style="top:480px;left:250px;width:700px">
+<div class="abs c" style="top:1292px;font-family:Limelight,serif;font-size:84px;line-height:1;color:#F0C078">March 12, 2027</div>
+<div class="abs c caps" style="top:1468px;color:#006868;font-size:24px;letter-spacing:.4em">Miami Beach Golf Club</div>
+</div>
+
+<!-- 2. FAN DIVIDER -->
+<div class="part" id="fan" style="height:110px">
+<svg width="1200" height="110"><g fill="none" stroke="#C9963E" stroke-width="3"><path d="M60 0 V110 M78 0 V110 M1140 0 V110 M1122 0 V110"/><path d="M160 60 H500 M160 70 H500 M700 60 H1040 M700 70 H1040"/></g>
+<g transform="translate(600 92)" id="r3"></g><path d="M585 92 L600 77 L615 92 Z" fill="#E02850"/>
+<path d="M510 65 L522 53 L534 65 L522 77 Z M666 65 L678 53 L690 65 L678 77 Z" fill="#006868"/></svg>
+</div>
+
+<!-- 3. MATCHUP PLAQUE -->
+<div class="part" id="plaque" style="height:150px">
+<svg width="1200" height="150" class="abs" style="inset:0"><g fill="none" stroke="#C9963E" stroke-width="3"><path d="M60 0 V150 M78 0 V150 M1140 0 V150 M1122 0 V150"/></g>
+<path d="M210 75 L270 20 H930 L990 75 L930 130 H270 Z" fill="#006868" stroke="#C9963E" stroke-width="5"/>
+<path d="M232 75 L278 32 H922 L968 75 L922 118 H278 Z" fill="none" stroke="#F0C078" stroke-width="2"/></svg>
+<div class="abs c caps" style="top:56px;color:#F3E7CF;font-size:30px;letter-spacing:.16em">Team MARJCC <span style="font-family:Limelight,serif;letter-spacing:0;color:#F0C078;text-transform:none">vs.</span> Team MBJCC</div>
+</div>
+
+<!-- 4. CARDS -->
+<div class="part" id="cards" style="height:760px">
+<svg width="1200" height="760" class="abs" style="inset:0">
+  <g fill="none" stroke="#C9963E" stroke-width="3"><path d="M60 0 V760 M78 0 V760 M1140 0 V760 M1122 0 V760"/></g>
+  <g id="cardL" transform="translate(130 30)"></g><g id="cardR" transform="translate(630 30)"></g>
+</svg>
+<img class="abs" src="ball.png" style="top:120px;left:278px;height:300px">
+<img class="abs" src="tile.png" style="top:150px;left:665px;height:230px">
+<img class="abs" src="tiles.png" style="top:140px;left:830px;height:250px">
+<div class="abs caps" style="top:470px;left:130px;width:440px;text-align:center;color:#8A5F18;font-size:24px;letter-spacing:.4em">Golf</div>
+<div class="abs" style="top:520px;left:150px;width:400px;text-align:center;font-family:Limelight,serif;font-size:44px;line-height:1.15;color:#002838">May the best<br>team win!</div>
+<div class="abs caps" style="top:470px;left:630px;width:440px;text-align:center;color:#8A5F18;font-size:24px;letter-spacing:.4em">Mahjong</div>
+<div class="abs" style="top:520px;left:650px;width:400px;text-align:center;font-family:Limelight,serif;font-size:44px;line-height:1.15;color:#002838">Everyone plays<br>together!</div>
+</div>
+
+<!-- 5. CLOSING SUNRISE -->
+<div class="part" id="closing" style="height:420px">
+<svg width="1200" height="420" class="abs" style="inset:0">
+  <defs><clipPath id="half"><path d="M200 420 A400 400 0 0 1 1000 420 Z"/></clipPath></defs>
+  <g fill="none" stroke="#C9963E" stroke-width="3"><path d="M60 0 V420 M78 0 V420 M1140 0 V420 M1122 0 V420"/></g>
+  <g clip-path="url(#half)"><rect x="200" y="0" width="800" height="420" fill="#002838"/><g transform="translate(600 420)" id="r4"></g></g>
+  <path d="M200 420 A400 400 0 0 1 1000 420" fill="none" stroke="#C9963E" stroke-width="5"/>
+  <path d="M226 420 A374 374 0 0 1 974 420" fill="none" stroke="#C9963E" stroke-width="2"/>
+</svg>
+<div class="abs c" style="top:200px;font-family:Limelight,serif;font-size:54px;line-height:1.1;color:#F3E7CF">Two communities.<br><span style="color:#F0C078">One unforgettable day!</span></div>
+</div>
+
+<!-- 6. WAVES -->
+<div class="part" id="waves" style="height:170px"><canvas id="wc" width="1200" height="170"></canvas></div>
+
+<script>
+function rays(id,n,r,spread,cols){const g=document.getElementById(id);let s='';for(let i=0;i<n;i++){const a0=-90-spread/2+i*spread/n,a1=a0+spread/n;const p=a=>[Math.cos(a*Math.PI/180)*r,Math.sin(a*Math.PI/180)*r];const[a,b]=p(a0),[c,d]=p(a1);s+=`<path d="M0 0 L${a} ${b} A${r} ${r} 0 0 1 ${c} ${d} Z" fill="${cols[i%cols.length]}"/>`;}g.innerHTML=s;}
+rays('r1',14,600,180,['#F3E7CF','#002838']);
+rays('r2',20,1000,180,['#E6CFA0','#EFDDB8']);
+rays('r3',7,48,180,['#C9963E','#F3E7CF']);
+rays('r4',16,600,180,['#0A3346','#002838']);
+let sc='';for(let x=750;x<1240;x+=40){sc+=`<path d="M${x} 190 a20 20 0 0 1 40 0 z"/>`;}document.getElementById('sc1').innerHTML=sc;
+// arch cards
+function card(id){document.getElementById(id).innerHTML=`<path d="M0 700 V200 A220 200 0 0 1 440 200 V700 Z" fill="#FBF3E2" stroke="#C9963E" stroke-width="5"/><path d="M18 682 V204 A202 184 0 0 1 422 204 V682 Z" fill="none" stroke="#C9963E" stroke-width="2"/><path d="M60 420 H380 M60 430 H380" stroke="#C9963E" stroke-width="2"/><path d="M205 425 L220 410 L235 425 L220 440 Z" fill="#E02850"/><g transform="translate(220 196)">${[...Array(9)].map((_,i)=>{const a0=(-180+i*20)*Math.PI/180,a1=(-180+i*20+20)*Math.PI/180;return i%2?'':`<path d="M0 0 L${Math.cos(a0)*180} ${Math.sin(a0)*180} A180 180 0 0 1 ${Math.cos(a1)*180} ${Math.sin(a1)*180} Z" fill="#F0E0BC"/>`}).join('')}</g>`;}
+card('cardL');card('cardR');
+const c=document.getElementById('wc').getContext('2d');c.fillStyle='#F3E7CF';c.fillRect(0,0,1200,170);
+const R=40;[[80,'#009098'],[110,'#006868'],[140,'#009098'],[170,'#006868']].forEach(([y,col],ri)=>{const off=(ri%2)*R;for(let x=-R+off;x<1200+R;x+=2*R){c.beginPath();c.arc(x,y,R,Math.PI,0);c.closePath();c.fillStyle=col;c.fill();c.lineWidth=2;c.strokeStyle='#C9963E';c.stroke();}});
+document.fonts.ready.then(()=>window.__ready=true);
+</script></body></html>
