@@ -11,4 +11,4 @@
 - GMJF logo: always alone at the very BOTTOM, like a footer.
 - Write "MBJCC" (short form) instead of "Miami Beach JCC". Venue stays "Miami Beach Golf Club".
 - Mahjong only: never show playing cards or card suits.
-- All event materials in English. Approved design direction: clean deep navy (or cream) ground, a soft glow behind the logo, sweeping bundles of thin gold lines as the signature, the event logo as hero, big gold type. NO palm trees, no illustrated sunset/ocean scenes, no geometric ray fans, scallop wave bands or color blocks.
+- All event materials in English. Approved looks: (a) save the date / email: clean deep navy, soft glow behind the logo, sweeping gold line bundles, big gold type; (b) Instagram (commit aea6238): sunset sky melting into the sea, light rays, bokeh, layered waves with gold lines, golf ball sun, floating tiles. NEVER palm trees. No geometric ray fans, scallop bands or color blocks.
