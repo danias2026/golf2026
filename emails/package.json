@@ -2,10 +2,12 @@
   "name": "golf-games-classic-emails",
   "private": true,
   "type": "module",
-  "engines": { "node": ">=18" },
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "build": "python3 build.py",
     "test-email": "node send.mjs --test",
-    "send": "node send.mjs"
+    "send": "NODE_USE_ENV_PROXY=1 NODE_EXTRA_CA_CERTS=${NODE_EXTRA_CA_CERTS:-/root/.ccr/ca-bundle.crt} node send.mjs"
   }
 }

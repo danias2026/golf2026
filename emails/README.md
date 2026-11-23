@@ -110,3 +110,8 @@ Puedes cambiarlos con `--subject "..."`, y en ese caso la prueba también debe l
 ## Requisitos
 
 Node 18 o más nuevo. El script usa la API de Resend directamente, sin instalar paquetes.
+
+
+## En el entorno de Claude (nube)
+
+Aquí la API key la pone el proxy de red, y Node necesita usar ese proxy. Usa `npm run send -- <opciones>` (por ejemplo `npm run send -- --template save-the-date --test`), que activa `NODE_USE_ENV_PROXY=1` automáticamente. En tu computadora puedes seguir usando `node send.mjs` con tu `RESEND_API_KEY`.
