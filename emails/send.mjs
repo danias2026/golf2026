@@ -76,7 +76,14 @@ const rawHtml = await readFile(new URL('index.html', dir), 'utf8');
 const rawText = await readFile(new URL('index.txt', dir), 'utf8');
 
 // The approval fingerprint: the template's HTML as built, the subject and the sender.
-const hash = createHash('sha256').update(rawHtml).update('\n--subject--\n').update(subject).update('\n--from--\n').update(from).digest('hex');
+const hashObj = createHash('sha256').update(rawHtml).update('\n--subject--\n').update(subject).update('\n--from--\n').update(from);
+// Images count too: a changed header image needs a new test.
+{
+  const fsx = await import('node:fs'); const px = await import('node:path');
+  const dir = px.join(px.dirname(new URL(import.meta.url).pathname), 'assets');
+  for (const f of fsx.readdirSync(dir).sort()) { hashObj.update('\n--asset--' + f + '\n').update(fsx.readFileSync(px.join(dir, f))); }
+}
+const hash = hashObj.digest('hex');
 
 async function readPending() {
   try { return JSON.parse(await readFile(PENDING, 'utf8')); } catch { return []; }
