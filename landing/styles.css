@@ -1,0 +1,158 @@
+/* Golf & Games Classic 2027: same look as the Instagram posts (instagram/src/base.css) */
+:root{
+  --navy:#002838;--deep:#00141F;--teal:#006868;--ocean:#009098;--red:#E02850;--gold:#F0C078;
+  --cream:#F8F0E0;--redlt:#FF6B88;--aqua:#7FD6DA;--tm:#006478;--tb:#4078BC;
+  --gutter:max(20px, env(safe-area-inset-left, 0px));
+  --gutter-r:max(20px, env(safe-area-inset-right, 0px));
+  color-scheme:dark;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;background:var(--deep)}
+body{font-family:Mulish,Arial,sans-serif;color:var(--cream);background:var(--deep);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:-999px;top:8px;z-index:100;background:var(--cream);color:var(--navy);padding:10px 16px;font-weight:700}
+.skip:focus{left:12px}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+
+/* Type, identical to the posts */
+.eb{font:600 clamp(13px,1.6vw,20px)/1 'Josefin Sans',sans-serif;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);text-shadow:0 0 18px rgba(240,192,120,.45)}
+.disp{font-family:Limelight,Georgia,serif;font-weight:400;line-height:1.04;text-shadow:0 4px 30px rgba(0,20,31,.55);text-wrap:balance}
+.disp.xl{font-size:clamp(64px,12vw,170px);line-height:.95}
+.disp.lg{font-size:clamp(42px,6.4vw,96px)}
+.disp.md{font-size:clamp(28px,3.6vw,52px)}
+.caps{font-family:'Josefin Sans',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.14em}
+.date,.goldtxt{background:linear-gradient(180deg,#FFFBEA 0%,#FFE2A6 40%,#F0C078 75%,#E0A04A 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.date{font:700 clamp(40px,7.4vw,104px)/1 'Josefin Sans',sans-serif;letter-spacing:.08em;filter:drop-shadow(0 2px 8px rgba(0,20,31,.55)) drop-shadow(0 0 22px rgba(240,192,120,.45))}
+.goldtxt{filter:drop-shadow(0 0 26px rgba(255,214,150,.55))}
+.red{color:var(--redlt);text-shadow:0 0 28px rgba(255,107,136,.45)}
+.aqua{color:var(--aqua)}.gold{color:var(--gold)}
+.hair{display:block;height:2px;width:min(560px,70%);background:linear-gradient(90deg,transparent,var(--gold) 20%,#FFF3CF 50%,var(--gold) 80%,transparent)}
+.vs{font-family:'Playfair Display',serif;font-style:italic;font-weight:700;color:var(--redlt);text-transform:lowercase;letter-spacing:0;text-shadow:0 0 20px rgba(255,107,136,.5)}
+
+/* Host logos: one color, no box, always on top */
+.top{position:absolute;top:0;left:0;right:0;z-index:20;padding:calc(env(safe-area-inset-top,0px) + 22px) var(--gutter-r) 0 var(--gutter)}
+.hosts{display:flex;align-items:center;justify-content:center;gap:clamp(18px,3vw,36px);filter:drop-shadow(0 2px 14px rgba(0,20,31,.35))}
+.hosts img{height:clamp(46px,6vw,74px);width:auto}
+.hosts img.mb{height:clamp(36px,4.8vw,58px)}
+.hdiv{width:2px;height:clamp(40px,5vw,62px);background:linear-gradient(transparent,#fff,transparent);opacity:.8}
+
+/* Sections: each is a scene that fades into the page navy, so nothing reads as a band */
+section{position:relative;isolation:isolate;padding:clamp(96px,12vw,160px) var(--gutter-r) clamp(96px,12vw,160px) var(--gutter)}
+.bg{position:absolute;inset:0;z-index:-1;overflow:hidden;background:var(--deep)}
+/* soft fades so every scene melts into the next: no visible edges */
+section::before,section::after{content:"";position:absolute;left:0;right:0;z-index:0;pointer-events:none}
+section::before{top:0;height:clamp(90px,16%,200px);background:linear-gradient(var(--deep),rgba(0,20,31,0))}
+section::after{bottom:0;height:clamp(90px,18%,220px);background:linear-gradient(rgba(0,20,31,0),var(--deep))}
+.hero::before{display:none}
+section > .inner,section > .hero-inner{position:relative;z-index:1}
+.scene{position:absolute;inset:-6% 0;width:100%;height:112%}
+.inner{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center;gap:18px}
+.seam{display:block;width:100%;height:clamp(90px,14vw,200px);margin:clamp(-100px,-7vw,-45px) 0;position:relative;z-index:5;pointer-events:none}
+
+/* Hero */
+.hero{min-height:100svh;display:flex;align-items:center;justify-content:center;padding-top:clamp(120px,14vw,170px);padding-bottom:clamp(120px,14vw,190px)}
+.hero-inner{display:flex;flex-direction:column;align-items:center;text-align:center;gap:clamp(10px,1.4vw,18px);max-width:1100px;width:100%}
+.hero-logo{width:min(880px,100%);margin:clamp(4px,1vw,14px) 0}
+.hero-logo img{width:100%;filter:drop-shadow(0 18px 40px rgba(0,20,31,.45)) drop-shadow(0 0 40px rgba(255,214,150,.35))}
+.caps.big{font-size:clamp(15px,1.9vw,26px);letter-spacing:.2em}
+.caps.aqua{font-size:clamp(12px,1.4vw,18px);letter-spacing:.3em;text-shadow:0 1px 10px rgba(0,20,31,.8)}
+.caps.big{text-shadow:0 1px 12px rgba(0,20,31,.7)}
+.cta{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:clamp(10px,2vw,22px)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:16px 30px;font:700 15px/1 'Josefin Sans',sans-serif;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;border:2px solid transparent;cursor:pointer;transition:transform .2s,box-shadow .2s,background-color .2s,border-color .2s}
+.btn-red{background:var(--red);color:#fff;box-shadow:0 0 0 rgba(224,40,80,0),0 10px 30px rgba(224,40,80,.35)}
+.btn-red:hover{transform:translateY(-2px);box-shadow:0 0 34px rgba(255,107,136,.55),0 14px 34px rgba(224,40,80,.45)}
+.btn-ghost{background:rgba(0,20,31,.25);color:var(--cream);border-color:var(--gold);backdrop-filter:blur(2px)}
+.btn-ghost:hover{border-color:#FFF3CF;color:#FFF3CF;box-shadow:0 0 26px rgba(240,192,120,.35)}
+
+/* Rivalry intro */
+.rivalry-intro .inner{gap:6px}
+.rivalry-intro .eb{margin-bottom:18px}
+.plaque{position:relative;display:inline-flex;gap:.45em;align-items:center;margin-top:36px;padding:18px clamp(34px,5vw,64px);font:700 clamp(14px,1.9vw,26px)/1 'Josefin Sans',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--cream)}
+.plaque::before{content:"";position:absolute;inset:0;border:2px solid var(--gold);clip-path:polygon(30px 0,calc(100% - 30px) 0,100% 50%,calc(100% - 30px) 100%,30px 100%,0 50%);background:linear-gradient(90deg,rgba(240,192,120,0),rgba(240,192,120,.14),rgba(240,192,120,0))}
+
+/* Teams */
+.teams{min-height:min(100svh,980px);display:flex;align-items:center}
+.teams .inner{width:100%}
+.team-row{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:clamp(16px,4vw,60px);width:100%;margin-top:clamp(24px,4vw,56px)}
+.team{display:flex;flex-direction:column;align-items:center;gap:16px;min-width:0}
+.team img{height:clamp(80px,11vw,150px);width:auto}
+.team img.mb{height:clamp(56px,7.6vw,104px)}
+.team .caps{font-size:clamp(22px,3.4vw,46px);line-height:1.05;letter-spacing:.08em}
+.big-vs{font-size:clamp(80px,12vw,170px);line-height:1;color:#FFF3CF;text-shadow:0 0 40px rgba(240,192,120,.9),0 0 90px rgba(255,107,136,.6)}
+
+/* Golf / Mahjong */
+.games .inner{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,90px);align-items:end;text-align:center}
+.game{display:flex;flex-direction:column;align-items:center;gap:10px;min-width:0}
+.ball{width:clamp(150px,19vw,260px);aspect-ratio:1;border-radius:50%;position:relative;margin-bottom:22px;background:radial-gradient(circle at 36% 30%,#fff 0,#F6F1E8 45%,#CFC8BB 85%,#A99F90 100%);box-shadow:0 0 80px rgba(255,236,190,.7),0 30px 60px rgba(0,0,0,.35);animation:float 7s ease-in-out infinite}
+.ball::before{content:"";position:absolute;inset:8%;border-radius:50%;background:radial-gradient(circle,rgba(140,128,110,.38) 0 4px,transparent 5px) 0 0/18px 18px,radial-gradient(circle,rgba(140,128,110,.38) 0 4px,transparent 5px) 9px 9px/18px 18px;-webkit-mask-image:radial-gradient(circle at 40% 35%,transparent 10%,#000 70%);mask-image:radial-gradient(circle at 40% 35%,transparent 10%,#000 70%)}
+.tiles-hero{position:relative;width:min(340px,100%);height:clamp(170px,20vw,260px);margin-bottom:22px}
+.tile{position:absolute;left:var(--x);top:var(--y);width:calc(var(--w) * clamp(88px,10vw,140px));aspect-ratio:1/1.27;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif TC',serif;font-weight:900;font-size:calc(var(--w) * clamp(62px,7vw,100px));background:linear-gradient(160deg,#FFFDF6,#F3E9D6);border-radius:16%;box-shadow:8px 10px 0 var(--teal),0 26px 50px rgba(0,0,0,.45),0 0 50px rgba(255,214,150,.3);transform:rotate(var(--r));animation:bob 8s ease-in-out infinite;animation-delay:calc(var(--d) * -1)}
+.tile.far{filter:blur(3px);opacity:.7}
+.games > .tile{position:absolute}
+
+/* Details */
+.info{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,4vw,56px);width:100%;margin-top:clamp(36px,5vw,64px)}
+.info article{display:flex;flex-direction:column;align-items:center;gap:14px;min-width:0}
+.info h3{font-size:clamp(18px,2vw,24px);letter-spacing:.24em}
+.info .hair{width:80%}
+.info p{font-size:18px;color:#E9E2D2}
+
+/* Signup */
+.signup{padding-bottom:clamp(140px,16vw,220px)}
+.lead{font-size:clamp(17px,1.6vw,20px);color:#FFF3CF;max-width:40ch}
+.form{width:min(620px,100%);margin-top:14px;display:flex;flex-direction:column;align-items:center;gap:10px}
+.form label{font-size:13px;letter-spacing:.28em;color:var(--gold)}
+.form .row{display:flex;gap:10px;width:100%;flex-wrap:wrap}
+.form input{flex:1 1 260px;min-width:0;min-height:52px;padding:14px 18px;border-radius:3px;border:2px solid rgba(240,192,120,.8);background:rgba(0,20,31,.55);color:var(--cream);font:16px Mulish,Arial,sans-serif}
+.form input::placeholder{color:#B9C6C4}
+.form .btn{flex:0 0 auto}
+.msg{min-height:1.6em;font-weight:600;color:#FFF3CF}
+
+/* Footer: GMJF is always the last thing on the page */
+.foot{background:var(--deep);display:flex;flex-direction:column;align-items:center;gap:22px;padding:28px var(--gutter-r) calc(env(safe-area-inset-bottom,0px) + 36px) var(--gutter);text-align:center}
+.foot .small{font-size:12px;letter-spacing:.22em;color:#B9C6C4}
+.foot .gmjf{height:64px;width:auto}
+
+/* Motion: gold lines draw in, bokeh drifts, water shimmers, waves breathe */
+.draw{stroke-dasharray:1;stroke-dashoffset:1;animation:draw 2.6s cubic-bezier(.65,0,.35,1) .3s forwards}
+.seam .draw,.teams .draw{animation-play-state:paused}
+.in-view .draw,.seam.in-view .draw{animation-play-state:running}
+@keyframes draw{to{stroke-dashoffset:0}}
+.bokeh .bk0{animation:drift 14s ease-in-out infinite alternate}
+.bokeh .bk1{animation:drift 19s ease-in-out infinite alternate-reverse}
+.bokeh .bk2{animation:drift2 23s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translate(18px,-26px)}}
+@keyframes drift2{to{transform:translate(-22px,-14px)}}
+.streak{animation:shimmer 3.2s ease-in-out infinite}
+.streak.s1{animation-delay:-.8s}.streak.s2{animation-delay:-1.6s}.streak.s3{animation-delay:-2.4s}
+@keyframes shimmer{50%{opacity:.25}}
+.wave.w1{animation:sway 9s ease-in-out infinite alternate}
+.wave.w2{animation:sway 12s ease-in-out infinite alternate-reverse}
+@keyframes sway{to{transform:translateX(-24px)}}
+.st{animation:twinkle 4s ease-in-out infinite}.st1{animation-delay:-1.3s}.st2{animation-delay:-2.6s}
+@keyframes twinkle{50%{opacity:.15}}
+.sunglow{animation:pulse 6s ease-in-out infinite;transform-origin:center}
+@keyframes pulse{50%{opacity:.82}}
+@keyframes float{50%{transform:translateY(-14px)}}
+@keyframes bob{50%{transform:rotate(var(--r)) translateY(-12px)}}
+.reveal{opacity:1;transform:none;transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+.js .reveal:not(.in-view){opacity:0;transform:translateY(28px)}
+
+/* Phone */
+@media (max-width:760px){
+  .team-row{grid-template-columns:1fr;gap:8px}
+  .big-vs{margin:14px 0 26px}
+  .hero .scene{top:-30%;height:130%}
+  .games .inner{grid-template-columns:1fr;gap:72px}
+  .info{grid-template-columns:1fr;gap:34px}
+  .games > .tile{display:none}
+  .cta .btn{width:100%}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .draw{stroke-dashoffset:0}
+  .js .reveal:not(.in-view){opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}

@@ -5,7 +5,15 @@ Dos emails listos para Resend:
 - `save-the-date/`: el Save the Date principal (`index.html` + `index.txt`).
 - `reminder/`: un recordatorio más corto, con el mismo diseño.
 
-Los logos siguen la regla del evento: MARJCC y MBJCC van arriba, en blanco, dentro de la imagen del encabezado (`save-the-date-email-header.png`), sin caja blanca. El logo de GMJF va siempre al final del email, solo.
+El diseño es el mismo de los posts de Instagram: un email azul marino con tres imágenes a lo ancho (encabezado con atardecer y mar, Golf y Mahjong, y un cierre con olas y líneas doradas). El texto importante va como texto real entre las imágenes, así que se lee aunque el programa de correo bloquee las imágenes.
+
+Los logos siguen la regla del evento: MARJCC y MBJCC van arriba, en blanco, dentro de la imagen del encabezado, sin caja blanca. El logo de GMJF va siempre al final del email, solo, en blanco.
+
+Las imágenes están en `assets/` (`hero-save-the-date.jpg`, `hero-reminder.jpg`, `games.jpg`, `closing.jpg`, `gmjf-logo-white.png`). Se generan con:
+
+```bash
+node src/gen.cjs
+```
 
 ## Regla obligatoria: primero la prueba, después la aprobación de Dania
 
