@@ -66,23 +66,24 @@ All fonts are free on Google Fonts.
 
 Never retype the logo lettering. "GOLF & GAMES CLASSIC" as a logo always comes from the logo file.
 
-## Composition: the logo and the gold lines
+## Composition: one look everywhere
 
-The logo is the decoration. Everything around it stays clean.
+The Instagram posts are the master look. The landing page, emails, save the date, videos and print all follow it, so every piece reads as one family.
 
-- **Clean grounds.** Solid `deco-navy` or `shore-cream`, edge to edge. At most a very soft glow behind the logo. No illustrated backgrounds: no sunset scenes, palm trees, ocean, light rays, bokeh, scalloped waves, sunburst fans or color-block bands.
-- **Flowing gold lines are the signature.** Thin sweeping curves in `rule` gold (1 to 3px, a soft gold glow is fine) that flow across the piece, frame the logo, connect headline and date, and run continuously across a carousel. Use them generously; they replace boxes, bands and dividers.
-- **The logo is the hero.** Big, centered or boldly cropped (the golf ball, the tiles). Never surround it with competing illustration.
-- **Type breathes.** Big Limelight headlines and gold dates sit directly on the clean ground. No text in boxes.
-- **Team pieces.** `team-marjcc` and `team-mbjcc` as two clean fields that meet along one flowing gold line, never a hard straight split.
-- **Motion.** The logo builds itself (ball onto the tee, tiles flip in, wordmark light sweep) and the gold lines draw themselves through the frame. Clean navy ground, one continuous camera move, no scenery.
+- **The scene.** A Miami Beach golden hour: the sky melts from deep blue through pink and peach into a glowing sea, with no visible edge. Soft light rays from the horizon, gold bokeh, layered teal waves crowned with glowing gold lines. A night variant uses the same elements on deep navy with stars.
+- **Gold lines are the signature.** Thin, glowing, sweeping curves that flow across the piece, frame the logo, connect headline and date, and run continuously across a carousel or a scrolling page.
+- **Heroes.** The event logo, the golf ball as a rising sun, mahjong tiles floating at different depths.
+- **Type.** Big Limelight headlines with a gold gradient; Josefin Sans caps for dates and labels; Mulish for sentences. Type sits on the scene, never in boxes.
+- **Team pieces.** `team-marjcc` and `team-mbjcc` as two fields that melt into each other along a soft S-curve with a glowing gold seam and a glowing "vs.".
+- **Never:** palm trees, hard horizontal bands, white plates or boxed panels, geometric ray fans, scalloped wave strips, flat color blocks.
+- **Motion.** One continuous camera move, the logo building itself, gold lines drawing, bokeh drifting, water shimmering.
 - Interface elements (buttons, form fields) keep square corners (`radius-0`).
 
 ## Imagery
 
 - The logo is the hero of the campaign. The original sunset key art (`golf-games-key-art.jpg`) shows playing cards, so do not use it in new pieces; keep it only as a color and mood reference.
 - Photos: real people from both communities on the course and at the mahjong tables, smiling, in sun. Golden-hour light fits the palette. Avoid stock photos of empty golf courses.
-- No illustration beyond the logo itself. Never use palm trees.
+- Illustration is limited to the scene described above (sky, sea, waves, rays, bokeh, gold lines). Never use palm trees.
 
 ## Channel specs
 
