@@ -1,0 +1,48 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Limelight&family=Josefin+Sans:wght@600;700&display=swap">
+<style>html,body{margin:0;background:transparent}.part{position:relative;width:1200px;overflow:hidden;background:#F3E7CF}svg,canvas{display:block}
+.caps{font-family:'Josefin Sans',sans-serif;font-weight:700;letter-spacing:.32em;text-transform:uppercase}</style></head><body>
+
+<!-- TOP BAND: sunburst + color blocks + scallops -->
+<div class="part" id="band" style="height:220px">
+<svg width="1200" height="220" viewBox="0 0 1200 220">
+  <defs><clipPath id="c1"><rect x="0" y="0" width="500" height="200"/></clipPath></defs>
+  <rect x="0" y="0" width="500" height="200" fill="#002838"/>
+  <g clip-path="url(#c1)"><g transform="translate(250 200)" id="rays"></g></g>
+  <rect x="500" y="0" width="200" height="200" fill="#006868"/>
+  <rect x="700" y="0" width="100" height="200" fill="#E02850"/>
+  <rect x="800" y="0" width="250" height="200" fill="#F0B870"/>
+  <rect x="1050" y="0" width="150" height="200" fill="#F89090"/>
+  <g id="sc" fill="#009098"></g>
+  <path d="M0 206 H1200 M0 214 H1200" stroke="#C9963E" stroke-width="3"/>
+</svg>
+</div>
+
+<!-- HERO on beige -->
+<div class="part" id="hero" style="height:1020px">
+<img src="marjcc-teal.png" style="position:absolute;top:56px;left:404px;height:84px">
+<div style="position:absolute;top:60px;left:598px;width:2px;height:76px;background:#006868;opacity:.5"></div>
+<img src="mbjcc-teal.png" style="position:absolute;top:68px;left:624px;height:66px">
+<div class="caps" style="position:absolute;top:200px;width:100%;text-align:center;color:#8A5F18;font-size:30px">Save the Date</div>
+<svg width="1200" height="40" style="position:absolute;top:250px"><path d="M300 14 H520 M300 24 H520 M680 14 H900 M680 24 H900" stroke="#C9963E" stroke-width="3"/><path d="M580 19 L600 0 L620 19 L600 38 Z" fill="#E02850"/></svg>
+<img src="golf-games-classic-logo.png" style="position:absolute;top:310px;left:170px;width:860px">
+<div style="position:absolute;top:905px;width:100%;text-align:center;font-family:Limelight,serif;font-size:92px;line-height:1;color:#002838">March 12, 2027</div>
+</div>
+
+<!-- DIVIDER fan -->
+<div class="part" id="divider" style="height:120px">
+<svg width="1200" height="120"><path d="M80 54 H520 M80 66 H520 M680 54 H1120 M680 66 H1120" stroke="#C9963E" stroke-width="3"/><g transform="translate(600 104)" id="fan"></g></svg>
+</div>
+
+<!-- SCALLOP waves on beige -->
+<div class="part" id="waves" style="height:150px"><canvas id="wc" width="1200" height="150"></canvas></div>
+
+<script>
+function rays(id,n,r,spread,cols){const g=document.getElementById(id);let s='';for(let i=0;i<n;i++){const a0=-90-spread/2+i*spread/n,a1=a0+spread/n;const p=a=>[Math.cos(a*Math.PI/180)*r,Math.sin(a*Math.PI/180)*r];const[a,b]=p(a0),[c,d]=p(a1);s+=`<path d="M0 0 L${a} ${b} A${r} ${r} 0 0 1 ${c} ${d} Z" fill="${cols[i%cols.length]}"/>`;}g.innerHTML=s;}
+rays('rays',14,600,180,['#F3E7CF','#002838']);
+rays('fan',7,52,180,['#C9963E','#F3E7CF']);
+let sc='';for(let x=800;x<1240;x+=40){sc+=`<path d="M${x} 200 a20 20 0 0 1 40 0 z"/>`;}document.getElementById('sc').innerHTML=sc;
+const c=document.getElementById('wc').getContext('2d');c.fillStyle='#F3E7CF';c.fillRect(0,0,1200,150);
+const R=40;[[70,'#009098'],[100,'#006868'],[130,'#009098'],[160,'#006868']].forEach(([y,col],ri)=>{const off=(ri%2)*R;for(let x=-R+off;x<1200+R;x+=2*R){c.beginPath();c.arc(x,y,R,Math.PI,0);c.closePath();c.fillStyle=col;c.fill();}});
+document.fonts.ready.then(()=>window.__ready=true);
+</script></body></html>
