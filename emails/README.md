@@ -5,15 +5,19 @@ Dos emails listos para Resend:
 - `save-the-date/`: el Save the Date principal (`index.html` + `index.txt`).
 - `reminder/`: un recordatorio más corto, con el mismo diseño.
 
-El diseño es el mismo de los posts de Instagram: un email azul marino con tres imágenes a lo ancho (encabezado con atardecer y mar, Golf y Mahjong, y un cierre con olas y líneas doradas). El texto importante va como texto real entre las imágenes, así que se lee aunque el programa de correo bloquee las imágenes.
+El diseño es el **Art Deco beige** oficial: franja de rayos y bloques de color arriba, un marco dorado doble continuo a los lados (hecho en el HTML, así siempre queda alineado), arco con el logo, placa escalonada con la fecha, placa del matchup, tarjetas en arco para Golf (pelota y palos cruzados) y Mahjong, sol de rayos al cierre y olas en festón. Todo sobre un solo beige (#F3E7CF). El texto importante va como texto real, así que se lee aunque el programa de correo bloquee las imágenes. "Golf & Games Classic" nunca se parte en dos líneas.
 
-Los logos siguen la regla del evento: MARJCC y MBJCC van arriba, en blanco, dentro de la imagen del encabezado, sin caja blanca. El logo de GMJF va siempre al final del email, solo, en blanco.
+Los logos siguen la regla del evento: MARJCC y MBJCC arriba en verde azulado, sin caja (dentro de la imagen del arco). GMJF siempre al final del email, solo, en negro.
 
-Las imágenes están en `assets/` (`hero-save-the-date.jpg`, `hero-reminder.jpg`, `games.jpg`, `closing.jpg`, `gmjf-logo-white.png`). Se generan con:
+Las imágenes están en `assets/` (`band.png`, `hero-save-the-date.png`, `hero-reminder.png`, `fan.png`, `plaque.png`, `cards.png`, `closing.png`, `waves.png`, `gmjf-logo-black.png`). Se generan con:
 
 ```bash
-node src/gen.cjs
+node src-deco/render.cjs
+python3 build.py
+node preview.cjs
 ```
+
+No hay botón todavía porque no hay link. En `build.py` hay un botón comentado listo para usar; en celular debe llevar `white-space:nowrap` y 2px de espacio entre letras para que no se parta.
 
 ## Regla obligatoria: primero la prueba, después la aprobación de Dania
 
@@ -91,10 +95,10 @@ Usa el mismo `--sender` (o `--from`) y el mismo `--subject` que en la prueba; si
 
 El link de **Unsubscribe** solo funciona en broadcasts: Resend lo rellena solo (`{{{RESEND_UNSUBSCRIBE_URL}}}`).
 
-## Antes de enviar, reemplaza
+## Antes de enviar
 
-- `https://REPLACE-WITH-LANDING-PAGE-URL`: el link del botón (el landing page). Está en `build.py` y en los `.txt`.
-- `[SENDER NAME AND MAILING ADDRESS]`: nombre y dirección postal de quien envía. La ley CAN-SPAM pide una dirección física.
+- El pie ya lleva la dirección postal: MARJCC · 18900 NE 25th Avenue, North Miami Beach, FL 33180.
+- Cuando haya link, descomenta el botón en `build.py` y pon el link del landing page.
 
 Después de cambiar algo, corre `python3 build.py` y manda una prueba nueva.
 
@@ -106,7 +110,7 @@ El HTML de los dos emails se genera con `build.py`. Edita el texto ahí y corre:
 python3 build.py
 ```
 
-Los `.txt` se editan a mano. Para ver cómo queda, `node preview.cjs` genera `preview.png` y `preview-mobile.png` en cada carpeta.
+Los `.txt` también se generan con `build.py`. Para ver cómo queda, `node preview.cjs` genera `preview.png` y `preview-mobile.png` en cada carpeta.
 
 Asuntos por defecto:
 

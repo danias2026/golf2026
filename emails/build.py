@@ -1,178 +1,114 @@
-"""Builds the email HTML files in the Instagram master look.
-
-Run:  python3 build.py
-Writes save-the-date/index.html and reminder/index.html.
-
-Design: a deep navy email (#00141F) made of full-width image sections rendered by
-src/gen.cjs (same helpers as the Instagram posts), with the essential text as live
-HTML between them, so the email still reads with images off.
+#!/usr/bin/env python3
+"""Builds the Art Deco beige emails (save-the-date, reminder) as HTML + plain text.
+Images live in ./assets and are referenced as {{ASSET_BASE_URL}}/<file> (send.mjs inlines them for tests).
+Regenerate the images first with: node src-deco/render.cjs
 """
-from pathlib import Path
+import os
+HERE = os.path.dirname(os.path.abspath(__file__))
+A = '{{ASSET_BASE_URL}}'
+ADDRESS = 'MARJCC &middot; 18900 NE 25th Avenue, North Miami Beach, FL 33180'
+ADDRESS_TXT = 'MARJCC · 18900 NE 25th Avenue, North Miami Beach, FL 33180'
+EVENT = '<span style="white-space:nowrap">Golf&nbsp;&amp;&nbsp;Games&nbsp;Classic</span>'
 
-HERE = Path(__file__).parent
-CTA_URL = "https://REPLACE-WITH-LANDING-PAGE-URL"
+def img(name, w, h, alt=''):
+    return f'<tr><td><img src="{A}/{name}" width="{w}" height="{h}" alt="{alt}" style="display:block;width:100%;height:auto;border:0"></td></tr>\n'
 
-BG = "#00141F"        # email ground, matches the bottom of every image section
-CREAM = "#F8F0E0"
-GOLD = "#F0C078"
-PINK = "#FF6B88"      # the posts' light red for the second headline line
-AQUA = "#7FD6DA"
-RED = "#E02850"
-MUTED = "#9FB4BA"
-FONT = "Arial, Helvetica, sans-serif"
-DISPLAY = "Georgia, 'Times New Roman', serif"
-ASSET = "{{ASSET_BASE_URL}}"
+def txt(inner, pad):
+    return f'<tr><td align="center" style="padding:{pad}">{inner}</td></tr>\n'
 
-
-def image(name, height, alt, link=False):
-    img = (f'<img src="{ASSET}/{name}" width="600" height="{height}" alt="{alt}" '
-           f'style="display:block;border:0;outline:none;width:100%;max-width:600px;height:auto;'
-           f'background:{BG};color:{GOLD};font-family:{DISPLAY};font-size:22px;line-height:28px;text-align:center;">')
-    if link:
-        img = f'<a href="{CTA_URL}" target="_blank" style="text-decoration:none;">{img}</a>'
-    return f'  <tr><td style="padding:0;background:{BG};">{img}</td></tr>'
-
-
-def text_row(html, pad="0 44px 16px", size=16, color=CREAM, family=FONT, extra=""):
-    return (f'  <tr><td class="px" align="center" style="padding:{pad};font-family:{family};font-size:{size}px;'
-            f'line-height:{round(size * 1.5)}px;color:{color};text-align:center;{extra}">{html}</td></tr>')
-
-
-def eyebrow(t, pad="8px 44px 12px"):
-    return text_row(t, pad=pad, size=13, color=GOLD, extra="font-weight:bold;letter-spacing:4px;text-transform:uppercase;")
-
-
-def h1(line1, line2):
-    return (f'  <tr><td class="px" align="center" style="padding:0 40px 18px;">'
-            f'<h1 class="h1" style="margin:0;font-family:{DISPLAY};font-weight:normal;font-size:38px;line-height:44px;color:{CREAM};">'
-            f'{line1}<br><span style="color:{PINK};">{line2}</span></h1></td></tr>')
-
-
-def hairline(pad="6px 150px 22px"):
-    return (f'  <tr><td style="padding:{pad};"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">'
-            f'<tr><td style="border-top:1px solid {GOLD};height:1px;line-height:1px;font-size:1px;">&nbsp;</td></tr></table></td></tr>')
-
-
-def matchup():
-    return text_row(f'Team MARJCC <span style="color:{PINK};font-family:{DISPLAY};font-style:italic;text-transform:none;letter-spacing:0;">vs.</span> Team MBJCC',
-                    pad="0 40px 20px", size=15, extra="font-weight:bold;letter-spacing:2px;text-transform:uppercase;")
-
-
-def pair(left, right):
-    def cell(k, v):
-        return (f'<td class="col" width="49%" valign="top" align="center" style="padding:4px 10px;font-family:{FONT};text-align:center;">'
-                f'<div style="font-size:12px;font-weight:bold;letter-spacing:4px;color:{GOLD};text-transform:uppercase;">{k}</div>'
-                f'<div style="font-family:{DISPLAY};font-size:21px;line-height:27px;color:{CREAM};padding-top:6px;">{v}</div></td>')
-    sep = (f'<td width="1" valign="middle" style="width:1px;padding:0;">'
-           f'<div style="width:1px;height:62px;background:{GOLD};font-size:1px;line-height:1px;">&nbsp;</div></td>')
-    return (f'  <tr><td class="px" style="padding:0 34px 26px;"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>'
-            + cell(*left) + sep + cell(*right) + '</tr></table></td></tr>')
-
-
-def button(label):
-    return f'''  <tr><td align="center" style="padding:6px 40px 16px;">
-<table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center" style="margin:0 auto;">
-  <tr><td align="center" bgcolor="{RED}" style="background:{RED};">
-    <!--[if mso]><v:rect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{CTA_URL}" style="height:54px;v-text-anchor:middle;width:270px;" stroke="f" fillcolor="{RED}"><w:anchorlock/><center style="color:#FFFFFF;font-family:Arial,sans-serif;font-size:15px;font-weight:bold;letter-spacing:2px;">{label.upper()}</center></v:rect><![endif]-->
-    <!--[if !mso]><!--><a href="{CTA_URL}" target="_blank" style="display:inline-block;padding:18px 40px;font-family:{FONT};font-size:15px;font-weight:bold;letter-spacing:3px;color:#FFFFFF;text-decoration:none;text-transform:uppercase;background:{RED};">{label}</a><!--<![endif]-->
-  </td></tr>
-</table></td></tr>'''
-
-
-def page(title, preheader, rows):
-    body = "\n".join(rows)
-    return f'''<!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="color-scheme" content="dark">
-<meta name="supported-color-schemes" content="dark">
-<title>{title}</title>
-<!--[if mso]><noscript><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml></noscript><![endif]-->
-<style>
-  :root {{ color-scheme: dark; supported-color-schemes: dark; }}
-  body {{ margin:0 !important; padding:0 !important; width:100% !important; background:{BG}; }}
-  a {{ color:{GOLD}; }}
-  @media only screen and (max-width:620px) {{
-    .container {{ width:100% !important; }}
-    .px {{ padding-left:24px !important; padding-right:24px !important; }}
-    .h1 {{ font-size:30px !important; line-height:36px !important; }}
-  }}
-</style>
-</head>
-<body style="margin:0;padding:0;background:{BG};">
-<div style="display:none;max-height:0;overflow:hidden;mso-hide:all;font-size:1px;line-height:1px;color:{BG};opacity:0;">{preheader}&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;</div>
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="{BG}" style="background:{BG};">
-<tr><td align="center" style="padding:0;">
-<table role="presentation" class="container" width="600" cellpadding="0" cellspacing="0" border="0" bgcolor="{BG}" style="width:600px;max-width:600px;background:{BG};">
-
-{body}
-
-  <!-- Footer -->
-  <tr><td class="px" align="center" style="padding:6px 40px 8px;font-family:{FONT};font-size:12px;line-height:18px;color:{MUTED};">
-    Golf &amp; Games Classic &middot; Miami Beach Golf Club &middot; Friday, March 12, 2027<br>
-    [SENDER NAME AND MAILING ADDRESS]<br>
-    <a href="{{{{{{RESEND_UNSUBSCRIBE_URL}}}}}}" target="_blank" style="color:{MUTED};text-decoration:underline;">Unsubscribe</a>
-  </td></tr>
-
-  <!-- GMJF: always last, alone -->
-  <tr><td align="center" style="padding:18px 24px 36px;background:{BG};">
-    <img src="{ASSET}/gmjf-logo-white.png" width="101" height="48" alt="Greater Miami Jewish Federation" style="display:block;border:0;outline:none;width:101px;height:48px;margin:0 auto;">
-  </td></tr>
-
-</table>
-</td></tr>
-</table>
-</body>
-</html>
+HEADLINE = txt('''<div class="h1" style="font-family:Limelight,Georgia,serif;font-size:34px;line-height:1.2;color:#006868">Two JCCs.<br>One Tournament.</div><div class="h1" style="font-family:Limelight,Georgia,serif;font-size:34px;line-height:1.2;color:#002838">One Friendly Rivalry!</div>''', '28px 24px 6px')
+FAN = img('fan.png', 538, 55)
+PLAQUE = img('plaque.png', 538, 75, 'Team MARJCC vs. Team MBJCC')
+COMING = txt('''<div class="cs" style="font-family:'Josefin Sans',Arial,sans-serif;font-weight:700;font-size:14px;letter-spacing:4px;white-space:nowrap;color:#8A5F18">MORE DETAILS COMING SOON!</div>''', '14px 24px 26px')
+# Button placeholder for when there is a link. On mobile keep white-space:nowrap and letter-spacing:2px so it never wraps.
+BUTTON_PLACEHOLDER = '''<!-- BUTTON (add when there is a link):
+<tr><td align="center" style="padding:6px 20px 10px"><table role="presentation" cellpadding="0" cellspacing="0"><tr><td style="border:3px double #C9963E;padding:4px"><a href="LINK" style="display:block;background:#E02850;padding:14px 28px;font-family:'Josefin Sans',Arial,sans-serif;font-weight:700;font-size:15px;letter-spacing:2px;white-space:nowrap;color:#FFFFFF;text-decoration:none">SAVE THE DATE</a></td></tr></table></td></tr>
+-->
 '''
 
+def page(title, preheader, inner):
+    return f'''<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light only"><meta name="supported-color-schemes" content="light"><title>{title}</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Limelight&family=Josefin+Sans:wght@600;700&display=swap">
+<style>@media (max-width:620px){{.wrap{{width:100%!important}}.h1{{font-size:28px!important}}.side{{padding:0 10px!important}}.cs{{letter-spacing:1.5px!important;font-size:13px!important}}}}</style></head>
+<body style="margin:0;padding:0;background:#E9DCC0">
+<div style="display:none;max-height:0;overflow:hidden">{preheader}</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#E9DCC0"><tr><td align="center" style="padding:24px 8px">
+<table role="presentation" class="wrap" width="600" cellpadding="0" cellspacing="0" style="width:600px;background:#F3E7CF">
+<tr><td><img src="{A}/band.png" width="600" height="107" alt="" style="display:block;width:100%;height:auto;border:0"></td></tr>
+<tr><td class="side" style="padding:0 24px">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F3E7CF"><tr><td style="border-left:7px double #C9963E;border-right:7px double #C9963E">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+{inner}    </table>
+  </td></tr></table>
+</td></tr>
+<tr><td><img src="{A}/waves.png" width="600" height="85" alt="" style="display:block;width:100%;height:auto;border:0"></td></tr>
+<tr><td align="center" style="padding:22px 40px 6px;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:1.6;color:#3C5560">{EVENT} &middot; Miami Beach Golf Club &middot; Friday, March 12, 2027<br>{ADDRESS}<br><a href="{{{{{{RESEND_UNSUBSCRIBE_URL}}}}}}" style="color:#3C5560">Unsubscribe</a></td></tr>
+<tr><td align="center" style="padding:14px 0 30px"><img src="{A}/gmjf-logo-black.png" width="110" height="52" alt="Greater Miami Jewish Federation" style="display:block;width:110px;height:auto;border:0"></td></tr>
+</table></td></tr></table></body></html>
+'''
 
-GAMES = image("games.jpg", 380, "Golf and Mahjong: a golf ball glowing like the sun and floating mahjong tiles")
-CLOSING = image("closing.jpg", 180, "")
+# ---- save the date ----
+std = ''
+std += img('hero-save-the-date.png', 538, 543, 'MARJCC and MBJCC present the Golf &amp; Games Classic. Save the date: March 12, 2027, Miami Beach Golf Club')
+std += HEADLINE + FAN + PLAQUE
+std += txt(f'''<div style="font-family:Arial,Helvetica,sans-serif;font-size:16px;line-height:1.65;color:#3C5560">This spring, MARJCC and MBJCC go head-to-head at the <b style="color:#002838">{EVENT}</b>. Grab your clubs or your mahjong tiles and pick your team.</div>''', '12px 34px 18px')
+std += img('cards.png', 538, 380, 'Golf: May the best team win! Mahjong: Everyone plays together!')
+std += BUTTON_PLACEHOLDER + COMING
+std += img('closing.png', 538, 210, 'Two communities. One unforgettable day!')
 
-save_the_date = [
-    image("hero-save-the-date.jpg", 620,
-          "MARJCC and MBJCC: Save the Date. Golf &amp; Games Classic, MARJCC vs MBJCC. March 12, 2027", link=True),
-    eyebrow("Golf &amp; Mahjong Tournament"),
-    h1("Two JCCs. One Tournament.", "One Friendly Rivalry!"),
-    matchup(),
-    text_row("This spring, MARJCC and MBJCC go head-to-head at the "
-             f'<strong style="color:{GOLD};">Golf &amp; Games Classic</strong>. Grab your clubs or your mahjong tiles and pick your team.',
-             pad="0 48px 22px"),
-    hairline("0 150px 22px"),
-    pair(("When", "Friday, March 12, 2027"), ("Where", "Miami Beach Golf Club")),
-    GAMES,
-    pair(("Golf", "May the best team win!"), ("Mahjong", "Everyone plays together!")),
-    text_row("Two communities. One unforgettable day!", pad="8px 40px 20px", size=22, family=DISPLAY, color=GOLD),
-    button("Save the date"),
-    text_row("More details coming soon!", pad="0 40px 6px", size=14, color=MUTED),
-    CLOSING,
-]
+# ---- reminder ----
+rem = ''
+rem += img('hero-reminder.png', 538, 503, 'Reminder from MARJCC and MBJCC: Golf &amp; Games Classic, March 12, 2027, Miami Beach Golf Club')
+rem += txt('''<div class="h1" style="font-family:Limelight,Georgia,serif;font-size:34px;line-height:1.2;color:#006868">Reminder:</div><div class="h1" style="font-family:Limelight,Georgia,serif;font-size:34px;line-height:1.2;color:#002838">Save March 12</div>''', '28px 24px 6px')
+rem += FAN + PLAQUE
+rem += txt(f'''<div style="font-family:Arial,Helvetica,sans-serif;font-size:16px;line-height:1.65;color:#3C5560">The <b style="color:#002838">{EVENT}</b> is coming to the Miami Beach Golf Club on Friday, March 12, 2027. Golf: May the best team win! Mahjong: Everyone plays together!</div>''', '12px 34px 6px')
+rem += BUTTON_PLACEHOLDER + COMING
 
-reminder = [
-    image("hero-reminder.jpg", 620,
-          "MARJCC and MBJCC: Mark Your Calendar. Golf &amp; Games Classic, MARJCC vs MBJCC. March 12, 2027", link=True),
-    eyebrow("Reminder &middot; Friday, March 12, 2027"),
-    h1("Mark Your Calendar.", "Pick Your Team!"),
-    matchup(),
-    text_row(f'The <strong style="color:{GOLD};">Golf &amp; Games Classic</strong> is coming to the Miami Beach Golf Club.',
-             pad="0 48px 22px"),
-    GAMES,
-    pair(("Golf", "May the best team win!"), ("Mahjong", "Everyone plays together!")),
-    button("Save the date"),
-    text_row("More details coming soon!", pad="0 40px 6px", size=14, color=MUTED),
-    CLOSING,
-]
+pages = {
+  'save-the-date': page('Save the Date: Golf &amp; Games Classic', 'Friday, March 12, 2027 at the Miami Beach Golf Club. Two JCCs. One tournament. One friendly rivalry!', std),
+  'reminder': page('Reminder: Golf &amp; Games Classic', 'Save March 12 for the Golf & Games Classic at the Miami Beach Golf Club.', rem),
+}
+texts = {
+  'save-the-date': f'''SAVE THE DATE
+Golf & Games Classic · Golf & Mahjong Tournament
+Friday, March 12, 2027 · Miami Beach Golf Club
 
-(HERE / "save-the-date/index.html").write_text(page(
-    "Save the date: Golf & Games Classic",
-    "Friday, March 12, 2027 at the Miami Beach Golf Club. Team MARJCC vs. Team MBJCC.",
-    save_the_date))
-(HERE / "reminder/index.html").write_text(page(
-    "Reminder: Golf & Games Classic, March 12",
-    "Save Friday, March 12, 2027. Golf & Mahjong at the Miami Beach Golf Club.",
-    reminder))
-print("built")
+Two JCCs. One Tournament. One Friendly Rivalry!
+TEAM MARJCC vs. TEAM MBJCC
+
+This spring, MARJCC and MBJCC go head-to-head at the Golf & Games Classic. Grab your clubs or your mahjong tiles and pick your team.
+
+Golf: May the best team win!
+Mahjong: Everyone plays together!
+
+More details coming soon!
+Two communities. One unforgettable day!
+
+--
+Golf & Games Classic · Miami Beach Golf Club · Friday, March 12, 2027
+{ADDRESS_TXT}
+Unsubscribe: {{{{{{RESEND_UNSUBSCRIBE_URL}}}}}}
+''',
+  'reminder': f'''REMINDER: SAVE MARCH 12
+Golf & Games Classic · Golf & Mahjong Tournament
+Friday, March 12, 2027 · Miami Beach Golf Club
+
+TEAM MARJCC vs. TEAM MBJCC
+Golf: May the best team win!
+Mahjong: Everyone plays together!
+
+More details coming soon!
+
+--
+Golf & Games Classic · Miami Beach Golf Club · Friday, March 12, 2027
+{ADDRESS_TXT}
+Unsubscribe: {{{{{{RESEND_UNSUBSCRIBE_URL}}}}}}
+''',
+}
+for t in pages:
+    os.makedirs(os.path.join(HERE, t), exist_ok=True)
+    open(os.path.join(HERE, t, 'index.html'), 'w').write(pages[t])
+    open(os.path.join(HERE, t, 'index.txt'), 'w').write(texts[t])
+    print('built', t)
