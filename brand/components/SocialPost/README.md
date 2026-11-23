@@ -1,6 +1,6 @@
 Square social post templates (1080 x 1080), in Day (cream) and Night (navy) versions.
 
-**Structure:** eyebrow → display headline of 2 to 3 short lines, last line in color → gold double rule → one caps line with format and venue → teal waves → compact host strip → GMJF footer as the last band.
+**Structure:** eyebrow → display headline of 2 to 3 short lines, last line in color → gold double rule → one caps line with format and venue → GMJF footer as the last band. The compact host strip sits at the very top.
 
 **Provide:** eyebrow, headline lines, the caps line.
 

@@ -54,10 +54,9 @@
 .gg-fact dt { font-family: var(--font-deco); font-weight: 600; font-size: 13px; letter-spacing: .24em; text-transform: uppercase; color: var(--gold-text); }
 .gg-fact dd { margin: 4px 0 0; font-family: var(--font-deco); font-weight: 700; font-size: 20px; letter-spacing: .03em; text-transform: uppercase; color: var(--ink); }
 
-/* Teal wave band */
-.gg-waves { height: 48px; background:
-  radial-gradient(circle at 50% 100%, var(--lagoon-teal) 0 22px, transparent 23px) 0 100% / 64px 32px repeat-x,
-  radial-gradient(circle at 50% 100%, var(--ocean-teal) 0 30px, transparent 31px) 32px 100% / 64px 48px repeat-x; }
+/* Flowing gold line: the signature element. Use an inline SVG path with class gg-line. */
+.gg-line { fill: none; stroke: var(--rule); stroke-width: 2; stroke-linecap: round; }
+.gg-line--thin { stroke-width: 1; }
 
 /* Arch panel */
 .gg-arch { background: var(--surface-raised); border: 2px solid var(--rule); border-radius: var(--radius-arch) var(--radius-arch) 0 0; }
