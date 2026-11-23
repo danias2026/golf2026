@@ -9,6 +9,7 @@
 ## Brand rules (details in brand/README.md)
 - MARJCC and MBJCC logos: always at the TOP, one color (white on dark, teal #006868 on light), no white box. MARJCC first.
 - GMJF logo: always alone at the very BOTTOM, like a footer.
+- Never break the event name across lines: keep "Golf & Games Classic" together (non-breaking spaces / white-space:nowrap).
 - Write "MBJCC" (short form) instead of "Miami Beach JCC". Venue stays "Miami Beach Golf Club".
 - Mahjong only: never show playing cards or card suits.
 - All event materials in English. ONE look everywhere: the Instagram posts (instagram/src/build.js + base.css) are the master look for landing, emails, save the date, videos and print: sunset sky melting into a glowing sea, light rays, bokeh, layered waves with glowing gold lines, golf ball as a sun, floating tiles, big gold Limelight type. NEVER palm trees. No hard bands, boxes, geometric ray fans, scallop strips or color blocks.
