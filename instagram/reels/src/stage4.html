@@ -198,7 +198,7 @@ function drawScene(t,o){ // o: {hy, m (0 night..1 day), sunX, sunY, sunA, par}
     const spread=40+d*420;
     for(let j=0;j<6;j++){const sd=r*13+j*7;const x=o.sunX+(rnd(sd)-.5)*spread*2+Math.sin(t*2.0944+r*.9+j*1.7)*(8+d*30);
       const w=(14+d*150)*(.5+rnd(sd+1)),hh=1.5+d*5;
-      const a=(.5+.5*Math.sin(t*5.236+r*1.7+j*2.3))*Math.exp(-Math.pow((x-o.sunX)/spread,2))*.85*o.sunA*m;
+      const a=(.5+.5*Math.sin(t*5.236+r*1.7+j*2.3))*Math.exp(-Math.pow((x-o.sunX)/spread,2))*.85*o.sunA*m*clamp((o.sunY+300)/600)*(o.refl??1);
       if(a<.02)continue;B.save();B.translate(x,y);B.scale(w/40,hh/6);blot(B,SP_GOLD,0,0,20,a*.9);B.restore();}
     // cool glints everywhere
     if(r%2==0){const x=rnd(r*31+Math.floor((t*3)%18))*W, a=.10*(.5+.5*Math.sin(t*7.330+r));B.save();B.translate(x,y);B.scale((10+d*90)/30,(1+d*3)/5);blot(B,SP_TEAL,0,0,15,a);B.restore();}
@@ -312,10 +312,10 @@ function logoBuild(L,t,t0,o={}){
   x=eo(P(k,.4,.9));gT(svg,'tee',{ty:(1-x)*120,o:x});
   // ball flight: from bottom-left (in lg units) arc onto the tee
   const fb=P(k,.35,1.25);const be=eic(fb);
-  const p0=[-1100,2300],p1=[-200,-700],p2=[800,300];
+  const p0=L.p0||[-1100,2300],p1=L.p1||[-200,-700],p2=[800,300];
   const bx=(1-be)*(1-be)*p0[0]+2*(1-be)*be*p1[0]+be*be*p2[0], by=(1-be)*(1-be)*p0[1]+2*(1-be)*be*p1[1]+be*be*p2[1];
   const land=P(k,1.25,1.55), squash=Math.sin(land*Math.PI)*(1-land)*.18;
-  const bs=lerp(4.2,1,eo(fb));
+  const bs=lerp(L.s0||4.2,1,eo(fb));
   gT(svg,'ball',{tx:bx-800,ty:by-300+squash*60,s:bs,ox:800,oy:300,o:fb>0?1:0});
   svg.querySelector('#s-ball').setAttribute('transform',svg.querySelector('#s-ball').getAttribute('transform')+(squash?` translate(800 418) scale(${1+squash} ${1-squash}) translate(-800 -418)`:''));
   L.ballScreen=()=>{const wx=L.left+bx*L.s, wy=L.top+by*L.s;return toScreen(wx,wy)};
@@ -353,7 +353,7 @@ const NAVYG='#002838 0%,#002838 38%,#0E7C86 50%,#002838 62%,#002838 100%';
 
 /* ---------- sunset world (no palms) ---------- */
 function drawBallSun(x,y,r,a){B.save();B.globalAlpha=a;const g=B.createRadialGradient(x-r*.3,y-r*.35,r*.1,x,y,r);g.addColorStop(0,'#FFFFFF');g.addColorStop(.7,'#F6EEE2');g.addColorStop(1,'#D9CDBE');
-  B.fillStyle=g;B.beginPath();B.arc(x,y,r,0,TAU);B.fill();B.clip();B.fillStyle='rgba(170,160,145,.35)';const d=r/7;
+  B.fillStyle=g;B.beginPath();B.arc(x,y,r,0,TAU);B.fill();B.clip();B.fillStyle='rgba(175,165,150,.22)';const d=r/6;
   for(let yy=-r;yy<=r;yy+=d)for(let xx=-r;xx<=r;xx+=d){const ox=((Math.round(yy/d))%2)*d/2;const px=x+xx+ox,py=y+yy;const rr=Math.hypot(px-x,py-y)/r;if(rr<.98){B.beginPath();B.arc(px,py,d*.28*(1-rr*rr*.6),0,TAU);B.fill();}}
   B.restore();}
 function waves(t,o){ // layered smooth teal hills with gold crest lines
@@ -431,11 +431,15 @@ if(V==='std'){
   // connector through the type (world coords)
   const conn=crPath([[-80,1300],[300,1450],[800,1560],[1060,1700],[1040,2000],[1000,2300],[800,2560],[300,2640],[40,2760],[60,3000],[300,3270],[800,3290],[1180,3200]],300);
   const rules=[[[190,2190],[890,2190]],[[150,2425],[930,2425]],[[260,2745],[820,2745]],[[200,1058],[880,1058]],[[200,1310],[880,1310]]].map(r=>crPath(r,40));
+  { const c=camAt(.95);const hy=1180-(c.y-960)*1.0;const sy=hy-260;const wx=c.x,wy=c.y+(sy-960)/c.z;
+    L.p0=[(wx-L.left)/L.s,(wy-L.top)/L.s];L.p1=[(L.p0[0]+800)/2+380,(L.p0[1]+300)/2-150];L.s0=150/(118*L.s*c.z); }
   render=t=>{
     cam=camAt(t);
     const land=P(t,1.85,2.35);if(land>0&&land<1){const a=(1-land)*14;cam.x+=Math.sin(t*90)*a;cam.y+=Math.cos(t*77)*a;}
     applyCam();
-    const [gx,gy]=toScreen(540,720);ground(gx,gy,(1-P(t,4.6,5.4))+P(t,11,12)+.35,t);
+    const hy=1180-(cam.y-960)*1.0-420*eic(P(t,10.9,12.2))+420*0;const bsun=t<.95;
+    const sunY=bsun?lerp(hy+140,hy-260,eo(P(t,0,.95))):hy-55;
+    sunset(t,{hy,m:1,sunX:540,sunY,sunA:bsun?1:clamp(P(t,1.7,2.8)),ball:bsun,ballR:150,rays:.5+.5*clamp(P(t,1.85,2.6)),wv:{base:H-330,crest:eexp(P(t,.3,1.6))}});
     F.clearRect(0,0,W,H);
     logoBuild(L,t,.6);badgeTrace(L,eic(P(t,1.0,2.6)));
     L.box.style.opacity=(1-P(t,4.6,5.2))+P(t,11.0,11.7);
@@ -444,7 +448,7 @@ if(V==='std'){
     gbundle(W2S(wrap),eic(P(t,3.2,4.6)),eexp(P(t,2.4,3.6)),{n:9,sp:7,w:2.2,head:20,stag:.02,seed:3});
     gbundle(W2S(endSweep),0,eexp(P(t,11.6,12.8)),{n:9,sp:8,w:2.2,head:16,stag:.02,seed:5});gbundle(W2S(endSweep2),0,eexp(P(t,11.9,13.1)),{n:7,sp:7,w:2,head:14,stag:.02,seed:7,al:.8});
     // ball trail as a gold line
-    const bk=L.ballK;if(bk.fb>0){const p0=[-1100,2300],p1=[-200,-700],p2=[800,300];const tr=[];for(let j=0;j<=60;j++){const e=j/60*bk.be;tr.push(toScreen(L.left+((1-e)*(1-e)*p0[0]+2*(1-e)*e*p1[0]+e*e*p2[0])*L.s,L.top+((1-e)*(1-e)*p0[1]+2*(1-e)*e*p1[1]+e*e*p2[1])*L.s));}
+    const bk=L.ballK;if(bk.fb>0){const p0=L.p0||[-1100,2300],p1=L.p1||[-200,-700],p2=[800,300];const tr=[];for(let j=0;j<=60;j++){const e=j/60*bk.be;tr.push(toScreen(L.left+((1-e)*(1-e)*p0[0]+2*(1-e)*e*p1[0]+e*e*p2[0])*L.s,L.top+((1-e)*(1-e)*p0[1]+2*(1-e)*e*p1[1]+e*e*p2[1])*L.s));}
       gbundle(tr,clamp(P(t,1.7,2.4)),1,{n:7,sp:6,w:2.6,al:1-P(t,2.2,2.6),ctx:F});}
     const [bx,by]=toScreen(L.left+800*L.s,L.top+300*L.s);
     const lk=P(t,1.85,2.6);if(lk>0&&lk<1){flash(bx,by,lerp(150,900,eexp(lk)),(1-lk)*.8);ring(bx,by,lerp(60,760,eexp(lk)),1-lk,8*(1-lk)+2);ring(bx,by,lerp(40,520,eexp(P(t,1.95,2.6))),(1-lk)*.8,3);}
@@ -466,7 +470,7 @@ if(V==='std'){
     [c1,c2,c3].forEach(d=>ktOut(d,P(t,10.75,11.3)));
     ktIn(e1,P(t,11.7,12.4),{mode:'rise',stag:.03});goldText(e1,P(t,12.2,13.4));
     ktIn(e2,P(t,12.0,12.8),{mode:'spread',stag:.02});ktIn(e3,P(t,12.4,13.0),{mode:'rise',stag:.012});
-    dust(t,{dy:cam.y,a:.5});vignette(.5);
+    particles(t,{dy:cam.y,a:.8});leaks(t,.7);flare(540,hy-55,clamp(P(t,1.8,2.8))*.7*clamp((hy+200)/500));vignette(.42);
     const ho=eo(P(t,.2,1.1));$('#hosts').style.opacity=ho;$('#hosts').style.transform=`translateY(${(1-ho)*-30}px)`;
     $('#gm').style.opacity=eo(P(t,.4,1.3));
   };
@@ -526,7 +530,9 @@ if(V==='riv'){
     if(t>6.45)cam.z=lerp(1.25,1,eo(P(t,6.45,7.4)));
     if(t>8.5)cam.z=lerp(1.0,1.05,P(t,9.4,12.5));
     applyCam();
-    ground(540,t>8.5?720:960,.6+.4*P(t,8.6,9.6),t);
+    { const mm=eic(P(t,8.3,10.2));const hy=lerp(1500,830,mm);const sunY=lerp(hy+260,hy-55,eic(P(t,8.6,10.6)));
+      sunset(t,{hy,m:mm,sunX:540,sunY,sunA:clamp(P(t,8.5,9.5)),rays:.8*clamp(P(t,9,10.2)),waves:t>8.4,wv:{base:H-330,rise:eic(P(t,8.5,9.8)),crest:eexp(P(t,9.2,10.4))}});
+      window.__sunY=sunY; }
     F.clearRect(0,0,W,H);
     // warp lines during the fly-through
     const cz=zAt(t),vz=Math.abs(zAt(t+.04)-cz);
@@ -562,12 +568,12 @@ if(V==='riv'){
     // end card
     L.box.style.display=t>8.6?'block':'none';
     const k=8.75+(t-8.75)*1.55;logoBuild(L,k,8.75);badgeTrace(L,eic(P(k,9.2,10.6)));
-    if(t>8.6){const bk=L.ballK;if(bk.fb>0){const p0=[-1100,2300],p1=[-200,-700],p2=[800,300];const tr=[];for(let j=0;j<=60;j++){const e=j/60*bk.be;tr.push(toScreen(L.left+((1-e)*(1-e)*p0[0]+2*(1-e)*e*p1[0]+e*e*p2[0])*L.s,L.top+((1-e)*(1-e)*p0[1]+2*(1-e)*e*p1[1]+e*e*p2[1])*L.s));}
+    if(t>8.6){const bk=L.ballK;if(bk.fb>0){const p0=L.p0||[-1100,2300],p1=L.p1||[-200,-700],p2=[800,300];const tr=[];for(let j=0;j<=60;j++){const e=j/60*bk.be;tr.push(toScreen(L.left+((1-e)*(1-e)*p0[0]+2*(1-e)*e*p1[0]+e*e*p2[0])*L.s,L.top+((1-e)*(1-e)*p0[1]+2*(1-e)*e*p1[1]+e*e*p2[1])*L.s));}
       gbundle(tr,clamp(P(k,9.9,10.6)),1,{n:7,sp:6,w:2.6,al:1-P(k,10.4,10.8),ctx:F});}
       const [bx,by]=toScreen(L.left+800*L.s,L.top+300*L.s);const lk=P(k,10.0,10.75);if(lk>0&&lk<1){flash(bx,by,lerp(150,900,eexp(lk)),(1-lk)*.8);ring(bx,by,lerp(60,760,eexp(lk)),1-lk,8*(1-lk)+2);}}
     endR.forEach((r,i)=>gline(W2S(r),0,eexp(P(t,11.0+i*.3,11.6+i*.3)),{w:2,dbl:9,head:10}));gbundle(W2S(endSweep),0,eexp(P(t,11.2,12.3)),{n:9,sp:8,w:2.2,head:16,stag:.02,seed:5});
     ktIn(e1,P(t,11.0,11.6),{mode:'rise',stag:.03});goldText(e1,P(t,11.3,12.4));ktIn(e2,P(t,11.2,11.9),{mode:'spread',stag:.02});ktIn(e3,P(t,11.45,12.0),{mode:'rise',stag:.008});
-    dust(t,{a:.45});vignette(.5);
+    particles(t,{a:.8,speed:t<6.3?2.2:1});leaks(t,.3+.6*clamp(P(t,8.5,10)));flare(540,window.__sunY,clamp(P(t,9.4,10.4))*.7);vignette(.45);
     const ho=eo(P(t,.1,.9));$('#hosts').style.opacity=ho;$('#gm').style.opacity=eo(P(t,.3,1.1));
   };
   window.__dur=12.5;
@@ -586,7 +592,7 @@ if(V==='loop'){
   render=t=>{
     const u=(t%6)/6, tt=u*6;
     cam={x:540,y:H/2+Math.sin(u*TAU)*5,z:1.0+.012*Math.sin(u*TAU),r:.35*Math.sin(u*TAU)};applyCam();
-    ground(540,520,1,tt);
+    sunset(tt,{hy:600,m:1,sunX:540,sunY:560,sunA:1,rays:.9,drift:0,wv:{base:H-120}});
     F.clearRect(0,0,W,H);
     // orbit lines: segment of 35% travelling around (seamless), behind-ish glow
     [orbit[0],orbit[2]].forEach((p,i)=>{const sp=W2S(p);const a=(u*(i?1:2)+i*.5)%1;const b=a+.4;
@@ -597,7 +603,7 @@ if(V==='loop'){
     L.svg.querySelectorAll('#s-burst path').forEach((p,i)=>p.setAttribute('transform',`scale(${1+.05*Math.sin(u*TAU*2+i)})`));
     rl.forEach(r=>gline(W2S(r),0,1,{w:2,dbl:9,al:.9+.1*Math.sin(u*TAU)}));
     [t1,t2,t3].forEach(d=>ktIn(d,1));goldText(t1,lerp(.1,1,u));goldText(t2,clamp((u-.35)/.5));
-    dust(tt,{loopU:u,a:.45});vignette(.45);
+    particles(tt,{loopU:u,a:.8});leaks(tt,.6);flare(540,560,.5);vignette(.4);
   };
   window.__dur=6;
 }
