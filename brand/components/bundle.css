@@ -25,17 +25,18 @@
 .gg-btn--ghost { background: transparent; color: var(--ink); border-color: var(--rule); }
 .gg-btn--ghost:hover { border-color: var(--ink); }
 
-/* Partner logo strip: always white, always three logos */
-.gg-strip { background: var(--partner-ground); display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 24px 40px; padding: 20px 24px; }
+/* Host logo strip: one color, no box, always at the top */
+.gg-strip { background: transparent; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 24px 40px; padding: 20px 24px; }
 .gg-strip img { display: block; width: auto; max-width: 100%; }
-.gg-strip .gg-logo-marjcc { height: 72px; }
-.gg-strip .gg-logo-mbjcc { height: 52px; }
+.gg-strip .gg-logo-marjcc { height: 56px; }
+.gg-strip .gg-logo-mbjcc { height: 44px; }
 .gg-strip .gg-logo-gmjf { height: 60px; }
 .gg-strip--compact { gap: 16px 24px; padding: 12px 16px; }
-.gg-strip--compact .gg-logo-marjcc { height: 44px; }
+.gg-strip--compact .gg-logo-marjcc { height: 40px; }
 .gg-strip--compact .gg-logo-mbjcc { height: 32px; }
 .gg-strip--compact .gg-logo-gmjf { height: 36px; }
-.gg-strip-divider { width: 1px; align-self: stretch; background: var(--rule); }
+.gg-strip-divider { width: 1px; align-self: stretch; background: var(--lagoon-teal); opacity: .5; }
+.gg-strip--on-dark .gg-strip-divider { background: #FFFFFF; }
 
 /* GMJF footer: alone, always the last element of the piece */
 .gg-gmjf { background: var(--partner-ground); display: flex; justify-content: center; padding: 14px 16px 18px; border-top: 1px solid var(--rule); }

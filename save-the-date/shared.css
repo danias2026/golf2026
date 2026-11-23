@@ -14,8 +14,8 @@ html,body{margin:0}
 .waves{background:
   radial-gradient(circle at 50% 100%, var(--teal) 0 var(--r1), transparent calc(var(--r1) + 1px)) 0 100% / var(--w) var(--h1) repeat-x,
   radial-gradient(circle at 50% 100%, var(--ocean) 0 var(--r2), transparent calc(var(--r2) + 1px)) calc(var(--w) / 2) 100% / var(--w) var(--h2) repeat-x;}
-.hosts{background:#fff;display:flex;align-items:center;justify-content:center}
+.hosts{display:flex;align-items:center;justify-content:center}
 .hosts img{display:block}
-.hosts .div{width:1.5px;align-self:stretch;background:var(--gold2)}
+.hosts .div{width:1px;align-self:stretch;margin:6px 0;background:var(--teal);opacity:.6}
 .foot{display:flex;justify-content:center;align-items:center}
 .foot img{display:block}

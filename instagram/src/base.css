@@ -18,9 +18,10 @@ body{position:relative;font-family:Mulish,Arial,sans-serif}
 .red{color:var(--red)} .night .red{color:var(--redlt)}
 .teal{color:var(--teal)} .night .teal{color:#4FC3C9}
 .gold{color:var(--gold)}
-.hosts{display:flex;align-items:center;justify-content:center;gap:44px;background:#fff;padding:22px 48px;border:3px solid var(--golddk)}
-.hosts img.mar{height:110px}.hosts img.mb{height:80px}
-.hosts .div{width:2px;height:90px;background:var(--golddk)}
+.hosts{position:absolute;left:0;right:0;display:flex;align-items:center;justify-content:center;gap:40px;z-index:6}
+.hosts img.mar{height:100px}.hosts img.mb{height:80px}
+.hosts .div{width:2px;height:84px;background:currentColor;opacity:.6}
+.hosts.w{color:#fff}.hosts.t{color:var(--teal)}
 .gmjf{position:absolute;left:0;right:0;display:flex;justify-content:center}
 .gmjf img{height:84px}
 .waves{position:absolute;left:0;right:0;height:90px;background:

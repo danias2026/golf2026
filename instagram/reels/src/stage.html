@@ -141,15 +141,16 @@ function fitWord(svg){const g=svg.querySelector('#golf'),a=svg.querySelector('#a
 const sunsetBG=`<div class="scene" style="background:linear-gradient(180deg,#40A8C0 0%,#7FB5C2 22%,#F89090 46%,#F9B98F 58%,#F8E098 66%,#009098 66.2%,#006868 80%,#002838 100%)"></div>
  <div class="abs" style="left:640px;top:1170px;width:300px;height:150px;border-radius:150px 150px 0 0;background:#F8E098;opacity:.9"></div>`;
 const footer=(top,h)=>`<div class="footer" id="foot" style="top:${top}px;height:${h}px"><img src="gmjf-logo-black.png" alt="Greater Miami Jewish Federation"></div>`;
-const hosts=(h1,h2)=>`<div class="hosts"><img src="marjcc-logo.png" style="height:${h1}px"><span class="div"></span><img src="mbjcc-logo.png" style="height:${h2}px"></div>`;
+const topHosts=(c,id,top,h1)=>`<div class="abs tophosts" id="${id}" style="left:0;right:0;top:${top}px;display:flex;align-items:center;justify-content:center;gap:56px"><img src="marjcc-${c}.png" alt="MARJCC" style="height:${h1}px"><img src="mbjcc-${c}.png" alt="MBJCC" style="height:${Math.round(h1/1.25)}px"></div>`;
 let render=()=>{};
 
 /* ---------- STD: save the date reel ---------- */
 if(V==='std'){
 st.innerHTML=sunsetBG+`
 <div class="frame" id="frame"></div>
-<div class="abs" id="logoWrap" style="left:60px;top:380px;width:960px;transform-origin:50% 0">${logoSVG()}</div>
-<div class="abs" id="panel" style="left:84px;top:870px;width:912px;height:530px;background:var(--cream);clip-path:polygon(0 24px,24px 24px,24px 0,calc(100% - 24px) 0,calc(100% - 24px) 24px,100% 24px,100% calc(100% - 24px),calc(100% - 24px) calc(100% - 24px),calc(100% - 24px) 100%,24px 100%,24px calc(100% - 24px),0 calc(100% - 24px))">
+${topHosts("white","th",272,112)}
+<div class="abs" id="logoWrap" style="left:60px;top:430px;width:960px;transform-origin:50% 0">${logoSVG()}</div>
+<div class="abs" id="panel" style="left:84px;top:895px;width:912px;height:505px;background:var(--cream);clip-path:polygon(0 24px,24px 24px,24px 0,calc(100% - 24px) 0,calc(100% - 24px) 24px,100% 24px,100% calc(100% - 24px),calc(100% - 24px) calc(100% - 24px),calc(100% - 24px) 100%,24px 100%,24px calc(100% - 24px),0 calc(100% - 24px))">
   <div class="abs" style="inset:14px;border:2px solid var(--gold2)"></div>
   <div class="scene" id="pA" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;text-align:center">
     <div class="jos" id="aEye" style="font-weight:600;font-size:28px;letter-spacing:.22em;color:var(--goldtxt)">Golf &amp; Mahjong Tournament</div>
@@ -160,7 +161,6 @@ st.innerHTML=sunsetBG+`
   </div>
   <div class="scene" id="pB" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:30px;text-align:center">
     <div class="limel" id="bL1" style="font-size:66px;line-height:1.1;color:var(--navy)">Two communities.<br><span style="color:var(--teal)">One unforgettable day!</span></div>
-    <div id="bHosts">${hosts(124,90)}</div>
     <div id="bMore" style="font-family:Mulish;font-weight:600;font-size:32px;color:#3C5560">More details coming soon!</div>
   </div>
 </div>
@@ -170,6 +170,7 @@ const rules=[...svg.querySelectorAll('#s-classic line')]; rules.forEach(l=>{cons
 const aRule=[...$('#aRule').querySelectorAll('line')];aRule.forEach(l=>{l.style.strokeDasharray=620});
 render=t=>{
   const f=eo(P(t,0,.9)); $('#frame').style.clipPath=`inset(${(1-f)*50}% 0 ${(1-f)*50}% 0)`;
+  $('#th').style.opacity=eo(P(t,0,.8));
   const fo=eo(P(t,.3,.9)); $('#foot').style.transform=`translateY(${(1-fo)*160}px)`; $('#foot').style.opacity=fo;
   let x=eo(P(t,.3,1.1)); gT(svg,'badge',{s:lerp(.8,1,x),o:x});
   x=eo(P(t,.9,1.7)); gT(svg,'burst',{s:x,ox:800,oy:420,o:x>0?1:0});
@@ -181,7 +182,7 @@ render=t=>{
   x=eo(P(t,3.8,4.5)); svg.querySelector('#classic').style.opacity=x; svg.querySelector('#classic').setAttribute('letter-spacing',lerp(70,34,x));
   rules.forEach(l=>l.style.strokeDashoffset=l.dataset.L*(1-x));
   x=eo(P(t,4.3,4.9)); gT(svg,'plaque',{s:lerp(.6,1,x),ox:800,oy:960,o:x});
-  x=eio(P(t,5.3,6.1)); $('#logoWrap').style.transform=`translateY(${-90*x}px) scale(${lerp(1,.82,x)})`;
+  x=eio(P(t,5.3,6.1)); $('#logoWrap').style.transform=`translateY(${-30*x}px) scale(${lerp(1,.74,x)})`;
   x=eo(P(t,5.6,6.4)); $('#panel').style.opacity=x; $('#panel').style.transform=`translateY(${(1-x)*220}px)`;
   const a=1-eo(P(t,9.2,9.6)); $('#pA').style.opacity=a;
   x=eo(P(t,6.2,6.7)); $('#aEye').style.opacity=x; $('#aEye').style.letterSpacing=lerp(.5,.22,x)+'em';
@@ -190,7 +191,6 @@ render=t=>{
   x=eo(P(t,7.0,7.6)); $('#aDate').style.opacity=x; $('#aDate').style.transform=`translateY(${(1-x)*30}px)`;
   x=eo(P(t,7.8,8.4)); $('#aVenue').style.opacity=x; $('#aVenue').style.transform=`translateY(${(1-x)*30}px)`;
   x=eo(P(t,9.6,10.2)); $('#bL1').style.opacity=x; $('#bL1').style.transform=`translateY(${(1-x)*30}px)`;
-  x=eo(P(t,9.9,10.5)); $('#bHosts').style.opacity=x; $('#bHosts').style.transform=`scale(${lerp(.9,1,x)})`;
   x=eo(P(t,10.3,10.8)); $('#bMore').style.opacity=x;
 };
 window.__dur=12;
@@ -210,14 +210,14 @@ st.innerHTML=`
 </div>
 <div class="scene" id="s2">
   <div class="abs" id="left" style="left:0;top:0;width:540px;height:1920px;background:#006478;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:34px;color:#fff;text-align:center;padding-bottom:300px">
-    <div style="background:#fff;width:330px;height:250px;display:flex;align-items:center;justify-content:center"><img src="marjcc-logo.png" style="width:250px"></div>
+    <img src="marjcc-white.png" alt="MARJCC" class="abs" style="left:150px;top:290px;height:150px">
     <div class="jos" style="font-size:40px;letter-spacing:.3em">Team</div>
     <div class="limel" style="font-size:96px;line-height:1">MARJCC</div>
   </div>
   <div class="abs" id="right" style="left:540px;top:0;width:540px;height:1920px;background:#4078BC;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:34px;color:#fff;text-align:center;padding-bottom:300px">
-    <div style="background:#fff;width:330px;height:250px;display:flex;align-items:center;justify-content:center"><img src="mbjcc-logo.png" style="width:290px"></div>
+    <img src="mbjcc-white.png" alt="MBJCC" class="abs" style="left:85px;top:315px;height:120px">
     <div class="jos" style="font-size:40px;letter-spacing:.3em">Team</div>
-    <div class="limel" style="font-size:60px;line-height:1.1">MIAMI BEACH<br>JCC</div>
+    <div class="limel" style="font-size:96px;line-height:1">MBJCC</div>
   </div>
   <div class="abs" id="vline" style="left:538px;top:250px;width:4px;height:1180px;background:var(--gold);transform-origin:50% 50%"></div>
   <div class="abs" id="vs" style="left:440px;top:1060px;width:200px;height:200px;border-radius:50%;background:var(--navy);border:5px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display';font-style:italic;font-weight:900;font-size:92px;color:var(--gold);padding-bottom:14px">vs.</div>
@@ -229,15 +229,16 @@ st.innerHTML=`
 </div>
 <div class="scene" id="s4" style="background:var(--cream)">
   <div class="frame" style="border-color:var(--gold2)"></div>
-  <img id="e1" src="golf-games-classic-logo.png" class="abs" style="left:60px;top:290px;width:960px">
-  <div id="e2" class="abs jos" style="left:0;right:0;top:990px;text-align:center;font-size:52px;letter-spacing:.12em;color:var(--red)">March 12, 2027</div>
-  <div id="e3" class="abs jos" style="left:0;right:0;top:1065px;text-align:center;font-size:36px;letter-spacing:.14em;color:var(--teal)">Miami Beach Golf Club</div>
-  <div id="e4" class="abs" style="left:0;right:0;top:1170px">${hosts(130,94)}</div>
+  <img id="e1" src="golf-games-classic-logo.png" class="abs" style="left:90px;top:440px;width:900px">
+  <div id="e2" class="abs jos" style="left:0;right:0;top:1100px;text-align:center;font-size:52px;letter-spacing:.12em;color:var(--red)">March 12, 2027</div>
+  <div id="e3" class="abs jos" style="left:0;right:0;top:1180px;text-align:center;font-size:36px;letter-spacing:.14em;color:var(--teal)">Miami Beach Golf Club</div>
 </div>
+${topHosts("white","thw",272,112)}${topHosts("teal","tht",272,112)}
 ${footer(1430,150)}`;
 const masks=['#l1','#l2','#l3','#l4'].map(s=>$(s)); const r1=[...$('#r1').querySelectorAll('line')],r3=[...$('#r3').querySelectorAll('line')];
 render=t=>{
   [[.2],[.9],[1.6],[1.9]].forEach(([a],i)=>{const x=eo(P(t,a,a+.6));masks[i].style.transform=`translateY(${(1-x)*110}%)`;});
+  $('#thw').style.opacity=eo(P(t,0,.6))*(1-P(t,3.3,3.6)); $('#tht').style.opacity=eo(P(t,6.5,7.0));
   let x=eio(P(t,2.4,3.0)); r1.forEach(l=>{l.style.strokeDasharray=700;l.style.strokeDashoffset=700*(1-x)});
   x=eio(P(t,3.3,3.8)); $('#s1').style.transform=`translateY(${-x*200}px)`; $('#s1').style.opacity=1-x;
   x=eo(P(t,3.4,3.95)); $('#left').style.transform=`translateX(${-(1-x)*540}px)`; $('#right').style.transform=`translateX(${(1-x)*540}px)`;
@@ -251,7 +252,6 @@ render=t=>{
   x=eo(P(t,8.8,9.3)); $('#s4').style.opacity=x; $('#s4').style.display=t>=8.8?'block':'none';
   $('#e1').style.transform=`scale(${lerp(.92,1,x)})`;
   x=eo(P(t,9.1,9.5)); $('#e2').style.opacity=x; $('#e3').style.opacity=x;
-  x=eo(P(t,9.3,9.7)); $('#e4').style.opacity=x;
 };
 window.__dur=10.5;
 }
@@ -262,18 +262,17 @@ let rays='';for(let i=0;i<24;i++){const a0=i*15,a1=a0+7.5;const R=1400,rad=d=>d*
  rays+=`<path d="M0 0 L${R*Math.cos(rad(a0))} ${R*Math.sin(rad(a0))} L${R*Math.cos(rad(a1))} ${R*Math.sin(rad(a1))} Z" fill="${i%2?'#009098':'#F0C078'}" opacity="${i%2?.12:.35}"/>`;}
 st.innerHTML=`
 <div class="scene" style="background:var(--cream)"></div>
-<svg class="abs" style="left:0;top:0" width="1080" height="1010"><g id="rays" transform="translate(540 380)">${rays}</g></svg>
-<img id="lg" src="golf-games-classic-logo.png" class="abs" style="left:60px;top:110px;width:960px">
-<div id="shine" class="abs" style="left:60px;top:110px;width:960px;height:648px;-webkit-mask-image:url(golf-games-classic-logo.png);-webkit-mask-size:100% 100%;mask-image:url(golf-games-classic-logo.png);mask-size:100% 100%"></div>
-<div class="abs limel" style="left:0;right:0;top:790px;text-align:center;font-size:70px;color:var(--navy)">SAVE THE DATE</div>
-<div class="abs jos" style="left:0;right:0;top:885px;text-align:center;font-size:31px;letter-spacing:.1em;color:var(--red)">March 12, 2027 <span style="color:var(--gold2)">&#9670;</span> <span style="color:var(--teal)">Miami Beach Golf Club</span></div>
-<div class="waves" id="wv" style="top:950px"></div>
-<div class="abs" style="left:0;right:0;top:1010px;height:340px;background:#fff"></div>
-<div class="abs" style="left:0;right:0;top:1030px">${hosts(118,86)}</div>
-<div class="abs" style="left:240px;right:240px;top:1180px;height:1px;background:var(--gold2)"></div>
-<div class="abs" style="left:0;right:0;top:1205px;display:flex;justify-content:center"><img src="gmjf-logo-black.png" style="height:104px"></div>`;
+<svg class="abs" style="left:0;top:0" width="1080" height="1150"><g id="rays" transform="translate(540 440)">${rays}</g></svg>
+<img id="lg" src="golf-games-classic-logo.png" class="abs" style="left:60px;top:190px;width:960px">
+<div id="shine" class="abs" style="left:60px;top:190px;width:960px;height:648px;-webkit-mask-image:url(golf-games-classic-logo.png);-webkit-mask-size:100% 100%;mask-image:url(golf-games-classic-logo.png);mask-size:100% 100%"></div>
+<div class="abs limel" style="left:0;right:0;top:878px;text-align:center;font-size:70px;color:var(--navy)">SAVE THE DATE</div>
+<div class="abs jos" style="left:0;right:0;top:972px;text-align:center;font-size:31px;letter-spacing:.1em;color:var(--red)">March 12, 2027 <span style="color:var(--gold2)">&#9670;</span> <span style="color:var(--teal)">Miami Beach Golf Club</span></div>
+<div class="waves" id="wv" style="top:1090px"></div>
+<div class="abs" style="left:0;right:0;top:1150px;height:200px;background:#fff"></div>
+${topHosts("teal","th",44,100)}
+<div class="abs" style="left:0;right:0;top:1150px;height:200px;display:flex;align-items:center;justify-content:center"><img src="gmjf-logo-black.png" alt="Greater Miami Jewish Federation" style="height:110px"></div>`;
 render=t=>{const u=(t%6)/6;
-  $('#rays').setAttribute('transform',`translate(540 380) rotate(${u*30})`);
+  $('#rays').setAttribute('transform',`translate(540 440) rotate(${u*30})`);
   $('#wv').style.transform=`translateX(${u*80*2}px)`;
   const sx=lerp(-700,1400,eio(clamp((u-.15)/.6)));
   $('#shine').style.background=`linear-gradient(105deg,transparent ${sx-160}px,rgba(255,255,255,.55) ${sx}px,transparent ${sx+160}px)`;

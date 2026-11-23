@@ -1,4 +1,4 @@
-The brand for the **Golf & Games Classic**, a golf and mahjong tournament on **March 12, 2027** at the **Miami Beach Golf Club**, played between two JCCs: **Team MARJCC** (Michael-Ann Russell JCC) and **Team Miami Beach JCC** (The Galbut Family Miami Beach JCC on the Simkins Family Campus). Use this book for the landing page, emails, social media, print and signage. All event materials are in **English**.
+The brand for the **Golf & Games Classic**, a golf and mahjong tournament on **March 12, 2027** at the **Miami Beach Golf Club**, played between two JCCs: **Team MARJCC** (Michael-Ann Russell JCC) and **Team MBJCC** (The Galbut Family Miami Beach JCC on the Simkins Family Campus). Use this book for the landing page, emails, social media, print and signage. All event materials are in **English**.
 
 ![Golf & Games Classic logo](/_blob/a3a4817e02e8d867ebf3e7e6ac3e9162)
 
@@ -12,13 +12,13 @@ The event logo is `golf-games-classic-logo.png` (4800 x 3240, transparent outsid
 
 ## Logo rule: hosts on top, GMJF at the bottom
 
-**Every piece carries all three partner logos.** No exceptions: landing page, every email, every social post and story, every video end card, flyers, banners, hole signs, name badges, slides.
+**Every piece carries all three partner logos.** No exceptions: landing page, every email, every social post and story, every video, flyers, banners, hole signs, name badges, slides.
 
-- **The hosts:** MARJCC and MBJCC appear together, side by side, MARJCC first, in the `PartnerLogoStrip`. Give them the same optical size: MARJCC 72px tall, MBJCC 52px on web.
-- **GMJF:** the Greater Miami Jewish Federation logo always goes **alone, at the very bottom of the piece**, like a footer, centered, in the `gg-gmjf` footer. Nothing comes after it: in an email it sits under the legal line; on a post or story it is the last band (above the bottom safe zone on stories); on a video it closes the end card.
+- **The hosts, always at the top:** MARJCC and MBJCC sit side by side at the top of the piece, MARJCC first, in the `PartnerLogoStrip`. Match their optical size: MARJCC about 1.25 times the height of MBJCC (on web, 56px and 44px).
+- **One color, no box:** the host logos are always one color, never their original blues, and never on a white box. Use `marjcc-white.png` and `mbjcc-white.png` on navy, team colors, photos and the sunset; use `marjcc-teal.png` and `mbjcc-teal.png` (`lagoon-teal`) on cream and white. The lighter parts of each logo are a 38% tint of the same color, which is built into the files.
+- **GMJF, always at the bottom:** the Greater Miami Jewish Federation logo goes alone, at the very bottom of the piece, like a footer, centered, in the `gg-gmjf` footer. Nothing comes after it: in an email it sits under the legal line; on a post or story it is the last band (above the bottom safe zone on stories); on a video it closes every frame. Black on light grounds, white on dark.
 - No label such as "presented by" over any of the logos.
-- Logos sit on `partner-ground` (white). On navy, use the white versions (`mbjcc-logo-white.png`, `gmjf-logo-white.png`). MARJCC has no white version in this kit yet, so keep it on white.
-- Never recolor, stretch, crop, outline or add effects to a partner logo.
+- Never recolor the logos to any other color, stretch, crop, outline or add effects.
 
 ## Name and copy
 
@@ -26,7 +26,7 @@ The event logo is `golf-games-classic-logo.png` (4800 x 3240, transparent outsid
 
 **What it is:** Golf & Mahjong Tournament. Use this as the descriptor under the name.
 
-**The matchup:** TEAM MARJCC vs. TEAM MIAMI BEACH JCC. In the logo art it reads `MARJCC vs MBJCC`; in written copy spell out Miami Beach JCC. `MARJCC` is always one word, all caps.
+**The matchup:** TEAM MARJCC vs. TEAM MBJCC. Always use the short names `MARJCC` and `MBJCC` (no need to spell out Miami Beach JCC). Both are one word, all caps.
 
 **Core lines** (use them as written):
 
@@ -66,15 +66,19 @@ All fonts are free on Google Fonts.
 
 Never retype the logo lettering. "GOLF & GAMES CLASSIC" as a logo always comes from the logo file.
 
-## Shapes and ornament
+## Composition: fluid, never blocks
 
-Art Deco Miami Beach: stepped frames, a sunburst fan, gold double lines, and teal waves.
+Art Deco Miami Beach, in motion: a sunset that melts into the ocean, gold light, flowing curves, depth.
 
-- **Gold double rule:** two 1px `rule` lines `space-1` apart. Use it to frame a panel or to sit above and below the matchup line.
-- **Matchup plaque:** the pointed-end plaque from the logo, in `MatchupPlaque`.
-- **Arch panel:** a panel with a fully rounded top (`radius-arch` on the top corners only), echoing the top of the logo badge. Use one per page at most.
-- **Waves:** the teal wave band (`ocean-teal`, `lagoon-teal`) closes the bottom of the landing hero, emails and social posts.
-- Corners are square (`radius-0`) everywhere else. No drop shadows, no glass, no gradients except the sunset sky in illustrations.
+- **Full-bleed and continuous.** Every piece is one scene, not a stack of bands. Never cut a layout with a straight horizontal strip (no sunset bar across the top, no flat wave strip, no white plates, no boxed panels).
+- **Soft gradients that flow.** The sunset (`sky-blue` → `sunset-pink` → `sun-gold`) blends into `deco-navy` or `shore-cream` with no visible edge. The sun glows (bloom), the water shimmers.
+- **Organic lines.** Waves are flowing curves and gold hairlines that sweep across the piece, not repeated scallops in a band. The gold double rule can curve and taper.
+- **Depth.** Layer palm silhouettes in the foreground, the logo and type in the middle, the sky behind. Gold bokeh and light rays add atmosphere.
+- **Type breathes over the scene.** Big, expressive Limelight headlines sit directly on the image with room around them. No text in boxes.
+- **Team color fields flow into each other.** For MARJCC vs MBJCC, `team-marjcc` and `team-mbjcc` meet as two fluid fields that collide in the middle, never a hard split.
+- **Be bold.** Dramatic scale, unexpected crops of the golf ball and tiles, light sweeps. Each piece different, all clearly one family.
+- **Motion:** one continuous camera move per video, parallax depth, 3D tile flips, a golf ball arc with motion blur, gold light sweeps, mask reveals on type. No slide-to-slide cuts.
+- Corners on interface elements (buttons, form fields) stay square (`radius-0`).
 
 ## Imagery
 
@@ -86,12 +90,12 @@ Art Deco Miami Beach: stepped frames, a sunburst fan, gold double lines, and tea
 
 | Channel | Size | Notes |
 |---|---|---|
-| Landing page hero | full width | Logo, then date, venue, button, host strip; GMJF closes the page footer. See `LandingHero`. |
-| Email | 600px wide | Logo header image, cream body, one red button, host strip, legal line, GMJF last. See `EmailTemplate`. |
-| Instagram / Facebook post | 1080 x 1080 | Logo or photo on top, headline, host strip, GMJF as the last band. See `SocialPost`. |
+| Landing page hero | full width | Host logos in the header, then the event logo, date, venue, button; GMJF closes the page footer. See `LandingHero`. |
+| Email | 600px wide | Host logos at the top, logo header image, cream body, one red button, legal line, GMJF last. See `EmailTemplate`. |
+| Instagram / Facebook post | 1080 x 1080 | Host logos at the top, then logo or photo, headline; GMJF as the last band. See `SocialPost`. |
 | Instagram portrait post | 1080 x 1350 | Same as the square, with more room for the headline. |
-| Story / Reel cover | 1080 x 1920 | Keep the top 250px and bottom 340px free of text (app buttons cover them). Host strip and GMJF just above the bottom safe zone. |
-| Facebook event cover | 1920 x 1005 | Logo centered on navy or cream; hosts and GMJF along the bottom. |
+| Story / Reel cover | 1080 x 1920 | Keep the top 250px and bottom 340px free of text (app buttons cover them). Host logos just below the top safe zone; GMJF just above the bottom safe zone. |
+| Facebook event cover | 1920 x 1005 | Host logos top, event logo centered on navy or cream, GMJF at the bottom. |
 | Hole sign / sponsor sign | 24 x 18 in | Navy or cream, sponsor logo in the center, partner strip at the bottom. |
 
 ## Iconography
@@ -108,4 +112,4 @@ These are not decided yet. Do not invent them in materials; write "More details 
 - Who benefits from the funds raised, and any fundraising goal
 - Contact person, phone and email
 - Official hashtag
-- Higher-resolution MARJCC logo files, and a white MARJCC version for dark grounds
+- Vector (SVG or PDF) files of the MARJCC and MBJCC logos, for sharper one-color versions in print

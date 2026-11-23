@@ -6,10 +6,10 @@ The host logos (MARJCC and MBJCC, side by side) plus the GMJF footer that closes
 
 **Do**
 - Put it on every page, email, post, story, flyer, sign and slide.
-- Keep it on `partner-ground` (white), full width, at the bottom of the piece (top is fine on a landing page header).
+- Put the host strip at the TOP of the piece, with no box behind it: teal logos (`marjcc-teal.png`, `mbjcc-teal.png`) on cream or white, white logos (`marjcc-white.png`, `mbjcc-white.png`, add `.gg-strip--on-dark`) on navy, photos and color.
 - Keep the hosts in the order MARJCC, MBJCC, and GMJF alone at the very bottom.
 
 **Don't**
 - Drop a logo because of space. Use the compact size instead.
-- Put the logos straight on the sunset art, a photo or navy.
+- Use the original blue logos, or put the host logos on a white box.
 - Resize one logo out of balance with the others.

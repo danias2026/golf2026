@@ -59,11 +59,12 @@ def page(title, preheader, body_rows):
 <tr><td align="center" style="padding:24px 12px;">
 <table role="presentation" class="container" width="600" cellpadding="0" cellspacing="0" border="0" bgcolor="{PAPER}" style="width:600px;max-width:600px;background:{PAPER};border:1px solid {GOLD};">
 
-  <!-- Hosts: MARJCC and MBJCC -->
-  <tr><td align="center" style="padding:20px 24px 16px;background:#FFFFFF;">
+  <!-- Hosts: MARJCC and MBJCC, one color (teal), no white box -->
+  <tr><td align="center" style="padding:22px 24px 18px;background:{PAPER};">
     <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center"><tr>
-      <td class="host" valign="middle" style="padding:0 20px;"><img src="{{{{ASSET_BASE_URL}}}}/marjcc-logo.png" width="103" height="64" alt="Michael-Ann Russell JCC" style="display:block;border:0;outline:none;width:103px;height:64px;"></td>
-      <td class="host" valign="middle" style="padding:0 20px;"><img src="{{{{ASSET_BASE_URL}}}}/mbjcc-logo.png" width="152" height="52" alt="The Galbut Family Miami Beach JCC" style="display:block;border:0;outline:none;width:152px;height:52px;"></td>
+      <td class="host" valign="middle" style="padding:0 18px;"><img src="{{{{ASSET_BASE_URL}}}}/marjcc-teal.png" width="90" height="56" alt="Michael-Ann Russell JCC" style="display:block;border:0;outline:none;width:90px;height:56px;"></td>
+      <td valign="middle" style="width:1px;padding:0;"><div style="width:1px;height:44px;background:{TEAL};opacity:0.6;font-size:1px;line-height:1px;">&nbsp;</div></td>
+      <td class="host" valign="middle" style="padding:0 18px;"><img src="{{{{ASSET_BASE_URL}}}}/mbjcc-teal.png" width="134" height="46" alt="MBJCC" style="display:block;border:0;outline:none;width:134px;height:46px;"></td>
     </tr></table>
   </td></tr>
 
@@ -117,7 +118,7 @@ def matchup():
     return (f'  <tr><td class="px" align="center" style="padding:4px 40px 22px;">'
             f'<table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center"><tr>'
             f'<td style="border:2px solid {GOLD};padding:10px 18px;font-family:{FONT};font-size:15px;font-weight:bold;letter-spacing:1.5px;color:{NAVY};text-transform:uppercase;text-align:center;">'
-            f'Team MARJCC <span style="color:{RED};font-family:{DISPLAY};font-style:italic;text-transform:none;letter-spacing:0;">vs.</span> Team Miami Beach JCC</td>'
+            f'Team MARJCC <span style="color:{RED};font-family:{DISPLAY};font-style:italic;text-transform:none;letter-spacing:0;">vs.</span> Team MBJCC</td>'
             f'</tr></table></td></tr>')
 
 
@@ -151,7 +152,7 @@ save_the_date = "\n".join([
     eyebrow("Save the date &middot; Golf &amp; Mahjong Tournament"),
     h1("Two JCCs. One Tournament.", "One Friendly Rivalry!"),
     matchup(),
-    text_row("This spring, the Michael-Ann Russell JCC and the Miami Beach JCC go head-to-head at the "
+    text_row("This spring, MARJCC and MBJCC go head-to-head at the "
              "<strong>Golf &amp; Games Classic</strong>. Grab your clubs or your mahjong tiles and pick your team."),
     spacer(6),
     duo(),
@@ -182,7 +183,7 @@ reminder = "\n".join([
 
 (HERE / "save-the-date/index.html").write_text(page(
     "Save the date: Golf & Games Classic",
-    "Friday, March 12, 2027 at the Miami Beach Golf Club. Team MARJCC vs. Team Miami Beach JCC.",
+    "Friday, March 12, 2027 at the Miami Beach Golf Club. Team MARJCC vs. Team MBJCC.",
     save_the_date))
 (HERE / "reminder/index.html").write_text(page(
     "Reminder: Golf & Games Classic, March 12",
