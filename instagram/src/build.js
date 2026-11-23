@@ -15,11 +15,7 @@ const waveLine=(w,y,amp,wl,ph,stroke,sw,op)=>`<path d="${sine(w,y,amp,wl,ph,8)}"
 const bokeh=(x0,y0,w,h,n,cols,rmin=6,rmax=40)=>{let s='';for(let i=0;i<n;i++){const r=rmin+rnd()*(rmax-rmin);s+=`<circle cx="${(x0+rnd()*w).toFixed(0)}" cy="${(y0+rnd()*h).toFixed(0)}" r="${r.toFixed(1)}" fill="${cols[i%cols.length]}" opacity="${(.12+rnd()*.3).toFixed(2)}" filter="url(#b${r>22?'8':'3'})"/>`}return s};
 const stars=(x0,y0,w,h,n)=>{let s='';for(let i=0;i<n;i++)s+=`<circle cx="${(x0+rnd()*w).toFixed(0)}" cy="${(y0+rnd()*h).toFixed(0)}" r="${(.8+rnd()*2.2).toFixed(1)}" fill="#FFF3CF" opacity="${(.3+rnd()*.6).toFixed(2)}"/>`;return s};
 const rays=(cx,cy,n,len,a0,a1,col,op)=>{let s='';for(let i=0;i<n;i++){const a=(a0+(a1-a0)*(i+.5)/n)*Math.PI/180,da=((a1-a0)/n)*.32*Math.PI/180;s+=`<polygon points="${cx},${cy} ${cx+len*Math.cos(a-da)},${cy+len*Math.sin(a-da)} ${cx+len*Math.cos(a+da)},${cy+len*Math.sin(a+da)}" fill="url(#ray)" opacity="${op*(.55+rnd()*.45)}"/>`}return `<g filter="url(#b8)" style="mix-blend-mode:screen">${s}</g>`};
-const palm=(x,y,H,lean,s,fill,op=1)=>{const tx=x+lean,ty=y-H;let d=`<path d="M${x} ${y} Q${x+lean*.2} ${y-H*.55} ${tx} ${ty}" stroke="${fill}" stroke-width="${22*s}" fill="none" stroke-linecap="round"/>`;
- const angs=[-178,-150,-122,-95,-70,-42,-12,15,-200];for(const g of angs){const a=g*Math.PI/180,L=(230+rnd()*60)*s,ex=tx+L*Math.cos(a),ey=ty+L*Math.sin(a)+L*.42,mx=tx+L*.55*Math.cos(a),my=ty+L*.55*Math.sin(a)-30*s,nx=-Math.sin(a)*24*s,ny=Math.cos(a)*24*s;
- d+=`<path d="M${tx} ${ty} Q${mx+nx} ${my+ny} ${ex} ${ey} Q${mx-nx} ${my-ny} ${tx} ${ty} Z" fill="${fill}"/>`;
- for(let k=1;k<7;k++){const t=k/7,px=(1-t)*(1-t)*tx+2*(1-t)*t*mx+t*t*ex,py=(1-t)*(1-t)*ty+2*(1-t)*t*my+t*t*ey;d+=`<path d="M${px} ${py} l${(Math.cos(a+.9)*40*s).toFixed(1)} ${(Math.sin(a+.9)*40*s+18*s).toFixed(1)}" stroke="${fill}" stroke-width="${7*s}" stroke-linecap="round"/>`}}
- return `<g opacity="${op}">${d}</g>`};
+const sweepSides=(w,h,y0)=>{let s='';const L=[[0,y0,w*.28,y0-h*.22,w*.06,y0-h*.42],[w,y0,w*.72,y0-h*.22,w*.94,y0-h*.42]];for(const [x,y,cx,cy,ex,ey] of L)for(let i=0;i<4;i++){const o=i*14;s+=`<path d="M${x} ${y+o} Q${cx} ${cy+o} ${ex} ${ey+o*1.6}" fill="none" stroke="#F0C078" stroke-width="${i?1.6:3}" opacity="${.8-i*.17}" filter="url(#glow)" stroke-linecap="round"/>`}return s};
 const DEFS=`<defs>
 <filter id="b3" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3"/></filter>
 <filter id="b8" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="8"/></filter>
@@ -36,7 +32,7 @@ const DEFS=`<defs>
 </defs>`;
 const svg=(w,h,inner)=>`<svg class="layer" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">${DEFS}${inner}</svg>`;
 
-// sunset sea scene: sky melts into a glowing sea, sun bloom, reflection, palms, flowing waves
+// sunset sea scene: sky melts into a glowing sea, sun bloom, reflection, gold side sweeps, flowing waves
 function sunset(w,h,hz,sx,sy,sr,o={}){seed=o.seed||11;
  let s=`<rect width="${w}" height="${h}" fill="url(#sky)"/>`;
  s+=`<circle cx="${sx}" cy="${sy}" r="${sr*3.2}" fill="url(#sun)" opacity=".55" filter="url(#b80)"/>`;
@@ -54,7 +50,7 @@ function sunset(w,h,hz,sx,sy,sr,o={}){seed=o.seed||11;
  s+=waveLine(w,base+74,28,700,2.1,'url(#gline)',2,.55);
  s+=waveFill(w,h,base+170,20,440,4,'#00141F',.85);
  s+=bokeh(0,hz-200,w,h-hz,o.bk||26,['#FFE9A8','#7FD6DA','#F89090']);
- if(o.palms!==false){s+=palm(-40,h-120,h*.62,170,1.25,'#001822',.92);s+=palm(w+30,h-80,h*.55,-150,1.1,'#001822',.92);s+=palm(w-90,h-60,h*.38,-60,.75,'#002838',.75)}
+ s+=sweepSides(w,h,h-150);
  return svg(w,h,s)}
 
 // night scene: deep navy, light rays from above, bokeh, stars, flowing gold ribbons and waves
@@ -72,7 +68,7 @@ function night(w,h,o={}){seed=o.seed||5;
  s+=waveLine(w,b-4,30,620,.6,'url(#gline)',2.5,.7);
  s+=waveFill(w,h,b+110,24,800,2.6,'url(#deepwave)',.85);
  s+=waveFill(w,h,b+210,18,500,4.2,'#00101A',.9);
- if(o.palms){s+=palm(-30,h-140,h*.55,160,1.15,'#000E16',.95);s+=palm(w+20,h-120,h*.5,-140,1.05,'#000E16',.95)}
+ if(o.palms)s+=sweepSides(w,h,h-170);
  return svg(w,h,s)}
 
 // two team colors flowing into each other along an S-curve, with a gold ribbon on the seam
@@ -176,7 +172,7 @@ function pano(w,h){seed=41;
  const rib=`M-20 1180 C 420 1110, 760 1150, 1240 1080 S 2300 1010, 2700 1060 S 3100 1110, 3260 1040`;
  g+=`<path d="${rib}" stroke="#F0C078" stroke-width="18" fill="none" opacity=".3" filter="url(#b8)"/><path d="${rib}" stroke="#FFF3CF" stroke-width="4" fill="none" filter="url(#glow)"/>`;
  g+=waveFill(w,h,1120,24,640,.4,'url(#deepwave)',.6)+waveLine(w,1116,24,640,.4,'url(#gline)',2.5,.7)+waveFill(w,h,1210,18,480,2.2,'#00141F',.88);
- g+=palm(-40,h-100,820,170,1.25,'#001822',.92)+palm(1080+20,h-70,700,-90,1,'#001822',.85)+palm(3240+20,h-90,760,-160,1.2,'#000E16',.95);
+ 
  return `<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">${DEFS.replace('</defs>',s+'</defs>')}${g}</svg>`}
 const PANO=pano(3240,1350);
 const slide=(i,content)=>`<div class="pano" style="--pw:3240px;--px:${-1080*i}px">${PANO}</div>${content}`;
