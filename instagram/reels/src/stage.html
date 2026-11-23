@@ -9,7 +9,7 @@ svg{display:block}
 </style></head>
 <body>
 <svg id="S" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"></svg>
-<template id="logoTpl">
+<script type="text/plain" id="logoTpl">
 <defs>
   <radialGradient id="lgBall" cx="40%" cy="35%" r="70%">
     <stop offset="0" stop-color="#FFFFFF"/><stop offset=".65" stop-color="#F3EEE6"/><stop offset="1" stop-color="#C9C3B8"/>
@@ -96,7 +96,7 @@ svg{display:block}
 <path class="gold-fill" fill="#D9A653" d="M470 960 L520 900 H1080 L1130 960 L1080 1020 H520 Z"/>
 <path class="cream" fill="#FFF9EE" d="M482 960 L527 908 H1073 L1118 960 L1073 1012 H527 Z"/>
 <text x="800" y="982" text-anchor="middle" font-family="'Josefin Sans', sans-serif" font-weight="700" font-size="58" letter-spacing="4" fill="#002838"><tspan>MARJCC</tspan><tspan font-family="'Playfair Display', serif" font-style="italic" font-weight="700" fill="#E02850" font-size="54" dx="22">vs</tspan><tspan dx="22">MBJCC</tspan></text>
-</template>
+</script>
 <script>
 // ---------- palette ----------
 const C={navy:'#002838',teal:'#006868',ocean:'#009098',red:'#E02850',gold:'#F0B870',pink:'#F89090',cream:'#F3E7CF',tan:'#EAD7AE',line:'#C9963E',goldText:'#8A5F18',dateGold:'#F0C078',marjcc:'#006478',mbjcc:'#4078BC',ink:'#3C5560'};
@@ -188,7 +188,7 @@ function DatePlaque(cx,cy,w,h,str,size){const root=g();const inner=g({},root);co
     const ps=P(t,t0+.9,t0+1.6);set(sweep,{opacity:ps>0&&ps<1?.35:0,x:-hw-120+ps*(w+240)});},sweepAt(t,a){const ps=P(t,a,a+.8);set(sweep,{opacity:ps>0&&ps<1?.35:0,x:-hw-120+ps*(w+240)});}};}
 // The event logo, assembled from its parts
 function Logo(cx,top,w){const s=w/1600;const root=g({transform:`translate(${cx-w/2} ${top}) scale(${s})`});
-  const holder=g({},root);holder.innerHTML=document.getElementById('logoTpl').innerHTML;
+  const holder=g({},root);holder.innerHTML=document.getElementById('logoTpl').textContent;
   const q=sel=>holder.querySelector(sel);
   const badge=q('.badge'),burst=q('.burst'),tee=q('path.navy'),ball=q('g.ball'),tile=q('g.tile'),cards=q('g.cards');
   const golf=q('#golf'),amp=q('#amp'),games=q('#games'),classic=q('#classic'),gs=q('.gold-stroke');
@@ -253,7 +253,7 @@ function Card(x,y,s,kind){const root=g({transform:`translate(${x} ${y}) scale(${
     fr.forEach((f,i)=>{const p=ex(P(t,t0+.5+i*.05,t0+1.0+i*.05));f.setAttribute('transform',`scale(${p})`);});
     rule.forEach(r=>draw(r,eio(P(t,t0+.7,t0+1.2))));set(dia,{opacity:P(t,t0+1.0,t0+1.15)});
     if(kind==='golf'){const pd=P(t,t0+.8,t0+1.3);const by=pd<1?-(1-eo(pd))*420:0;set(ball,{opacity:pd>0?1:0,transform:`translate(0 ${by})`});
-      const pc=eb(P(t,t0+1.1,t0+1.6));set(clubs[0],{opacity:pc>0?1:0,transform:`rotate(${(1-pc)*-40} 220 380)`});set(clubs[1],{opacity:pc>0?1:0,transform:`rotate(${(1-pc)*40} 220 380)`});}
+      const pc=eb(P(t,t0+1.1,t0+1.6));set(clubs[0],{opacity:pc>.001?1:0,transform:`rotate(${(1-pc)*-40} 220 380)`});set(clubs[1],{opacity:pc>.001?1:0,transform:`rotate(${(1-pc)*40} 220 380)`});}
     else{ball.forEach((b,i)=>{const p=eo(P(t,t0+.8+i*.15,t0+1.3+i*.15));const cx=i?200+130:35+100;set(b,{opacity:p>0?1:0,transform:`translate(${cx} 230) scale(${Math.max(.001,Math.sin(p*Math.PI/2))} 1) translate(${-cx} -230) translate(0 ${(1-p)*-40})`});});}
     const pt=eo(P(t,t0+1.2,t0+1.6));set(t1,{opacity:pt});t2.forEach((e,i)=>{const p=eo(P(t,t0+1.3+i*.1,t0+1.8+i*.1));set(e,{opacity:p,transform:`translate(0 ${(1-p)*14})`});});}};}
 // Navy half-sun with text
@@ -339,7 +339,7 @@ scenes.riv=()=>{window.__dur=13;
     const pl=eo(P(t,4.1,4.9)),pr=eo(P(t,4.25,5.05));set(L,{transform:`translate(${-(1-pl)*560} 0)`});set(Rr,{transform:`translate(${(1-pr)*560} 0)`});
     set(lrr,{transform:`translate(280 1280) rotate(${t*4})`});set(rrr,{transform:`translate(800 1280) rotate(${-t*4})`});
     vs.update(t,5.0);
-    c1.update(t,7.9);c2.update(t,8.15);hs.update(t,8.7);
+    c1.update(t,7.75);c2.update(t,7.95);hs.update(t,8.35);
     arch.update(t,10.2,(t-10)*1.2);logo.update(10.35+Math.max(0,t-10.35)*1.8,10.35);set(sd,{opacity:eo(P(t,11.5,11.9))});dp.update(t,11.1);set(club,{opacity:eo(P(t,11.7,12.1))});};
 };
 scenes.loop=()=>{window.__dur=6;

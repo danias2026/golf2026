@@ -1,56 +1,42 @@
 <!doctype html><html><head><meta charset="utf-8">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Limelight&family=Josefin+Sans:wght@600;700&family=Playfair+Display:ital,wght@1,700;1,900&family=Noto+Serif+TC:wght@900&display=swap">
-<style>
-@page{size:98in 122in;margin:0}
-html,body{margin:0;background:#F3E7CF}
-#art{display:block;width:98in;height:122in}
-.caps{font-family:'Josefin Sans',sans-serif;font-weight:700;text-transform:uppercase}
-.lime{font-family:Limelight,serif}
-</style></head><body>
-<!-- 1 unit = 0.1 in. Canvas 980 x 1220 = 98 x 122 in (96 x 120 trim + 1 in bleed each side). Trim box: 10..970 x 10..1210 -->
-<svg id="art" viewBox="0 0 980 1220" xmlns="http://www.w3.org/2000/svg">
+<style>html,body{margin:0;background:#F3E7CF}#art{display:block;width:122in;height:98in}
+.caps{font-family:'Josefin Sans',sans-serif;font-weight:700;text-transform:uppercase}.lime{font-family:Limelight,serif}</style></head><body>
+<!-- 1 unit = 0.1 in. Canvas 1220 x 980 = 122 x 98 in (120 x 96 trim = 10 x 8 ft, + 1 in bleed each side). Trim: 10..1210 x 10..970 -->
+<svg id="art" viewBox="0 0 1220 980" xmlns="http://www.w3.org/2000/svg">
 <defs>
-  <clipPath id="cNavy"><rect x="0" y="0" width="390" height="150"/></clipPath>
-  <clipPath id="cArch"><path d="M190 940 V640 A300 300 0 0 1 790 640 V940 Z"/></clipPath>
+  <clipPath id="cNavy"><rect x="0" y="0" width="470" height="130"/></clipPath>
+  <clipPath id="cArch"><path d="M400 770 V480 A210 210 0 0 1 820 480 V770 Z"/></clipPath>
 </defs>
-<rect width="980" height="1220" fill="#F3E7CF"/>
-
-<!-- TOP BAND (bleeds off top and sides) -->
-<rect x="0" y="0" width="390" height="150" fill="#002838"/>
-<g clip-path="url(#cNavy)"><g transform="translate(195 150)" id="rBand"></g></g>
-<rect x="390" y="0" width="170" height="150" fill="#006868"/>
-<rect x="560" y="0" width="80" height="150" fill="#E02850"/>
-<rect x="640" y="0" width="210" height="150" fill="#F0B870"/>
-<rect x="850" y="0" width="130" height="150" fill="#F89090"/>
+<rect width="1220" height="980" fill="#F3E7CF"/>
+<!-- TOP BAND -->
+<rect x="0" y="0" width="470" height="130" fill="#002838"/>
+<g clip-path="url(#cNavy)"><g transform="translate(235 130)" id="rBand"></g></g>
+<rect x="470" y="0" width="210" height="130" fill="#006868"/>
+<rect x="680" y="0" width="100" height="130" fill="#E02850"/>
+<rect x="780" y="0" width="270" height="130" fill="#F0B870"/>
+<rect x="1050" y="0" width="170" height="130" fill="#F89090"/>
 <g id="scBand" fill="#009098"></g>
-<path d="M0 156 H980 M0 164 H980" stroke="#C9963E" stroke-width="2.4"/>
-
-<!-- CONTINUOUS SIDE FRAME -->
+<path d="M0 136 H1220 M0 144 H1220" stroke="#C9963E" stroke-width="2.4"/>
+<!-- SIDE FRAME -->
 <g stroke="#C9963E" stroke-width="2.4" fill="none">
-  <path d="M60 180 V1090 M70 180 V1090 M910 180 V1090 M920 180 V1090"/>
-  <path d="M60 180 H130 V200 M920 180 H850 V200"/>
+  <path d="M60 165 V850 M70 165 V850 M1150 165 V850 M1160 165 V850"/>
+  <path d="M60 165 H130 V185 M1160 165 H1090 V185"/>
 </g>
-
 <!-- HOSTS -->
-<image href="marjcc-teal.png" x="336" y="190" height="68" width="109"/>
-<rect x="465" y="192" width="1.6" height="64" fill="#006868" opacity=".5"/>
-<image href="mbjcc-teal.png" x="487" y="197" height="54" width="158"/>
-
-<!-- SAVE THE DATE -->
-<text class="caps" x="490" y="312" text-anchor="middle" font-size="30" letter-spacing="9" fill="#8A5F18" dx="4.5">SAVE THE DATE</text>
-
+<image href="marjcc-teal.png" x="451" y="162" height="72" width="116"/>
+<rect x="585" y="166" width="1.5" height="64" fill="#006868" opacity=".5"/>
+<image href="mbjcc-teal.png" x="604" y="170" height="56" width="164"/>
 <!-- ARCH -->
-<g clip-path="url(#cArch)"><rect x="190" y="300" width="600" height="700" fill="#F3E7CF"/><g transform="translate(490 690)" id="rArch"></g></g>
-<path d="M190 940 V640 A300 300 0 0 1 790 640 V940" fill="none" stroke="#C9963E" stroke-width="5"/>
-<path d="M208 930 V640 A282 282 0 0 1 772 640 V930" fill="none" stroke="#C9963E" stroke-width="1.8"/>
-<path d="M466 333 H514 L502 356 H478 Z" fill="#E02850"/>
-<!-- stepped shoulders + base -->
-<g fill="none" stroke="#C9963E" stroke-width="2.4">
-  <path d="M190 760 H150 V830 H110 V950 H870 V830 H830 V760 H790"/>
-  <path d="M190 790 H165 V860 H125 V938 H855 V860 H815 V790 H790"/>
+<g clip-path="url(#cArch)"><rect x="400" y="260" width="420" height="520" fill="#F3E7CF"/><g transform="translate(610 560)" id="rArch"></g></g>
+<path d="M400 770 V480 A210 210 0 0 1 820 480 V770" fill="none" stroke="#C9963E" stroke-width="4.5"/>
+<path d="M416 762 V480 A194 194 0 0 1 804 480 V762" fill="none" stroke="#C9963E" stroke-width="1.6"/>
+<path d="M590 262 H630 L620 282 H600 Z" fill="#E02850"/>
+<g fill="none" stroke="#C9963E" stroke-width="2.2">
+  <path d="M400 590 H372 V680 H344 V780 H876 V680 H848 V590 H820"/>
+  <path d="M400 614 H386 V700 H358 V768 H862 V700 H834 V614 H820"/>
 </g>
-
-<svg id="LOGO" x="230" y="388" width="520" height="351" viewBox="0 0 1600 1080">
+<svg id="LOGO" x="430" y="318" width="360" height="243" viewBox="0 0 1600 1080">
 <defs>
   <radialGradient id="ball" cx="40%" cy="35%" r="70%">
     <stop offset="0" stop-color="#FFFFFF"/><stop offset=".65" stop-color="#F3EEE6"/><stop offset="1" stop-color="#C9C3B8"/>
@@ -138,38 +124,43 @@ html,body{margin:0;background:#F3E7CF}
 <path class="cream" fill="#FFF9EE" d="M482 960 L527 908 H1073 L1118 960 L1073 1012 H527 Z"/>
 <text x="800" y="982" text-anchor="middle" font-family="'Josefin Sans', sans-serif" font-weight="700" font-size="58" letter-spacing="4" fill="#002838"><tspan>MARJCC</tspan><tspan font-family="'Playfair Display', serif" font-style="italic" font-weight="700" fill="#E02850" font-size="54" dx="22">vs</tspan><tspan dx="22">MBJCC</tspan></text>
 </svg>
+<!-- DATE PLAQUE -->
+<path d="M430 610 H462 V598 H494 V586 H726 V598 H758 V610 H790 V686 H758 V698 H726 V710 H494 V698 H462 V686 H430 Z" fill="#002838" stroke="#C9963E" stroke-width="3.5"/>
+<path d="M441 618 H470 V606 H502 V596 H718 V606 H750 V618 H779 V678 H750 V690 H718 V700 H502 V690 H470 V678 H441 Z" fill="none" stroke="#C9963E" stroke-width="1.4"/>
+<text class="lime" x="610" y="664" text-anchor="middle" font-size="42" fill="#F0C078">March 12, 2027</text>
+<text class="caps" x="610" y="742" text-anchor="middle" font-size="13" letter-spacing="5.5" dx="2.75" fill="#006868">MIAMI BEACH GOLF CLUB</text>
+<g transform="translate(0 32)"><!-- LEFT: SAVE THE DATE -->
+<g stroke="#C9963E" stroke-width="2.2"><path d="M82 330 H177 M82 337 H177 M237 330 H332 M237 337 H332"/></g>
+<g transform="translate(207 344)" id="rFanL"></g>
+<text class="lime" x="207" y="440" text-anchor="middle" font-size="66" fill="#002838">Save</text>
+<text class="lime" x="207" y="510" text-anchor="middle" font-size="66" fill="#006868">the</text>
+<text class="lime" x="207" y="580" text-anchor="middle" font-size="66" fill="#002838">Date</text>
+<text class="caps" x="207" y="630" text-anchor="middle" font-size="16" letter-spacing="6" dx="3" fill="#8A5F18">GOLF &amp; MAHJONG</text>
+<text class="caps" x="207" y="655" text-anchor="middle" font-size="16" letter-spacing="6" dx="3" fill="#8A5F18">TOURNAMENT</text>
 
-<g transform="translate(0 -25)"><!-- DATE PLAQUE -->
-<path d="M220 790 H262 V774 H304 V758 H676 V774 H718 V790 H760 V880 H718 V896 H676 V912 H304 V896 H262 V880 H220 Z" fill="#002838" stroke="#C9963E" stroke-width="4"/>
-<path d="M234 800 H272 V784 H314 V770 H666 V784 H708 V800 H746 V870 H708 V886 H666 V900 H314 V886 H272 V870 H234 Z" fill="none" stroke="#C9963E" stroke-width="1.6"/>
-<text class="lime" x="490" y="860" text-anchor="middle" font-size="64" fill="#F0C078">March 12, 2027</text>
 </g>
-<text class="caps" x="490" y="913" text-anchor="middle" font-size="16" letter-spacing="7" dx="3.5" fill="#006868">MIAMI BEACH GOLF CLUB</text>
+<g transform="translate(0 64)"><!-- RIGHT: TEAMS -->
+<g stroke="#C9963E" stroke-width="2.2"><path d="M888 330 H983 M888 337 H983 M1043 330 H1138 M1043 337 H1138"/></g>
+<g transform="translate(1013 344)" id="rFanR"></g>
+<path d="M893 415 L919 390 H1107 L1133 415 L1107 440 H919 Z" fill="#006868" stroke="#C9963E" stroke-width="3"/>
+<text class="caps" x="1013" y="422" text-anchor="middle" font-size="20" letter-spacing="3" dx="1.5" fill="#F3E7CF">TEAM MARJCC</text>
+<text class="lime" x="1013" y="510" text-anchor="middle" font-size="54" fill="#C41E45">vs.</text>
+<path d="M893 565 L919 540 H1107 L1133 565 L1107 590 H919 Z" fill="#006868" stroke="#C9963E" stroke-width="3"/>
+<text class="caps" x="1013" y="572" text-anchor="middle" font-size="20" letter-spacing="3" dx="1.5" fill="#F3E7CF">TEAM MBJCC</text>
 
-<!-- FAN DIVIDER -->
-<g stroke="#C9963E" stroke-width="2.4"><path d="M160 977 H430 M160 985 H430 M550 977 H820 M550 985 H820"/></g>
-<g transform="translate(490 996)" id="rFan"></g>
-<path d="M440 981 L448 973 L456 981 L448 989 Z M524 981 L532 973 L540 981 L532 989 Z" fill="#006868"/>
-
-<!-- MATCHUP PLAQUE -->
-<path d="M200 1040 L240 1008 H740 L780 1040 L740 1072 H240 Z" fill="#006868" stroke="#C9963E" stroke-width="3.5"/>
-<path d="M216 1040 L246 1016 H734 L764 1040 L734 1064 H246 Z" fill="none" stroke="#F0C078" stroke-width="1.4"/>
-<text class="caps" x="490" y="1049" text-anchor="middle" font-size="24" letter-spacing="4" dx="2" fill="#F3E7CF">TEAM MARJCC <tspan class="lime" font-size="26" letter-spacing="0" fill="#F0C078" style="text-transform:none">vs.</tspan> TEAM MBJCC</text>
-<text class="caps" x="490" y="1100" text-anchor="middle" font-size="15" letter-spacing="6" dx="3" fill="#8A5F18">GOLF &amp; MAHJONG TOURNAMENT</text>
-
-<!-- SCALLOPS (bleed sides) -->
+</g>
+<text class="lime" x="610" y="838" text-anchor="middle" font-size="30" fill="#006868">Two communities. <tspan fill="#002838">One unforgettable day!</tspan></text>
+<!-- SCALLOPS + GMJF -->
 <g id="waves"></g>
-
-<!-- GMJF -->
-<image href="gmjf-logo-black.png" x="450" y="1166" height="38" width="80"/>
+<image href="gmjf-logo-black.png" x="568" y="924" height="40" width="84"/>
 </svg>
 <script>
 function rays(id,n,r,spread,cols){const g=document.getElementById(id);let s='';for(let i=0;i<n;i++){const a0=-90-spread/2+i*spread/n,a1=a0+spread/n;const p=a=>[Math.cos(a*Math.PI/180)*r,Math.sin(a*Math.PI/180)*r];const[a,b]=p(a0),[c,d]=p(a1);s+=`<path d="M0 0 L${a} ${b} A${r} ${r} 0 0 1 ${c} ${d} Z" fill="${cols[i%cols.length]}"/>`;}g.innerHTML=s;}
-rays('rBand',14,500,180,['#F3E7CF','#002838']);
-rays('rArch',22,700,180,['#EAD7AE','#F3E7CF']);
-rays('rFan',7,26,180,['#C9963E','#F3E7CF']);
-let sc='';for(let x=640;x<1000;x+=26){sc+=`<path d="M${x} 150 a13 13 0 0 1 26 0 z"/>`;}document.getElementById('scBand').innerHTML=sc;
-let w='';const R=26;[[1140,'#009098'],[1155,'#006868']].forEach(([y,c],ri)=>{const off=(ri%2)*R;for(let x=-R+off;x<980+R;x+=2*R){w+=`<path d="M${x-R} ${y} a${R} ${R} 0 0 1 ${2*R} 0 z" fill="${c}" stroke="#C9963E" stroke-width="1.4"/>`;}});
+rays('rBand',16,560,180,['#F3E7CF','#002838']);
+rays('rArch',22,560,180,['#EAD7AE','#F3E7CF']);
+rays('rFanL',7,24,180,['#C9963E','#F3E7CF']);rays('rFanR',7,24,180,['#C9963E','#F3E7CF']);
+let sc='';for(let x=780;x<1240;x+=24){sc+=`<path d="M${x} 130 a12 12 0 0 1 24 0 z"/>`;}document.getElementById('scBand').innerHTML=sc;
+let w='';const R=24;[[892,'#009098'],[906,'#006868']].forEach(([y,c],ri)=>{const off=(ri%2)*R;for(let x=-R+off;x<1220+R;x+=2*R){w+=`<path d="M${x-R} ${y} a${R} ${R} 0 0 1 ${2*R} 0 z" fill="${c}" stroke="#C9963E" stroke-width="1.3"/>`;}});
 document.getElementById('waves').innerHTML=w;
 document.fonts.ready.then(()=>{window.__ready=true});
 </script></body></html>
