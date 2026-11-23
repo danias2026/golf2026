@@ -31,14 +31,14 @@ const NAVY_GLOW='#0E5A6E',GOLD_GLOW='#F0C078';
 // ---------------- POSTS 1080x1350 ----------------
 add('posts','01-save-the-date',1080,1350,'dark',`
 ${ground(1080,1350,true,[[540,520,420,NAVY_GLOW,.9],[540,520,260,GOLD_GLOW,.16]],
- sweep('M-40 980 C 260 860, 420 1060, 640 1000 S 980 860, 1120 930',true,{n:3,gap:14}))}
+ sweep('M-40 1046 C 260 990, 520 1070, 760 1020 S 1000 995, 1120 1010',true,{n:2,gap:11}))}
 ${hosts(64,true)}
 <div class="col" style="top:200px;gap:0">
  <div class="eb" style="font-size:34px">Save the date</div>
- <div style="margin-top:20px">${logo(1000)}</div>
+ <div style="margin-top:20px">${logo(900)}</div>
  <div class="date" style="font-size:112px;margin-top:20px">March 12, 2027</div>
 </div>
-<div class="col" style="top:1070px;gap:12px">
+<div class="col" style="top:1085px;gap:12px">
  <div class="caps" style="font-size:34px;letter-spacing:.2em">Golf &amp; Mahjong Tournament</div>
  <div class="caps aqua" style="font-size:26px;letter-spacing:.3em">Miami Beach Golf Club</div>
 </div>
@@ -46,16 +46,17 @@ ${gmjf(46,true)}`);
 
 add('posts','02-friendly-rivalry',1080,1350,'light',`
 ${ground(1080,1350,false,[[540,640,460,'#F6C9A8',.5]],
- sweep('M-40 560 C 240 470, 520 650, 760 560 S 1020 440, 1120 500',false,{n:2,gap:14})+
- sweep('M-40 905 C 300 1000, 560 830, 820 920 S 1040 1000, 1120 960',false,{n:2,gap:14}))}
+ sweep('M-40 455 C 260 410, 540 490, 800 430 S 1040 420, 1120 445',false,{n:2,gap:14})+
+ sweep('M-40 640 C 300 690, 600 600, 860 645 S 1060 675, 1120 655',false,{n:2,gap:14})+
+ sweep('M-40 1000 C 240 940, 640 1060, 1120 990',false,{n:2,gap:14}))}
 ${hosts(64,false)}
 <div class="col" style="top:190px;gap:0">
  <div class="eb dk">March 12, 2027</div>
- <div class="disp navy" style="font-size:220px;line-height:.9;margin-top:24px">Two JCCs.</div>
- <div class="disp teal" style="font-size:112px;line-height:1;margin-top:120px">One Tournament.</div>
- <div class="disp redd" style="font-size:100px;line-height:1;margin-top:120px">One Friendly Rivalry!</div>
+ <div class="disp navy" style="font-size:170px;line-height:.9;margin-top:24px">Two JCCs.</div>
+ <div class="disp teal" style="font-size:108px;line-height:1;margin-top:92px">One Tournament.</div>
+ <div class="disp redd" style="font-size:112px;line-height:1;margin-top:92px">One Friendly<br>Rivalry!</div>
 </div>
-<div class="col" style="top:1110px">${plaque(30,false)}</div>
+<div class="col" style="top:1070px">${plaque(30,false)}</div>
 ${gmjf(46,false)}`);
 
 add('posts','03-golf',1080,1350,'dark',`
@@ -64,8 +65,8 @@ ${ball(330,370,540)}
 ${linesTop(1080,1350,sweep('M-40 1180 C 120 1100, 220 820, 330 700',true,{n:3,gap:16})+sweep('M870 640 C 960 520, 1040 470, 1120 450',true,{n:3,gap:16}))}
 ${hosts(64,true)}
 <div class="col" style="top:170px;z-index:12"><div class="eb">Golf &amp; Games Classic</div><div class="disp" style="font-size:210px;line-height:.9;margin-top:10px">Golf:</div></div>
-<div class="col" style="top:960px;gap:16px;z-index:12">
- <div class="disp goldtxt" style="font-size:96px">May the best team win!</div>
+<div class="col" style="top:935px;gap:14px;z-index:12">
+ <div class="disp goldtxt" style="font-size:92px;line-height:1.02">May the best<br>team win!</div>
  <div class="caps" style="font-size:26px;letter-spacing:.24em">March 12, 2027 &middot; Miami Beach Golf Club</div>
 </div>
 ${gmjf(46,true)}`);
@@ -95,17 +96,17 @@ ${gmjf(40,true)}`);
 // ---------------- CAROUSEL: one 3240px navy panorama, one continuous line ----------------
 const PANO=`<svg width="3240" height="1350" viewBox="0 0 3240 1350">${DEFS}<rect width="3240" height="1350" fill="#002838"/>
 ${[[540,520,420,NAVY_GLOW,.9],[540,520,250,GOLD_GLOW,.15],[1620,560,420,NAVY_GLOW,.8],[2700,560,420,NAVY_GLOW,.8],[2700,560,240,GOLD_GLOW,.12]].map(([x,y,r,c,o])=>`<circle cx="${x}" cy="${y}" r="${r}" fill="${c}" opacity="${o}" filter="url(#glow)"/>`).join('')}
-${sweep('M-40 1000 C 300 880, 520 1080, 820 1010 S 1180 760, 1420 840 S 1760 1080, 2000 990 S 2380 720, 2620 800 S 3000 1060, 3280 960',true,{n:3,gap:16,grad:'gP'})}</svg>`;
+${sweep('M-40 1046 C 300 1000, 620 1080, 900 1030 S 1400 975, 1700 1035 S 2200 1010, 2420 900 S 2900 780, 3280 860',true,{n:3,gap:14,grad:'gP'})}</svg>`;
 const slide=(i,c)=>`<div class="pano" style="--pw:3240px;--px:${-1080*i}px">${PANO}</div>${c}`;
 add('posts','carousel-1',1080,1350,'dark',slide(0,`${hosts(64,true)}
-<div class="col" style="top:200px;gap:0"><div class="eb" style="font-size:34px">Save the date</div><div style="margin-top:20px">${logo(1000)}</div><div class="date" style="font-size:108px;margin-top:20px">March 12, 2027</div></div>
-<div class="col" style="top:1090px"><div class="caps" style="font-size:32px;letter-spacing:.2em">Golf &amp; Mahjong Tournament</div></div>
+<div class="col" style="top:200px;gap:0"><div class="eb" style="font-size:34px">Save the date</div><div style="margin-top:20px">${logo(900)}</div><div class="date" style="font-size:108px;margin-top:20px">March 12, 2027</div></div>
+<div class="col" style="top:1110px"><div class="caps" style="font-size:32px;letter-spacing:.2em">Golf &amp; Mahjong Tournament</div></div>
 <div class="swipe" style="bottom:160px">Swipe &rarr;</div>${gmjf(46,true)}`));
 add('posts','carousel-2',1080,1350,'dark',slide(1,`${hosts(64,true)}
 ${ball(90,230,330)}${tile('中',690,215,250,9,'#E02850')}
 <div class="col" style="left:0;right:auto;width:540px;top:590px;gap:10px"><div class="disp" style="font-size:124px">Golf</div><div class="caps gold" style="font-size:32px;line-height:1.25">May the best<br>team win!</div></div>
 <div class="col" style="left:auto;right:0;width:540px;top:590px;gap:10px"><div class="disp" style="font-size:124px">Mahjong</div><div class="caps" style="font-size:32px;line-height:1.25;color:#FFB3C2">Everyone plays<br>together!</div></div>
-<div class="col" style="top:1060px"><div class="disp" style="font-size:54px;line-height:1.1">Two communities. <span class="goldtxt">One unforgettable day!</span></div></div>
+<div class="col" style="top:850px"><div class="disp" style="font-size:56px;line-height:1.1">Two communities.<br><span class="goldtxt">One unforgettable day!</span></div></div>
 <div class="swipe" style="bottom:160px">Swipe &rarr;</div>${gmjf(46,true)}`));
 add('posts','carousel-3',1080,1350,'dark',slide(2,`${hosts(64,true)}
 <div class="col" style="top:220px;gap:0"><div class="eb">March 12, 2027</div><div class="disp" style="font-size:170px;line-height:.92;margin-top:26px">More<br>details</div><div class="disp goldtxt" style="font-size:120px;margin-top:10px">coming soon!</div></div>
@@ -114,15 +115,15 @@ add('posts','carousel-3',1080,1350,'dark',slide(2,`${hosts(64,true)}
 // ---------------- STORIES 1080x1920 (safe 250..1580) ----------------
 add('stories','01-save-the-date',1080,1920,'dark',`
 ${ground(1080,1920,true,[[540,760,460,NAVY_GLOW,.95],[540,760,280,GOLD_GLOW,.16]],
- sweep('M-40 1230 C 260 1100, 460 1330, 700 1240 S 980 1120, 1120 1170',true,{n:3,gap:16})+sweep('M-40 400 C 300 330, 700 470, 1120 380',true,{n:2,gap:14}))}
+ sweep('M-40 1336 C 260 1296, 520 1366, 760 1320 S 1000 1300, 1120 1314',true,{n:2,gap:10})+sweep('M-40 400 C 300 330, 700 470, 1120 380',true,{n:2,gap:14}))}
 ${hosts(272,true)}
-<div class="col" style="top:470px;gap:0"><div class="eb" style="font-size:38px">Save the date</div><div style="margin-top:24px">${logo(1020)}</div><div class="date" style="font-size:116px;margin-top:30px">March 12, 2027</div></div>
-<div class="col" style="top:1330px;gap:14px"><div class="caps" style="font-size:38px;letter-spacing:.18em">Golf &amp; Mahjong Tournament</div><div class="caps aqua" style="font-size:30px;letter-spacing:.3em">Miami Beach Golf Club</div></div>
+<div class="col" style="top:470px;gap:0"><div class="eb" style="font-size:38px">Save the date</div><div style="margin-top:24px">${logo(900)}</div><div class="date" style="font-size:116px;margin-top:30px">March 12, 2027</div></div>
+<div class="col" style="top:1372px;gap:12px"><div class="caps" style="font-size:38px;letter-spacing:.18em">Golf &amp; Mahjong Tournament</div><div class="caps aqua" style="font-size:30px;letter-spacing:.3em">Miami Beach Golf Club</div></div>
 ${gmjf(362,true)}`);
 
 add('stories','02-mark-your-calendar',1080,1920,'light',`
 ${ground(1080,1920,false,[[540,960,460,'#F6C9A8',.55]],
- sweep('M-40 760 C 260 640, 520 880, 780 780 S 1020 660, 1120 700',false,{n:3,gap:16})+sweep('M-40 1250 C 300 1350, 620 1170, 1120 1290',false,{n:3,gap:16}))}
+ sweep('M-40 722 C 260 684, 520 752, 780 708 S 1020 692, 1120 702',false,{n:2,gap:12})+sweep('M-40 1362 C 300 1338, 620 1392, 1120 1352',false,{n:2,gap:10}))}
 ${hosts(272,false)}
 <div class="col" style="top:430px;gap:0">
  <div class="disp navy" style="font-size:124px;line-height:.95">Mark Your<br><span class="teal">Calendar</span></div>
