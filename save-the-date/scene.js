@@ -7,7 +7,7 @@ function E(tag,attrs,parent){const e=document.createElementNS(NS,tag);for(const 
 function smooth(pts){let d=`M${pts[0][0]},${pts[0][1]}`;for(let i=0;i<pts.length-1;i++){const p0=pts[i-1]||pts[i],p1=pts[i],p2=pts[i+1],p3=pts[i+2]||p2;
   const c1=[p1[0]+(p2[0]-p0[0])/6,p1[1]+(p2[1]-p0[1])/6],c2=[p2[0]-(p3[0]-p1[0])/6,p2[1]-(p3[1]-p1[1])/6];d+=` C${c1[0]},${c1[1]} ${c2[0]},${c2[1]} ${p2[0]},${p2[1]}`}return d}
 window.buildScene=function(host,o){
-  const {W,H,horizon:hz,sunR=90,fadeToPaper=0,palms=true,seed=7,ribbons=[.35,.63],calm=null}=o, r=rng(seed);
+  const {W,H,horizon:hz,sunR=90,fadeToPaper=0,fadeSides=0,palms=true,seed=7,ribbons=[.35,.63],calm=null}=o, r=rng(seed);
   const svg=E('svg',{width:W,height:H,viewBox:`0 0 ${W} ${H}`,preserveAspectRatio:'none'});
   svg.style.cssText='position:absolute;inset:0;display:block';
   const d=E('defs',{},svg), f=hz/H;
@@ -76,6 +76,9 @@ window.buildScene=function(host,o){
   if(fadeToPaper){const fp=E('linearGradient',{id:'fp',x1:0,y1:0,x2:0,y2:1},d);
     [[0,'#FFF9EE',0],[.55,'#FFF9EE',.7],[1,'#FFF9EE',1]].forEach(([a,c,op])=>E('stop',{offset:a,'stop-color':c,'stop-opacity':op},fp));
     E('rect',{x:0,y:H-fadeToPaper,width:W,height:fadeToPaper,fill:'url(#fp)'},svg)}
+  if(fadeSides){[['l',1,0],['r',0,1]].forEach(([id,a1,a2])=>{const g=E('linearGradient',{id:'fs'+id,x1:0,y1:0,x2:1,y2:0},d);
+      E('stop',{offset:0,'stop-color':'#FFF9EE','stop-opacity':a1},g);E('stop',{offset:1,'stop-color':'#FFF9EE','stop-opacity':a2},g);
+      E('rect',{x:id==='l'?0:W-fadeSides,y:0,width:fadeSides,height:H,fill:`url(#fs${id})`},svg)})}
   host.prepend(svg);
 };
 })();

@@ -116,7 +116,8 @@ def duo():
     cell = (f'<td class="col" width="49%" valign="top" align="center" style="padding:6px 10px;font-family:{FONT};text-align:center;">'
             f'<div style="font-size:13px;font-weight:bold;letter-spacing:3px;color:{GOLDTEXT};text-transform:uppercase;">{{k}}</div>'
             f'<div style="font-size:18px;line-height:25px;color:{NAVY};padding-top:6px;">{{v}}</div></td>')
-    sep = f'<td width="1" style="width:1px;background:{GOLD};font-size:1px;line-height:1px;">&nbsp;</td>'
+    sep = (f'<td width="1" valign="middle" style="width:1px;padding:0;">'
+           f'<div style="width:1px;height:58px;background:{GOLD};font-size:1px;line-height:1px;">&nbsp;</div></td>')
     return (f'  <tr><td class="px" style="padding:0 40px 24px;"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>'
             + cell.format(k="Golf", v="May the best team win!") + sep
             + cell.format(k="Mahjong", v="Everyone plays together!")

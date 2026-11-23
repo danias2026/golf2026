@@ -5,7 +5,7 @@ Dos emails listos para Resend:
 - `save-the-date/`: el Save the Date principal (`index.html` + `index.txt`).
 - `reminder/`: un recordatorio más corto, con el mismo diseño.
 
-Los logos siguen la regla del evento: MARJCC y MBJCC arriba, juntos, en un solo color (verde azulado, `marjcc-teal.png` y `mbjcc-teal.png`), sin caja blanca. El logo de GMJF va siempre al final del email, solo.
+Los logos siguen la regla del evento: MARJCC y MBJCC van arriba, en blanco, dentro de la imagen del encabezado (`save-the-date-email-header.png`), sin caja blanca. El logo de GMJF va siempre al final del email, solo.
 
 ## 1. Subir las imágenes
 
