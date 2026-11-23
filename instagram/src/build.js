@@ -28,8 +28,8 @@ const DEFS=`<defs>
 <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="6" result="g"/><feMerge><feMergeNode in="g"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
 <radialGradient id="ray" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="scale(1400)"><stop offset="0" stop-color="#FFF3CF" stop-opacity=".9"/><stop offset="1" stop-color="#F0C078" stop-opacity="0"/></radialGradient>
 <radialGradient id="sun"><stop offset="0" stop-color="#FFFBEA"/><stop offset=".35" stop-color="#FFE9A8"/><stop offset=".62" stop-color="#F9C27E" stop-opacity=".75"/><stop offset="1" stop-color="#F89090" stop-opacity="0"/></radialGradient>
-<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0A3E58"/><stop offset=".22" stop-color="#1F7F9E"/><stop offset=".46" stop-color="#7FB4C0"/><stop offset=".64" stop-color="#F59C9A"/><stop offset=".82" stop-color="#F9B88A"/><stop offset="1" stop-color="#FFE0A0"/></linearGradient>
-<linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3FA6B4" stop-opacity="0"/><stop offset=".06" stop-color="#3FA6B4" stop-opacity=".9"/><stop offset=".3" stop-color="#0B6F7C"/><stop offset=".65" stop-color="#003A4C"/><stop offset="1" stop-color="#00141F"/></linearGradient>
+<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0B3A55"/><stop offset=".16" stop-color="#2A7FA0"/><stop offset=".34" stop-color="#C68FA8"/><stop offset=".5" stop-color="#F59497"/><stop offset=".68" stop-color="#F9A982"/><stop offset=".85" stop-color="#FFCB8E"/><stop offset="1" stop-color="#FFE7B0"/></linearGradient>
+<linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F7B48C" stop-opacity="0"/><stop offset=".05" stop-color="#F2A88E" stop-opacity=".9"/><stop offset=".16" stop-color="#4FA9B6"/><stop offset=".42" stop-color="#0B6573"/><stop offset=".74" stop-color="#003040"/><stop offset="1" stop-color="#00141F"/></linearGradient>
 <linearGradient id="deepwave" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#009098"/><stop offset=".5" stop-color="#004E5E"/><stop offset="1" stop-color="#00141F"/></linearGradient>
 <linearGradient id="gline" x1="0" x2="1"><stop offset="0" stop-color="#F0C078" stop-opacity="0"/><stop offset=".25" stop-color="#F0C078"/><stop offset=".5" stop-color="#FFF3CF"/><stop offset=".75" stop-color="#F0C078"/><stop offset="1" stop-color="#F0C078" stop-opacity="0"/></linearGradient>
 <linearGradient id="streak" x1="0" x2="1"><stop offset="0" stop-color="#FFE9A8" stop-opacity="0"/><stop offset=".5" stop-color="#FFF3CF"/><stop offset="1" stop-color="#FFE9A8" stop-opacity="0"/></linearGradient>
@@ -124,7 +124,7 @@ ${gmjf(44)}`);
 add('posts','03-golf',1080,1350,`
 ${sunset(1080,1350,880,540,700,0,{seed:33,noSunDisc:true,waveY:1120,rayOp:.3})}
 <div class="ball" style="width:520px;height:520px;left:280px;top:440px"></div>
-<svg class="layer" width="1080" height="1350" style="z-index:3">${DEFS}<rect x="280" y="880" width="520" height="470" fill="url(#sea)" opacity=".92"/>${waveLine(1080,884,10,300,.5,'url(#gline)',3,.9)}${waveFill(1080,1350,1120,22,520,.3,'url(#deepwave)',.7)}${waveFill(1080,1350,1200,18,700,2.1,'#00141F',.85)}</svg>
+<svg class="layer" width="1080" height="1350" style="z-index:3">${DEFS}<rect x="0" y="820" width="1080" height="530" fill="url(#sea)" opacity=".95"/>${waveLine(1080,884,10,300,.5,'url(#gline)',3,.9)}${waveFill(1080,1350,1120,22,520,.3,'url(#deepwave)',.7)}${waveFill(1080,1350,1200,18,700,2.1,'#00141F',.85)}</svg>
 ${hosts(64)}
 <div class="col" style="top:190px;z-index:11">
  <div class="eb">Golf &amp; Games Classic</div>
@@ -173,7 +173,7 @@ function pano(w,h){seed=41;
  g+=`<ellipse cx="2700" cy="520" rx="700" ry="420" fill="#F0C078" opacity=".14" filter="url(#b80)"/>`;
  g+=bokeh(0,0,w,h,70,['#FFE9A8','#7FD6DA','#F89090','#F0C078']);
  // one continuous gold ribbon that flows across all three slides
- const rib=`M-20 1000 C 500 820, 900 1180, 1620 940 S 2600 760, 3260 980`;
+ const rib=`M-20 1180 C 420 1110, 760 1150, 1240 1080 S 2300 1010, 2700 1060 S 3100 1110, 3260 1040`;
  g+=`<path d="${rib}" stroke="#F0C078" stroke-width="18" fill="none" opacity=".3" filter="url(#b8)"/><path d="${rib}" stroke="#FFF3CF" stroke-width="4" fill="none" filter="url(#glow)"/>`;
  g+=waveFill(w,h,1120,24,640,.4,'url(#deepwave)',.6)+waveLine(w,1116,24,640,.4,'url(#gline)',2.5,.7)+waveFill(w,h,1210,18,480,2.2,'#00141F',.88);
  g+=palm(-40,h-100,820,170,1.25,'#001822',.92)+palm(1080+20,h-70,700,-90,1,'#001822',.85)+palm(3240+20,h-90,760,-160,1.2,'#000E16',.95);
@@ -210,8 +210,8 @@ ${sunset(1080,1920,1130,540,820,190,{seed:55,waveY:1560,bk:34})}
 ${hosts(272)}
 <div class="col" style="top:430px;gap:0">
  <div class="eb" style="font-size:38px">Save the date</div>
- <div class="logo" style="width:1040px;margin-top:26px"><img src="${LOGO}" alt="Golf & Games Classic"></div>
- <div class="date" style="font-size:118px;margin-top:56px">March 12, 2027</div>
+ <div class="logo" style="width:940px;margin-top:24px"><img src="${LOGO}" alt="Golf & Games Classic"></div>
+ <div class="date" style="font-size:112px;margin-top:40px">March 12, 2027</div>
  <div class="hair" style="width:760px;margin:30px 0 26px"></div>
  <div class="caps" style="font-size:38px;letter-spacing:.18em">Golf &amp; Mahjong Tournament</div>
  <div class="caps aqua" style="font-size:30px;letter-spacing:.3em;margin-top:14px">Miami Beach Golf Club</div>
@@ -233,15 +233,15 @@ ${hosts(272)}
 ${gmjf(362)}`);
 
 add('stories','03-which-team',1080,1920,`
-${rivals(1080,1920,{vy:1080})}
+${rivals(1080,1920,{vy:990})}
 <div class="col" style="top:290px;gap:16px">
  <div class="eb" style="color:#FFF3CF;font-size:34px">March 12, 2027</div>
  <div class="disp" style="font-size:150px;line-height:.95">Which Team<br>Are You On?</div>
 </div>
-<div class="col" style="left:30px;right:auto;width:480px;top:720px;gap:24px"><img src="${M}marjcc-white.png" style="height:170px" alt="MARJCC"><div class="caps" style="font-size:58px;line-height:1.05">Team<br>MARJCC</div></div>
-<div class="col" style="left:auto;right:30px;width:480px;top:1200px;gap:24px"><img src="${M}mbjcc-white.png" style="height:116px" alt="MBJCC"><div class="caps" style="font-size:58px;line-height:1.05">Team<br>MBJCC</div></div>
-<div class="col" style="top:990px"><span class="vs" style="font-size:190px;color:#FFF3CF;text-shadow:0 0 40px rgba(240,192,120,.9),0 0 90px rgba(255,107,136,.6)">vs.</span></div>
-<div class="col" style="top:1490px"><div class="caps" style="font-size:28px;letter-spacing:.22em">Golf &amp; Mahjong &middot; Miami Beach Golf Club</div></div>
+<div class="col" style="left:30px;right:auto;width:480px;top:665px;gap:24px"><img src="${M}marjcc-white.png" style="height:170px" alt="MARJCC"><div class="caps" style="font-size:58px;line-height:1.05">Team<br>MARJCC</div></div>
+<div class="col" style="left:auto;right:30px;width:480px;top:1130px;gap:24px"><img src="${M}mbjcc-white.png" style="height:116px" alt="MBJCC"><div class="caps" style="font-size:58px;line-height:1.05">Team<br>MBJCC</div></div>
+<div class="col" style="top:880px"><span class="vs" style="font-size:190px;color:#FFF3CF;text-shadow:0 0 40px rgba(240,192,120,.9),0 0 90px rgba(255,107,136,.6)">vs.</span></div>
+<div class="col" style="top:1415px"><div class="caps" style="font-size:28px;letter-spacing:.22em">Golf &amp; Mahjong &middot; Miami Beach Golf Club</div></div>
 ${gmjf(362)}`);
 
 for(const p of P){fs.writeFileSync(path.join(__dirname,`${p.dir}-${p.name}.html`),`<!doctype html><html><head><meta charset="utf-8"><title>${p.name}</title>${FONTS}<link rel="stylesheet" href="base.css"><style>:root{--w:${p.w}px;--h:${p.h}px}</style></head><body>${p.body}</body></html>`)}

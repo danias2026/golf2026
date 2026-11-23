@@ -9,8 +9,8 @@ svg.layer,.pano svg{position:absolute;left:0;top:0}
 .eb{font:600 30px/1 'Josefin Sans',sans-serif;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);text-shadow:0 0 18px rgba(240,192,120,.45)}
 .disp{font-family:Limelight,Georgia,serif;font-weight:400;line-height:1.04;text-shadow:0 4px 30px rgba(0,20,31,.55)}
 .caps{font-family:'Josefin Sans',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
-.date{font:700 84px/1 'Josefin Sans',sans-serif;letter-spacing:.08em;background:linear-gradient(180deg,#FFF3CF 0%,#F0C078 55%,#C98F3A 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 22px rgba(240,192,120,.45))}
-.goldtxt{background:linear-gradient(180deg,#FFF3CF 0%,#F0C078 55%,#C98F3A 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 24px rgba(240,192,120,.4))}
+.date{font:700 84px/1 'Josefin Sans',sans-serif;letter-spacing:.08em;background:linear-gradient(180deg,#FFFBEA 0%,#FFE2A6 40%,#F0C078 75%,#E0A04A 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 22px rgba(240,192,120,.45))}
+.goldtxt{background:linear-gradient(180deg,#FFFBEA 0%,#FFE2A6 40%,#F0C078 75%,#E0A04A 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 26px rgba(255,214,150,.55))}
 .red{color:var(--redlt);text-shadow:0 0 28px rgba(255,107,136,.45)}
 .aqua{color:var(--aqua)}
 .gold{color:var(--gold)}

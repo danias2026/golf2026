@@ -7,51 +7,79 @@ Dos emails listos para Resend:
 
 Los logos siguen la regla del evento: MARJCC y MBJCC van arriba, en blanco, dentro de la imagen del encabezado (`save-the-date-email-header.png`), sin caja blanca. El logo de GMJF va siempre al final del email, solo.
 
-## 1. Subir las imágenes
+## Regla obligatoria: primero la prueba, después la aprobación de Dania
 
-Los emails no llevan las imágenes adentro: las cargan desde una URL pública. Sube **todo el contenido de `assets/`** a un lugar público, por ejemplo:
+**Ningún email sale sin una prueba aprobada.**
 
-- la carpeta de imágenes del landing page (por ejemplo `https://golfandgames.org/email`)
-- un bucket público de S3, Cloudflare R2 o Google Cloud Storage
+1. Se envía una prueba con `--test`. La prueba va **solo** a DaniaS@marjcc.org, con `[TEST]` delante del asunto.
+2. Dania la revisa y la aprueba.
+3. Solo entonces se hace el envío real, agregando `--approved`.
 
-Esa URL, **sin `/` al final**, es tu `ASSET_BASE_URL`.
+El script guarda una huella de cada prueba en `.approvals/pending.json`. La huella combina la plantilla, el HTML, el asunto y el remitente. El envío real solo sale si esa huella coincide con una prueba registrada. Si cambias el texto, el asunto o el remitente después de la prueba, el script lo bloquea y pide una prueba nueva.
 
-## 2. Verificar el dominio en Resend
+Cada envío real queda registrado en `.approvals/sent.log` y sale de la lista de pendientes.
 
-En Resend, ve a **Domains** y agrega el dominio desde el que vas a enviar (por ejemplo `marjcc.org`, o un subdominio como `events.marjcc.org`). Después agrega los registros DNS que te da Resend. Sin dominio verificado, los emails no salen o caen en spam.
+Si intentas un envío real sin prueba, verás: "Primero envía una prueba con --test y espera la aprobación de Dania".
 
-## 3. Variables de entorno
+## Remitentes
 
-```bash
-export RESEND_API_KEY="re_..."
-```
+| Opción | Remitente |
+|---|---|
+| `--sender info` (por defecto) | Golf & Games Classic <info@marjcc.org> |
+| `--sender roxana` | Roxana · MARJCC <roxanam@marjcc.org> |
+| `--from "Nombre <correo>"` | cualquier otro, escrito a mano |
+
+El dominio `marjcc.org` tiene que estar verificado en Resend (**Domains**), con los registros DNS que te da Resend. Sin dominio verificado, los emails no salen o caen en spam.
+
+## La clave de Resend
+
+La clave la pone el proxy de red automáticamente. No hace falta definir `RESEND_API_KEY`; si no existe, el script usa el valor `proxy-injected` y el proxy la reemplaza. Nunca pegues la clave en el chat ni en el código.
+
+## Imágenes
+
+- **Pruebas (`--test`):** las imágenes de `assets/` van adjuntas dentro del email (imágenes en línea, `cid:`). No hace falta subirlas a ningún lado.
+- **Envío real a una o varias personas:** usa `--inline-images` para adjuntarlas igual, o define `ASSET_BASE_URL`.
+- **Broadcast a una lista:** necesita `ASSET_BASE_URL`. Sube todo el contenido de `assets/` a un lugar público (por ejemplo la carpeta de imágenes del landing page) y usa esa URL **sin `/` al final**:
 
 ```bash
 export ASSET_BASE_URL="https://tu-sitio.org/email"
 ```
 
-## 4. Enviar una prueba
+## 1. Enviar la prueba a Dania
 
 ```bash
-npm install
+node send.mjs --template save-the-date --test
 ```
+
+Con otro remitente:
 
 ```bash
-node send.mjs --template save-the-date --to tu@email.org --from "Golf & Games Classic <events@tudominio.org>"
+node send.mjs --template save-the-date --sender roxana --test
 ```
 
-Para el recordatorio usa `--template reminder`. El asunto de la prueba lleva `[TEST]` delante. Ábrela en Gmail, Outlook y el celular antes de mandarla a la lista.
+Para el recordatorio usa `--template reminder`. Para ver qué haría el script sin enviar nada, agrega `--dry-run`.
 
-## 5. Enviar a la lista (Broadcast)
+## 2. Envío real, después de la aprobación
 
-1. En Resend, crea una **Audience** con los contactos de los dos JCCs y copia su ID.
-2. Crea el broadcast:
+A una o varias personas (separadas por comas):
 
 ```bash
-node send.mjs --template save-the-date --audience TU_AUDIENCE_ID --from "Golf & Games Classic <events@tudominio.org>"
+node send.mjs --template save-the-date --to persona@ejemplo.org --inline-images --approved
 ```
 
-3. El broadcast queda como borrador en Resend para revisarlo. Para enviarlo directamente, agrega `--send` al final.
+A una lista de Resend (Broadcast). Primero crea una **Audience** en Resend con los contactos de los dos JCCs y copia su ID:
+
+```bash
+node send.mjs --template save-the-date --audience TU_AUDIENCE_ID --approved
+```
+
+Eso deja el broadcast como borrador en Resend para revisarlo. Para enviarlo directamente:
+
+```bash
+node send.mjs --template save-the-date --audience TU_AUDIENCE_ID --approved --send
+```
+
+Usa el mismo `--sender` (o `--from`) y el mismo `--subject` que en la prueba; si no, la huella no coincide.
 
 El link de **Unsubscribe** solo funciona en broadcasts: Resend lo rellena solo (`{{{RESEND_UNSUBSCRIBE_URL}}}`).
 
@@ -59,6 +87,8 @@ El link de **Unsubscribe** solo funciona en broadcasts: Resend lo rellena solo (
 
 - `https://REPLACE-WITH-LANDING-PAGE-URL`: el link del botón (el landing page). Está en `build.py` y en los `.txt`.
 - `[SENDER NAME AND MAILING ADDRESS]`: nombre y dirección postal de quien envía. La ley CAN-SPAM pide una dirección física.
+
+Después de cambiar algo, corre `python3 build.py` y manda una prueba nueva.
 
 ## Cambiar el texto
 
@@ -68,11 +98,15 @@ El HTML de los dos emails se genera con `build.py`. Edita el texto ahí y corre:
 python3 build.py
 ```
 
-Los `.txt` se editan a mano.
+Los `.txt` se editan a mano. Para ver cómo queda, `node preview.cjs` genera `preview.png` y `preview-mobile.png` en cada carpeta.
 
 Asuntos por defecto:
 
 - Save the Date: "Save the date: Golf & Games Classic, March 12"
 - Recordatorio: "Reminder: Save March 12 for the Golf & Games Classic"
 
-Puedes cambiarlos con `--subject "..."`.
+Puedes cambiarlos con `--subject "..."`, y en ese caso la prueba también debe llevar el mismo `--subject`.
+
+## Requisitos
+
+Node 18 o más nuevo. El script usa la API de Resend directamente, sin instalar paquetes.

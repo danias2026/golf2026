@@ -2,11 +2,10 @@
   "name": "golf-games-classic-emails",
   "private": true,
   "type": "module",
+  "engines": { "node": ">=18" },
   "scripts": {
     "build": "python3 build.py",
+    "test-email": "node send.mjs --test",
     "send": "node send.mjs"
-  },
-  "dependencies": {
-    "resend": "^4.0.0"
   }
 }
