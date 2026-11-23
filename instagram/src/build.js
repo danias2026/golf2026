@@ -139,7 +139,7 @@ ${gmjf(44)}`);
 const tiles=(list)=>list.map(([ch,x,y,w,r,col,blur,z])=>`<div class="tile" style="width:${w}px;height:${w*1.27}px;left:${x}px;top:${y}px;font-size:${w*.72}px;transform:rotate(${r}deg);color:${col};filter:blur(${blur}px);z-index:${z};opacity:${blur?0.7:1}">${ch}</div>`).join('');
 add('posts','04-mahjong',1080,1350,`
 ${night(1080,1350,{seed:14,gy:500,rayOp:.2,waveY:1130})}
-${tiles([['發',-40,230,150,-24,'#006868',5,2],['一',870,180,140,20,'#E02850',6,2],['中',170,330,280,-13,'#E02850',0,4],['發',600,300,280,11,'#006868',0,4],['白',430,170,170,4,'#002838',3,3]])}
+${tiles([['發',-40,230,150,-24,'#006868',5,2],['北',870,180,140,20,'#E02850',6,2],['中',170,330,280,-13,'#E02850',0,4],['發',600,300,280,11,'#006868',0,4],['白',430,170,170,4,'#002838',3,3]])}
 ${hosts(64)}
 <div class="col" style="top:720px;gap:0">
  <div class="disp" style="font-size:190px;line-height:.95">Mahjong:</div>

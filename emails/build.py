@@ -47,37 +47,27 @@ def page(title, preheader, body_rows):
   @media only screen and (max-width:620px) {{
     .container {{ width:100% !important; }}
     .px {{ padding-left:24px !important; padding-right:24px !important; }}
-    .h1 {{ font-size:28px !important; line-height:34px !important; }}
+    .h1 {{ font-size:31px !important; line-height:37px !important; }}
     .col {{ display:block !important; width:100% !important; padding:0 0 12px 0 !important; }}
     .host {{ padding:0 10px !important; }}
   }}
 </style>
 </head>
-<body style="margin:0;padding:0;background:{CREAM};">
+<body style="margin:0;padding:0;background:{PAPER};">
 <div style="display:none;max-height:0;overflow:hidden;mso-hide:all;font-size:1px;line-height:1px;color:{CREAM};opacity:0;">{preheader}&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;</div>
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="{CREAM}" style="background:{CREAM};">
-<tr><td align="center" style="padding:24px 12px;">
-<table role="presentation" class="container" width="600" cellpadding="0" cellspacing="0" border="0" bgcolor="{PAPER}" style="width:600px;max-width:600px;background:{PAPER};border:1px solid {GOLD};">
-
-  <!-- Hosts: MARJCC and MBJCC, one color (teal), no white box -->
-  <tr><td align="center" style="padding:22px 24px 18px;background:{PAPER};">
-    <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center"><tr>
-      <td class="host" valign="middle" style="padding:0 18px;"><img src="{{{{ASSET_BASE_URL}}}}/marjcc-teal.png" width="90" height="56" alt="Michael-Ann Russell JCC" style="display:block;border:0;outline:none;width:90px;height:56px;"></td>
-      <td valign="middle" style="width:1px;padding:0;"><div style="width:1px;height:44px;background:{TEAL};opacity:0.6;font-size:1px;line-height:1px;">&nbsp;</div></td>
-      <td class="host" valign="middle" style="padding:0 18px;"><img src="{{{{ASSET_BASE_URL}}}}/mbjcc-teal.png" width="134" height="46" alt="MBJCC" style="display:block;border:0;outline:none;width:134px;height:46px;"></td>
-    </tr></table>
-  </td></tr>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="{PAPER}" style="background:{PAPER};">
+<tr><td align="center" style="padding:0;">
+<table role="presentation" class="container" width="600" cellpadding="0" cellspacing="0" border="0" bgcolor="{PAPER}" style="width:600px;max-width:600px;background:{PAPER};">
 
   <!-- Header art -->
   <tr><td style="padding:0;">
-    <a href="{CTA_URL}" target="_blank"><img src="{{{{ASSET_BASE_URL}}}}/save-the-date-email-header.png" width="600" height="300" alt="Save the date: Golf &amp; Games Classic, MARJCC vs MBJCC, Friday, March 12, 2027" style="display:block;border:0;outline:none;width:100%;max-width:600px;height:auto;background:{CREAM};color:{NAVY};font-family:{FONT};font-size:18px;"></a>
+    <a href="{CTA_URL}" target="_blank"><img src="{{{{ASSET_BASE_URL}}}}/save-the-date-email-header.png" width="600" height="400" alt="MARJCC and MBJCC present: Save the date, Golf &amp; Games Classic, MARJCC vs MBJCC, March 12, 2027" style="display:block;border:0;outline:none;width:100%;max-width:600px;height:auto;background:{NAVY};color:{PAPER};font-family:{FONT};font-size:18px;"></a>
   </td></tr>
 
 {body_rows}
 
-  <!-- Waves band -->
-  <tr><td style="height:10px;line-height:10px;font-size:10px;background:{TEAL};">&nbsp;</td></tr>
-  <tr><td style="height:6px;line-height:6px;font-size:6px;background:#009098;">&nbsp;</td></tr>
+  <!-- Soft gold hairline -->
+  <tr><td style="padding:8px 120px 0;"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="border-top:1px solid {GOLD};height:1px;line-height:1px;font-size:1px;">&nbsp;</td></tr></table></td></tr>
 
   <!-- Footer -->
   <tr><td class="px" align="center" style="padding:24px 40px 8px;font-family:{FONT};font-size:12px;line-height:18px;color:{MUTED};">
@@ -87,7 +77,7 @@ def page(title, preheader, body_rows):
   </td></tr>
 
   <!-- GMJF: always last -->
-  <tr><td align="center" style="padding:16px 24px 24px;background:#FFFFFF;">
+  <tr><td align="center" style="padding:14px 24px 32px;background:{PAPER};">
     <img src="{{{{ASSET_BASE_URL}}}}/gmjf-logo-black.png" width="101" height="48" alt="Greater Miami Jewish Federation" style="display:block;border:0;outline:none;width:101px;height:48px;margin:0 auto;">
   </td></tr>
 
@@ -110,26 +100,25 @@ def eyebrow(t):
 
 def h1(line1, line2):
     return (f'  <tr><td class="px" align="center" style="padding:0 40px 18px;">'
-            f'<h1 class="h1" style="margin:0;font-family:{DISPLAY};font-weight:normal;font-size:34px;line-height:40px;color:{NAVY};">'
+            f'<h1 class="h1" style="margin:0;font-family:{DISPLAY};font-weight:normal;font-size:40px;line-height:46px;color:{NAVY};">'
             f'{line1}<br><span style="color:{TEAL};">{line2}</span></h1></td></tr>')
 
 
 def matchup():
     return (f'  <tr><td class="px" align="center" style="padding:4px 40px 22px;">'
             f'<table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center"><tr>'
-            f'<td style="border:2px solid {GOLD};padding:10px 18px;font-family:{FONT};font-size:15px;font-weight:bold;letter-spacing:1.5px;color:{NAVY};text-transform:uppercase;text-align:center;">'
+            f'<td style="border-top:1px solid {GOLD};border-bottom:1px solid {GOLD};padding:10px 6px;font-family:{FONT};font-size:15px;font-weight:bold;letter-spacing:1.5px;color:{NAVY};text-transform:uppercase;text-align:center;">'
             f'Team MARJCC <span style="color:{RED};font-family:{DISPLAY};font-style:italic;text-transform:none;letter-spacing:0;">vs.</span> Team MBJCC</td>'
             f'</tr></table></td></tr>')
 
 
 def duo():
-    cell = (f'<td class="col" width="50%" valign="top" style="padding:0 6px;">'
-            f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>'
-            f'<td style="border:1px solid {GOLD};background:{CREAM};padding:16px 12px;text-align:center;font-family:{FONT};">'
+    cell = (f'<td class="col" width="49%" valign="top" align="center" style="padding:6px 10px;font-family:{FONT};text-align:center;">'
             f'<div style="font-size:13px;font-weight:bold;letter-spacing:3px;color:{GOLDTEXT};text-transform:uppercase;">{{k}}</div>'
-            f'<div style="font-size:17px;line-height:24px;color:{NAVY};padding-top:6px;">{{v}}</div></td></tr></table></td>')
-    return (f'  <tr><td class="px" style="padding:0 34px 22px;"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>'
-            + cell.format(k="Golf", v="May the best team win!")
+            f'<div style="font-size:18px;line-height:25px;color:{NAVY};padding-top:6px;">{{v}}</div></td>')
+    sep = f'<td width="1" style="width:1px;background:{GOLD};font-size:1px;line-height:1px;">&nbsp;</td>'
+    return (f'  <tr><td class="px" style="padding:0 40px 24px;"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>'
+            + cell.format(k="Golf", v="May the best team win!") + sep
             + cell.format(k="Mahjong", v="Everyone plays together!")
             + '</tr></table></td></tr>')
 
