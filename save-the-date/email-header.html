@@ -1,16 +1,14 @@
-<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="shared.css">
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="shared.css"><script src="scene.js"></script>
 <style>
-.page{width:600px;height:300px;background:linear-gradient(180deg,var(--sky) 0%,#7FB9C4 35%,var(--pink) 75%,var(--sun) 100%)}
-.in{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding-bottom:34px}
-.logo{width:340px}
-.band{position:absolute;left:0;right:0;bottom:0;height:38px;background:var(--navy);display:flex;align-items:center;justify-content:center}
-.band p{margin:0;font-family:'Josefin Sans',sans-serif;font-weight:700;font-size:16px;letter-spacing:.3em;color:var(--cream);text-transform:uppercase}
-.band span{color:var(--gold)}
-.waves{position:absolute;left:0;right:0;bottom:38px;--w:40px;--r1:12px;--h1:18px;--r2:18px;--h2:26px;height:26px}
+.page{width:600px;height:400px;background:#FFF9EE}
+.hosts{margin-top:18px;gap:18px;height:34px}.hosts .mar{height:32px}.hosts .mb{height:26px}
+.logo{width:330px;margin-top:8px}
+.line{font-size:13px;letter-spacing:.3em;margin-top:10px;color:#FFE7B0;text-shadow:0 0 12px rgba(255,214,150,.6)}
 </style></head><body>
-<div class="page">
-  <div class="in"><img class="logo" src="../logo/golf-games-classic-logo.png" alt=""></div>
-  <div class="waves"></div>
-  <div class="band"><p>Save the Date <span>&middot;</span> March 12, 2027</p></div>
-</div>
+<div class="page" id="p"><div class="layer">
+  <div class="hosts"><img class="mar" src="../brand/assets/mono/marjcc-white.png" alt=""><span class="div"></span><img class="mb" src="../brand/assets/mono/mbjcc-white.png" alt=""></div>
+  <img class="logo" src="../logo/golf-games-classic-logo.png" alt="">
+  <p class="caps line">Save the Date &middot; March 12, 2027</p>
+</div></div>
+<script>buildScene(document.getElementById('p'),{W:600,H:400,horizon:205,sunR:70,fadeToPaper:90,seed:3,palms:true,ribbons:[.5],calm:[300,260,40]})</script>
 </body></html>

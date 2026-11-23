@@ -13,11 +13,11 @@ const S=process.argv[2]||'';
   if(S==='check'){
     await shot('flyer.html',816,1056,0.6,'/tmp/claude-0/-home-user-golf2026/5f6b10c1-f89f-5b0b-8da6-8bd032f87899/scratchpad/std-flyer.png');
     await shot('square.html',1080,1350,0.45,'/tmp/claude-0/-home-user-golf2026/5f6b10c1-f89f-5b0b-8da6-8bd032f87899/scratchpad/std-sq.png');
-    await shot('email-header.html',600,300,1,'/tmp/claude-0/-home-user-golf2026/5f6b10c1-f89f-5b0b-8da6-8bd032f87899/scratchpad/std-em.png');
+    await shot('email-header.html',600,400,1,'/tmp/claude-0/-home-user-golf2026/5f6b10c1-f89f-5b0b-8da6-8bd032f87899/scratchpad/std-em.png');
   } else {
     await shot('flyer.html',816,1056,3.125,'save-the-date-flyer.png','save-the-date-flyer.pdf');
     await shot('square.html',1080,1350,1,'save-the-date-1080x1350.png');
-    await shot('email-header.html',600,300,2,'save-the-date-email-header.png');
+    await shot('email-header.html',600,400,2,'save-the-date-email-header.png');
   }
   await b.close();
 })();

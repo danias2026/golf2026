@@ -1,46 +1,34 @@
-<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="shared.css">
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="shared.css"><script src="scene.js"></script>
 <style>
 @page{size:8.5in 11in;margin:0}
 .page{width:816px;height:1056px}
-.frame{position:absolute;inset:18px;border:1.5px solid var(--gold2);pointer-events:none;z-index:3}
-.frame::after{content:"";position:absolute;inset:5px;border:1.5px solid var(--gold2)}
-.sky{height:128px;flex:none}
-.sky .sun{width:180px;height:70px}
-.sky h1{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding-bottom:22px;font-size:56px;color:var(--navy);letter-spacing:.02em}
-.body{flex:1;display:flex;flex-direction:column;align-items:center;padding:10px 80px 8px;gap:9px}
-.logo{width:470px}
-.date{font-size:36px}
-.when{font-family:'Josefin Sans',sans-serif;font-weight:600;font-size:17px;letter-spacing:.32em;color:var(--navy);text-transform:uppercase;margin:0}
-.dbl{width:100%}
-.tag{font-size:20px;line-height:1.35}
-.duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;width:100%}
-.duo div{border:1.5px solid var(--gold2);background:var(--paper);padding:12px;text-align:center;font-size:17px;line-height:1.35}
-.duo b{display:block;font-family:'Josefin Sans',sans-serif;font-size:14px;letter-spacing:.24em;color:var(--goldtext);text-transform:uppercase;margin-bottom:4px}
-.close{font-size:18px;margin:0;text-align:center}
-.close b{display:block;font-weight:700;font-size:19px}
-.close span{color:var(--muted);font-size:15px}
-.waves{--w:56px;--r1:18px;--h1:26px;--r2:26px;--h2:40px;height:40px;flex:none}
-.hosts{height:92px;gap:30px;flex:none;padding-top:22px}
-.hosts .mar{height:50px}.hosts .mb{height:40px}
-.foot{height:86px;background:var(--cream);flex:none;padding-bottom:24px}
-.foot img{height:38px}
+.hosts{margin-top:34px;gap:26px;height:50px}.hosts .mar{height:48px}.hosts .mb{height:38px}
+.std{font-size:84px;margin-top:22px;letter-spacing:.01em}
+.logo{width:500px;margin-top:6px}
+.dateRow{gap:18px;margin-top:4px}.dateRow .big{font-size:132px}.dateRow .side{font-size:22px}
+.venue{font-size:17px;letter-spacing:.32em;color:var(--cream);margin-top:10px}
+.flow{margin:16px 0 12px}
+.eyebrow{font-size:13px}
+.tag{font-family:Limelight,Georgia,serif;font-size:27px;line-height:1.15;text-align:center;margin:8px 0 0;color:var(--cream)}
+.tag span{color:#FFC98A}
+.team{font-size:15px;letter-spacing:.12em;margin-top:10px;color:var(--cream)}
+.duo{width:560px;margin-top:16px;gap:24px}.duo>div{font-size:16px;line-height:1.3;color:var(--cream)}.duo b{font-size:13px;margin-bottom:4px}
+.close{font-size:17px;font-weight:700;margin:16px 0 0;text-align:center}.more{font-size:14px;opacity:.8;margin:2px 0 0}
+.foot{margin-bottom:24px}.foot img{height:40px}
 </style></head><body>
-<div class="page">
-  <div class="hosts"><img class="mar" src="../brand/assets/mono/marjcc-teal.png" alt="Michael-Ann Russell JCC"><span class="div"></span><img class="mb" src="../brand/assets/mono/mbjcc-teal.png" alt="MBJCC"></div>
-  <div class="frame"></div>
-  <div class="sky"><div class="sun"></div><h1 class="std">Save the Date</h1></div>
-  <div class="body">
-    <img class="logo" src="../logo/golf-games-classic-logo.png" alt="Golf &amp; Games Classic">
-    <p class="date">Friday, March 12, 2027</p>
-    <p class="when">Miami Beach Golf Club</p>
-    <div class="dbl"></div>
-    <p class="eyebrow" style="font-size:15px">Golf &amp; Mahjong Tournament</p>
-    <p class="caps tag">Two JCCs. One Tournament.<br>One Friendly Rivalry!</p>
-    <p class="caps" style="font-size:16px;color:var(--teal)">Team MARJCC <span class="vs">vs.</span> Team MBJCC</p>
-    <div class="duo"><div><b>Golf</b>May the best team win!</div><div><b>Mahjong</b>Everyone plays together!</div></div>
-    <p class="close"><b>Two communities. One unforgettable day!</b><span>More details coming soon!</span></p>
-  </div>
-  <div class="waves"></div>
-  <div class="foot"><img src="../brand/assets/gmjf-logo-black.png" alt="Greater Miami Jewish Federation"></div>
-</div>
+<div class="page" id="p"><div class="layer">
+  <div class="hosts"><img class="mar" src="../brand/assets/mono/marjcc-white.png" alt="Michael-Ann Russell JCC"><span class="div"></span><img class="mb" src="../brand/assets/mono/mbjcc-white.png" alt="MBJCC"></div>
+  <h1 class="std goldtxt">Save the Date</h1>
+  <img class="logo" src="../logo/golf-games-classic-logo.png" alt="Golf &amp; Games Classic">
+  <div class="dateRow"><div class="side l">Friday<br>March</div><div class="big goldtxt">12</div><div class="side r">2027<br>&nbsp;</div></div>
+  <p class="caps venue">Miami Beach Golf Club</p>
+  <svg class="flow" width="420" height="18" viewBox="0 0 400 18"><defs><linearGradient id="fl" x1="0" x2="1"><stop offset="0" stop-color="#F0C078" stop-opacity="0"/><stop offset=".5" stop-color="#FFF1C9"/><stop offset="1" stop-color="#F0C078" stop-opacity="0"/></linearGradient></defs><path d="M0 9 C80 -2 140 20 200 9 C260 -2 320 20 400 9" fill="none" stroke="url(#fl)" stroke-width="1.6"/><path d="M200 2 L207 9 L200 16 L193 9 Z" fill="#F0C078"/></svg>
+  <p class="eyebrow">Golf &amp; Mahjong Tournament</p>
+  <p class="tag">Two JCCs. One Tournament.<br><span>One Friendly Rivalry!</span></p>
+  <p class="caps team">Team MARJCC <span class="vs">vs.</span> Team MBJCC</p>
+  <div class="duo"><div><b>Golf</b>May the best team win!</div><span class="sep"></span><div><b>Mahjong</b>Everyone plays together!</div></div>
+  <p class="close">Two communities. One unforgettable day!</p><p class="more">More details coming soon!</p>
+  <div class="foot"><img src="../brand/assets/gmjf-logo-white.png" alt="Greater Miami Jewish Federation"></div>
+</div></div>
+<script>buildScene(document.getElementById('p'),{W:816,H:1056,horizon:500,sunR:120,seed:11,ribbons:[.12,.97],calm:[850,420,230]})</script>
 </body></html>

@@ -1,36 +1,27 @@
-<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="shared.css">
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="shared.css"><script src="scene.js"></script>
 <style>
 .page{width:1080px;height:1350px}
-.sky{height:190px;flex:none}
-.sky .sun{width:240px;height:92px}
-.sky h1{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding-bottom:30px;font-size:88px}
-.body{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 90px;gap:20px}
-.logo{width:800px}
-.date{font-size:58px}
-.when{font-family:'Josefin Sans',sans-serif;font-weight:600;font-size:26px;letter-spacing:.32em;text-transform:uppercase;margin:0}
-.dbl{width:100%;height:8px;border-width:2px}
-.eyebrow{font-size:22px}
-.tag{font-size:28px;line-height:1.3}
-.more{font-size:22px;color:var(--muted);margin:0}
-.waves{--w:72px;--r1:24px;--h1:34px;--r2:34px;--h2:52px;height:52px;flex:none}
-.hosts{height:140px;gap:44px;flex:none}
-.hosts .mar{height:80px}.hosts .mb{height:64px}
-.foot{height:110px;background:var(--cream);flex:none;padding-bottom:14px}
-.foot img{height:64px}
+.hosts{margin-top:52px;gap:36px;height:70px}.hosts .mar{height:68px}.hosts .mb{height:54px}
+.std{font-size:136px;margin-top:34px}
+.logo{width:740px;margin-top:8px}
+.dateRow{gap:26px;margin-top:6px}.dateRow .big{font-size:200px}.dateRow .side{font-size:32px}
+.venue{font-size:26px;letter-spacing:.32em;margin-top:14px}
+.flow{margin:24px 0 18px}
+.tag{font-family:Limelight,Georgia,serif;font-size:40px;line-height:1.12;text-align:center;margin:0}
+.tag span{color:#FFC98A}
+.more{font-size:22px;opacity:.85;margin:16px 0 0}
+.foot{margin-bottom:40px}.foot img{height:60px}
 </style></head><body>
-<div class="page">
-  <div class="hosts"><img class="mar" src="../brand/assets/mono/marjcc-teal.png" alt="Michael-Ann Russell JCC"><span class="div"></span><img class="mb" src="../brand/assets/mono/mbjcc-teal.png" alt="MBJCC"></div>
-  <div class="sky"><div class="sun"></div><h1 class="std">Save the Date</h1></div>
-  <div class="body">
-    <img class="logo" src="../logo/golf-games-classic-logo.png" alt="Golf &amp; Games Classic">
-    <p class="date">Friday, March 12, 2027</p>
-    <p class="when">Miami Beach Golf Club</p>
-    <div class="dbl"></div>
-    <p class="eyebrow">Golf &amp; Mahjong Tournament</p>
-    <p class="caps tag">Two JCCs. One Tournament. One Friendly Rivalry!</p>
-    <p class="more">More details coming soon!</p>
-  </div>
-  <div class="waves"></div>
-  <div class="foot"><img src="../brand/assets/gmjf-logo-black.png" alt=""></div>
-</div>
+<div class="page" id="p"><div class="layer">
+  <div class="hosts"><img class="mar" src="../brand/assets/mono/marjcc-white.png" alt="Michael-Ann Russell JCC"><span class="div"></span><img class="mb" src="../brand/assets/mono/mbjcc-white.png" alt="MBJCC"></div>
+  <h1 class="std goldtxt">Save the Date</h1>
+  <img class="logo" src="../logo/golf-games-classic-logo.png" alt="Golf &amp; Games Classic">
+  <div class="dateRow"><div class="side l">Friday<br>March</div><div class="big goldtxt">12</div><div class="side r">2027<br>&nbsp;</div></div>
+  <p class="caps venue">Miami Beach Golf Club</p>
+  <svg class="flow" width="560" height="18" viewBox="0 0 400 18"><defs><linearGradient id="fl" x1="0" x2="1"><stop offset="0" stop-color="#F0C078" stop-opacity="0"/><stop offset=".5" stop-color="#FFF1C9"/><stop offset="1" stop-color="#F0C078" stop-opacity="0"/></linearGradient></defs><path d="M0 9 C80 -2 140 20 200 9 C260 -2 320 20 400 9" fill="none" stroke="url(#fl)" stroke-width="1.6"/><path d="M200 2 L207 9 L200 16 L193 9 Z" fill="#F0C078"/></svg>
+  <p class="tag">Two JCCs. One Tournament.<br><span>One Friendly Rivalry!</span></p>
+  <p class="more">More details coming soon!</p>
+  <div class="foot"><img src="../brand/assets/gmjf-logo-white.png" alt="Greater Miami Jewish Federation"></div>
+</div></div>
+<script>buildScene(document.getElementById('p'),{W:1080,H:1350,horizon:660,sunR:160,seed:5,ribbons:[.08,.62],calm:[1090,520,220]})</script>
 </body></html>

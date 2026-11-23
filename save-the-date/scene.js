@@ -7,7 +7,7 @@ function E(tag,attrs,parent){const e=document.createElementNS(NS,tag);for(const 
 function smooth(pts){let d=`M${pts[0][0]},${pts[0][1]}`;for(let i=0;i<pts.length-1;i++){const p0=pts[i-1]||pts[i],p1=pts[i],p2=pts[i+1],p3=pts[i+2]||p2;
   const c1=[p1[0]+(p2[0]-p0[0])/6,p1[1]+(p2[1]-p0[1])/6],c2=[p2[0]-(p3[0]-p1[0])/6,p2[1]-(p3[1]-p1[1])/6];d+=` C${c1[0]},${c1[1]} ${c2[0]},${c2[1]} ${p2[0]},${p2[1]}`}return d}
 window.buildScene=function(host,o){
-  const {W,H,horizon:hz,sunR=90,fadeToPaper=0,palms=true,seed=7}=o, r=rng(seed);
+  const {W,H,horizon:hz,sunR=90,fadeToPaper=0,palms=true,seed=7,ribbons=[.35,.63],calm=null}=o, r=rng(seed);
   const svg=E('svg',{width:W,height:H,viewBox:`0 0 ${W} ${H}`,preserveAspectRatio:'none'});
   svg.style.cssText='position:absolute;inset:0;display:block';
   const d=E('defs',{},svg), f=hz/H;
@@ -47,22 +47,24 @@ window.buildScene=function(host,o){
     for(let j=0;j<=n;j++){const x=-40+j*(W+80)/n;pts.push([x,y0+Math.sin(j*1.3+ph)*amp+(r()-.5)*amp*.6])}
     const dd=smooth(pts);
     E('path',{d:dd+` L${W+40},${H+10} L-40,${H+10} Z`,fill:i%2?'#0A4B5C':'#05364A',opacity:(.35+t*.25).toFixed(2)},waves);
-    E('path',{d:dd,fill:'none',stroke:'url(#goldline)','stroke-width':(.8+t*1.6).toFixed(1),opacity:(.35+t*.4).toFixed(2),filter:'url(#glowline)'},waves)}
+    E('path',{d:dd,fill:'none',stroke:'url(#goldline)','stroke-width':(.8+t*1.6).toFixed(1),opacity:(.18+t*.22).toFixed(2),filter:'url(#glowline)'},waves)}
   // two big flowing gold ribbons
-  for(let i=0;i<2;i++){const y0=hz+(H-hz)*(.35+i*.28), pts=[];for(let j=0;j<=5;j++){pts.push([-60+j*(W+120)/5,y0+Math.sin(j*1.1+i*2+r())*((H-hz)*.07)])}
-    E('path',{d:smooth(pts),fill:'none',stroke:'url(#goldline)','stroke-width':i?2.2:3,opacity:.85,filter:'url(#glowline)'},svg)}
+  for(let i=0;i<ribbons.length;i++){const y0=hz+(H-hz)*ribbons[i], pts=[];for(let j=0;j<=5;j++){pts.push([-60+j*(W+120)/5,y0+Math.sin(j*1.1+i*2+r())*((H-hz)*.07)])}
+    E('path',{d:smooth(pts),fill:'none',stroke:'url(#goldline)','stroke-width':i?2.2:3,opacity:.8,filter:'url(#glowline)'},svg)}
+  if(calm){const cg=E('radialGradient',{id:'calm',cx:.5,cy:.5,r:.5},d);[[0,'#011520',.78],[.6,'#011520',.5],[1,'#011520',0]].forEach(([a,c,op])=>E('stop',{offset:a,'stop-color':c,'stop-opacity':op},cg));
+    E('ellipse',{cx:W/2,cy:calm[0],rx:calm[1],ry:calm[2],fill:'url(#calm)'},svg)}
   // palms
   if(palms){const pg=E('g',{fill:'#010C13',stroke:'#010C13','stroke-linecap':'round'},svg);
     const palm=(bx,by,tx,ty,s)=>{ // trunk
       const pts=[];for(let i=0;i<=12;i++){const t=i/12;pts.push([bx+(tx-bx)*t+Math.sin(t*Math.PI)*(tx-bx)*.25,by+(ty-by)*t])}
-      for(let i=0;i<pts.length-1;i++)E('line',{x1:pts[i][0],y1:pts[i][1],x2:pts[i+1][0],y2:pts[i+1][1],'stroke-width':(22-16*i/12)*s},pg);
-      for(let k=0;k<11;k++){const a=-Math.PI*(0.02+k*0.096)+(r()-.5)*.15, len=(150+r()*70)*s, droop=(.35+r()*.35);
+      for(let i=0;i<pts.length-1;i++)E('line',{x1:pts[i][0],y1:pts[i][1],x2:pts[i+1][0],y2:pts[i+1][1],'stroke-width':(38-24*i/12)*s},pg);
+      for(let k=0;k<11;k++){const a=-Math.PI*(0.02+k*0.096)+(r()-.5)*.15, len=(200+r()*90)*s, droop=(.35+r()*.35);
         const ex=tx+Math.cos(a)*len, ey=ty+Math.sin(a)*len*.55+len*droop*.75, mx=tx+Math.cos(a)*len*.55, my=ty+Math.sin(a)*len*.55-len*.08;
-        E('path',{d:`M${tx},${ty} Q${mx},${my} ${ex},${ey}`,fill:'none','stroke-width':4*s},pg);
+        E('path',{d:`M${tx},${ty} Q${mx},${my} ${ex},${ey}`,fill:'none','stroke-width':6*s},pg);
         for(let q=1;q<16;q++){const t=q/16, ix=(1-t)*(1-t)*tx+2*(1-t)*t*mx+t*t*ex, iy=(1-t)*(1-t)*ty+2*(1-t)*t*my+t*t*ey;
-          const dx=2*(1-t)*(mx-tx)+2*t*(ex-mx), dy=2*(1-t)*(my-ty)+2*t*(ey-my), nl=Math.hypot(dx,dy), nx=-dy/nl, ny=dx/nl, ll=(30-20*t)*s;
-          E('line',{x1:ix,y1:iy,x2:ix+nx*ll+dx/nl*ll*.6,y2:iy+ny*ll+dy/nl*ll*.6+ll*.5,'stroke-width':3*s},pg);
-          E('line',{x1:ix,y1:iy,x2:ix-nx*ll+dx/nl*ll*.6,y2:iy-ny*ll+dy/nl*ll*.6+ll*.5,'stroke-width':3*s},pg)}}};
+          const dx=2*(1-t)*(mx-tx)+2*t*(ex-mx), dy=2*(1-t)*(my-ty)+2*t*(ey-my), nl=Math.hypot(dx,dy), nx=-dy/nl, ny=dx/nl, ll=(44-30*t)*s;
+          E('line',{x1:ix,y1:iy,x2:ix+nx*ll+dx/nl*ll*.6,y2:iy+ny*ll+dy/nl*ll*.6+ll*.5,'stroke-width':4.5*s},pg);
+          E('line',{x1:ix,y1:iy,x2:ix-nx*ll+dx/nl*ll*.6,y2:iy-ny*ll+dy/nl*ll*.6+ll*.5,'stroke-width':4.5*s},pg)}}};
     const s=W/1080;
     palm(-30*s,H+20,120*s,hz-H*.34,1.05*s*1.0); palm(-80*s,H+20,30*s,hz-H*.12,.8*s);
     palm(W+30*s,H+20,W-130*s,hz-H*.30,1.0*s); palm(W+90*s,H+20,W-20*s,hz-H*.05,.75*s);}
