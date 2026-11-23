@@ -66,24 +66,28 @@ All fonts are free on Google Fonts.
 
 Never retype the logo lettering. "GOLF & GAMES CLASSIC" as a logo always comes from the logo file.
 
-## Composition: one look everywhere
+## Composition: Art Deco on beige
 
-The Instagram posts are the master look. The landing page, emails, save the date, videos and print all follow it, so every piece reads as one family.
+The approved save-the-date email is the master look. Every piece (email, posts, stories, videos, landing, print) is built from the same Art Deco parts, on one beige.
 
-- **The scene.** A Miami Beach golden hour: the sky melts from deep blue through pink and peach into a glowing sea, with no visible edge. Soft light rays from the horizon, gold bokeh, layered teal waves crowned with glowing gold lines. A night variant uses the same elements on deep navy with stars.
-- **Gold lines are the signature.** Thin, glowing, sweeping curves that flow across the piece, frame the logo, connect headline and date, and run continuously across a carousel or a scrolling page.
-- **Heroes.** The event logo, the golf ball as a rising sun, mahjong tiles floating at different depths.
-- **Type.** Big Limelight headlines with a gold gradient; Josefin Sans caps for dates and labels; Mulish for sentences. Type sits on the scene, never in boxes.
-- **Team pieces.** `team-marjcc` and `team-mbjcc` as two fields that melt into each other along a soft S-curve with a glowing gold seam and a glowing "vs.".
-- **Never:** palm trees, hard horizontal bands, white plates or boxed panels, geometric ray fans, scalloped wave strips, flat color blocks.
-- **Motion.** One continuous camera move, the logo building itself, gold lines drawing, bokeh drifting, water shimmering.
-- Interface elements (buttons, form fields) keep square corners (`radius-0`).
+- **One beige.** `deco-beige` is the ground of every piece and every section. Never change beige tones between sections; depth comes from gold lines and shapes, not from tinted panels. `deco-beige-deep` only frames the outside of an email or page.
+- **The top band.** Every piece opens with the color band: a `deco-navy` panel with cream sunburst rays, then flat blocks of `lagoon-teal`, `classic-red`, `band-gold` and `sunset-pink`, with `ocean-teal` scallops along the gold and pink blocks, and a `line-gold` double rule under it.
+- **The continuous frame.** A `line-gold` double line runs down both sides of the piece without a break. In email it is one HTML border with the images inside it, so it always lines up.
+- **The arch.** The event logo sits inside a gold double arch with soft `ray-tan` sunburst rays, stepped shoulders on both sides, a red keystone at the top and a gold base that closes it.
+- **Plaques.** The date goes on a stepped `deco-navy` plaque in `date-gold` Limelight; the venue sits centered under it in teal caps. The matchup goes on a pointed `lagoon-teal` plaque: TEAM MARJCC vs. TEAM MBJCC.
+- **Arch cards.** Golf and Mahjong each get an arch card: the golf ball on its tee, centered, with a crossed driver and iron behind it; the mahjong tiles. Caption in gold caps, line in Limelight.
+- **Dividers.** A gold fan with teal diamonds between double rules.
+- **Closing.** A `deco-navy` half-sun with rays holds "Two communities. One unforgettable day!", then rows of `ocean-teal` and `lagoon-teal` scallops edged in gold.
+- **Alignment is part of the brand.** Everything is symmetric and optically centered. Letter-spaced caps get a matching text indent so they truly center. Side lines line up from top to bottom.
+- **Never:** palm trees, sunset or ocean illustrations, glow, bokeh, gradients, or boxes in other tones of beige.
+- **Motion.** Rays fan open, color blocks slide in like a stepped curtain, gold lines draw themselves, scallops roll in, the logo builds inside the arch.
+- Interface elements (buttons, form fields) keep square corners (`radius-0`); a button sits in a gold double frame with diamonds on each side.
 
 ## Imagery
 
 - The logo is the hero of the campaign. The original sunset key art (`golf-games-key-art.jpg`) shows playing cards, so do not use it in new pieces; keep it only as a color and mood reference.
 - Photos: real people from both communities on the course and at the mahjong tables, smiling, in sun. Golden-hour light fits the palette. Avoid stock photos of empty golf courses.
-- Illustration is limited to the scene described above (sky, sea, waves, rays, bokeh, gold lines). Never use palm trees.
+- Illustration is limited to the Art Deco parts above and the logo objects (golf ball, tee, clubs, mahjong tiles). Never use palm trees or sunsets.
 
 ## Channel specs
 

@@ -5,28 +5,38 @@
 html,body{margin:0;height:100%}
 body{background:var(--surface);width:960px;height:340px;position:relative;overflow:hidden}
 svg{position:absolute;left:0;top:0;display:block}
-.line{fill:none;stroke:var(--rule);stroke-linecap:round}
-.l1{stroke-width:2}.l2{stroke-width:1}.l3{stroke-width:3}.l4{stroke-width:1}
-.dot{fill:var(--classic-red)}
-.ball{fill:var(--surface-raised);stroke:var(--ink);stroke-width:3}
-.txt{position:absolute;left:48px;bottom:44px;max-width:440px}
-h1{margin:0;font-family:var(--font-display);font-weight:400;font-size:60px;line-height:.95;color:var(--ink)}
-p{margin:14px 0 0;font-family:var(--font-body);font-size:14px;line-height:1.4;color:var(--ink-muted)}
+.navy{fill:var(--deco-navy)} .ray{fill:var(--deco-beige)} .teal{fill:var(--lagoon-teal)} .red{fill:var(--classic-red)}
+.gold{fill:var(--band-gold)} .pink{fill:var(--sunset-pink)} .scal{fill:var(--ocean-teal)}
+.rule{stroke:var(--line-gold);stroke-width:2;fill:none}
+.txt{position:absolute;left:48px;top:150px;max-width:880px}
+h1{margin:0;font-family:var(--font-display);font-weight:400;font-size:64px;line-height:.95;color:var(--ink)}
+p{margin:16px 0 0;font-family:var(--font-body);font-size:14px;line-height:1.4;color:var(--ink-muted)}
 </style></head>
 <body>
-<svg width="960" height="340" viewBox="0 0 960 340" aria-hidden="true">
+<svg width="960" height="124" viewBox="0 0 960 124" aria-hidden="true">
   <!--
-    blocks: none by request; the brand is the logo plus flowing gold lines. One ball disc (radius 40 = space-5) in surface-raised with an ink keyline, one classic-red accent dot (radius 8 = space-2)
-    arrangement: four gold hairlines sweep from the lower left zone edge (x 480) up and off the top-right edge, crossing once, like the lines in the campaign pieces
-    pattern: editorial hairline row, chosen because the user named the gold lines as the signature element; stroke widths 1-3px in the rule token
-    steps/radii: line spacing 16 (space-3) and 24 (space-4); ball radius 40 (space-5); dot radius 8 (space-2); radius-0 elsewhere
+    blocks: deco-navy 400x112 with deco-beige sunburst rays, lagoon-teal 160, classic-red 80, band-gold 200, sunset-pink 120; radius-0
+    arrangement: the brand's own top color band, a strip of unequal blocks across the top
+    pattern: the sunburst fan cut from the navy slab, plus ocean-teal half-round scallops (radius 16) along the gold and pink blocks
+    steps/radii: band 112, line-gold double rule 6 apart under it, gap below 24 (space-4); radius-0 corners
   -->
-  <path class="line l3" d="M480 330 C 620 300, 700 160, 960 120"/>
-  <path class="line l2" d="M480 314 C 640 290, 720 150, 960 96"/>
-  <path class="line l1" d="M496 340 C 680 320, 760 220, 960 200"/>
-  <path class="line l4" d="M520 340 C 700 300, 800 40, 960 24"/>
-  <circle class="ball" cx="800" cy="88" r="40"/>
-  <circle class="dot" cx="704" cy="226" r="8"/>
+  <rect class="navy" x="0" y="0" width="400" height="112"/>
+  <g class="ray">
+    <polygon points="200,112 0,22 0,0 18,0"/><polygon points="200,112 60,0 96,0"/><polygon points="200,112 140,0 170,0"/>
+    <polygon points="200,112 186,0 214,0"/><polygon points="200,112 230,0 260,0"/><polygon points="200,112 304,0 340,0"/>
+    <polygon points="200,112 382,0 400,0 400,22"/>
+  </g>
+  <rect class="teal" x="400" y="0" width="160" height="112"/>
+  <rect class="red" x="560" y="0" width="80" height="112"/>
+  <rect class="gold" x="640" y="0" width="200" height="112"/>
+  <rect class="pink" x="840" y="0" width="120" height="112"/>
+  <g class="scal">
+    <path d="M640 112a16 16 0 0 1 32 0z"/><path d="M672 112a16 16 0 0 1 32 0z"/><path d="M704 112a16 16 0 0 1 32 0z"/><path d="M736 112a16 16 0 0 1 32 0z"/>
+    <path d="M768 112a16 16 0 0 1 32 0z"/><path d="M800 112a16 16 0 0 1 32 0z"/><path d="M832 112a16 16 0 0 1 32 0z"/><path d="M864 112a16 16 0 0 1 32 0z"/>
+    <path d="M896 112a16 16 0 0 1 32 0z"/><path d="M928 112a16 16 0 0 1 32 0z"/>
+  </g>
+  <line class="rule" x1="0" y1="116" x2="960" y2="116"/>
+  <line class="rule" x1="0" y1="122" x2="960" y2="122"/>
 </svg>
 <div class="txt">
   <h1>Golf &amp; Games<br>Classic 2027</h1>
