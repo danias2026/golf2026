@@ -1,32 +1,22 @@
-The brand for the **Golf & Games Classic**, a golf and mahjong tournament on **March 12, 2027** at the **Miami Beach Golf Club**, played between two JCCs: **Team MARJCC** (Michael-Ann Russell JCC) and **Team MBJCC** (The Galbut Family Miami Beach JCC on the Simkins Family Campus). Use this book for the landing page, emails, social media, print and signage. All event materials are in **English**.
+The brand for the **Golf & Games Classic**, a golf and mahjong tournament on **Friday, March 12, 2027** at the **Miami Beach Golf Club**, played between two JCCs: **Team MARJCC** (Michael-Ann Russell JCC) and **Team MBJCC** (The Galbut Family Miami Beach JCC on the Simkins Family Campus). It follows the look of last year's Golf & Games Classic flyer: green felt, a thin gold frame and a gold serif title. Use this book for the landing page, emails, social media, video, print and signage. All event materials are in **English**.
 
-![Golf & Games Classic logo](/_blob/a3a4817e02e8d867ebf3e7e6ac3e9162)
-
-## The logo
-
-The event logo is `golf-games-classic-logo.png` (4800 x 3240, transparent outside the badge) and `golf-games-classic-logo.pdf` (vector, for print). The badge carries its own cream ground, so it works on cream, navy, photos and the sunset art.
-
-- The games are **mahjong only**. The logo shows mahjong tiles (中, 發 and a circles tile) and a golf ball on a tee. Never add playing cards, card suits or dice to any piece.
-- Minimum width: 240px on screen, 2 in in print.
-- Never retype, recolor, stretch or crop the logo. Clear space around it equals the height of the word CLASSIC.
+![Save the date flyer](/_blob/b334ffea873e73576e62a5cfb805a46c)
 
 ## Logo rule: hosts on top, GMJF at the bottom
 
-**Every piece carries all three partner logos.** No exceptions: landing page, every email, every social post and story, every video, flyers, banners, hole signs, name badges, slides.
+**Every piece carries all three partner logos.** No exceptions: landing page, every email, every post, story and video, flyers, banners, signs, badges, slides.
 
-- **The hosts, always at the top:** MARJCC and MBJCC sit side by side at the top of the piece, MARJCC first, in the `PartnerLogoStrip`. Match their optical size: MARJCC about 1.25 times the height of MBJCC (on web, 56px and 44px).
-- **One color, no box:** the host logos are always one color, never their original blues, and never on a white box. Use `marjcc-white.png` and `mbjcc-white.png` on navy, team colors, photos and the sunset; use `marjcc-teal.png` and `mbjcc-teal.png` (`lagoon-teal`) on cream and white. The lighter parts of each logo are a 38% tint of the same color, which is built into the files.
-- **GMJF, always at the bottom:** the Greater Miami Jewish Federation logo goes alone, at the very bottom of the piece, like a footer, centered, in the `gg-gmjf` footer. Nothing comes after it: in an email it sits under the legal line; on a post or story it is the last band (above the bottom safe zone on stories); on a video it closes every frame. Black on light grounds, white on dark.
-- No label such as "presented by" over any of the logos.
-- Never recolor the logos to any other color, stretch, crop, outline or add effects.
+- **Hosts at the top:** MARJCC top-left and MBJCC top-right, in one color, white on the felt (`marjcc-white.png`, `mbjcc-white.png`). Match their optical size: MARJCC about 1.25 times the height of MBJCC. Never on a box, never in their original blues.
+- **GMJF at the bottom:** the Greater Miami Jewish Federation logo goes alone, centered, as the very last element of the piece, in white (`gmjf-logo-white.png`). On stories it sits just above the bottom safe zone; in email it comes after the legal line.
+- No label such as "presented by" over any logo. Never recolor, stretch, crop, outline or add effects.
+
+## The wordmark
+
+The event name is set, not drawn: **GOLF & GAMES** on one line and **CLASSIC** below, in Playfair Display, `title-gold`, with a large Playfair ampersand in `amp-silver` that overlaps the two words. Use the files in `logo/wordmark/` rather than retyping it. Never break "Golf & Games Classic" across lines anywhere in copy (use non-breaking spaces or `white-space: nowrap`).
 
 ## Name and copy
 
-**Official name:** Golf & Games Classic. Write it with the ampersand. Short form: "the Classic".
-
-**What it is:** Golf & Mahjong Tournament. Use this as the descriptor under the name.
-
-**The matchup:** TEAM MARJCC vs. TEAM MBJCC. Always use the short names `MARJCC` and `MBJCC` (no need to spell out Miami Beach JCC). Both are one word, all caps.
+**Official name:** Golf & Games Classic. **What it is:** Golf & Mahjong Tournament. **The matchup:** TEAM MARJCC vs. TEAM MBJCC (always `MBJCC`, never "Miami Beach JCC"; the venue stays Miami Beach Golf Club).
 
 **Core lines** (use them as written):
 
@@ -35,84 +25,67 @@ The event logo is `golf-games-classic-logo.png` (4800 x 3240, transparent outsid
 - Mahjong: Everyone plays together!
 - Two communities. One unforgettable day!
 - More details coming soon!
+- For more information, please contact RoxanaM@marjcc.org
 
-**Voice.** Warm, playful and competitive in a friendly way. Sports trash talk stays good-natured: the rivalry is on the golf course, and at the mahjong tables everyone is one team. Write for both communities at once: never favor one JCC in copy, and when you list them, alternate who goes first or keep the logo order (MARJCC first) consistently.
+**Voice.** Warm, classic and a little competitive, like a country-club invitation with a wink. The rivalry is on the course; at the mahjong tables everyone plays together. Never favor one JCC.
 
-**Casing.** Headlines in the `display` face use Title Case. Labels, the matchup line, dates and buttons are ALL CAPS in the `deco` face. Body copy is sentence case.
+**Casing.** The wordmark and SAVE THE DATE in Playfair caps. Kickers, dates, venue and labels in Bebas Neue caps with wide tracking. Sentences in sentence case.
 
-**Dates and places.** `MARCH 12, 2027` in caps labels; "Friday, March 12, 2027" in sentences. Venue: `MIAMI BEACH GOLF CLUB`.
+## Composition: last year's flyer, this year's content
 
-**Punctuation.** Exclamation marks are part of this event's voice, at most one per line. No emoji in headlines or subject lines; one emoji is fine inside a social caption (golf flag, mahjong tile).
+- **Felt ground.** Every piece sits on `felt` green with a soft vignette (`felt-light` in the center to `felt-deep` at the edges) and a fine felt grain. No flat colors, no other backgrounds.
+- **Thin gold frame.** A single 3px `frame-gold` rectangle inset from the edges. Logos sit inside it at the top.
+- **Order of a full piece:** hosts → kicker "TWO JCCs. ONE TOURNAMENT." → wordmark → "MARJCC vs. MBJCC" → rule, "GOLF • MAHJONG", rule → photo → "SAVE THE DATE" in white Playfair → date in `title-gold` Bebas → matchup or venue → closing lines → contact line → GMJF.
+- **Rules.** Thin off-white lines at 55% opacity above and below the games line.
+- **The photo.** Crossed golf irons behind a golf ball, mahjong tiles on both sides, on green felt, centered, fading softly into the felt. Close-ups of the ball or the tiles work for single posts.
+- **Sheen.** The gold title may carry a soft light sheen; a few faint gold specks are allowed. Nothing else decorative.
+- **Never:** playing cards, poker chips, dice, palm trees, sunsets, Art Deco ray fans, scallop strips or color blocks.
+- **Alignment.** Everything centered and symmetric; letter-spaced caps get a matching text indent so they truly center.
 
 ## Color
 
-The palette comes straight from the key art: a Miami Beach sunset framed in Art Deco gold.
-
-- **Text and headlines:** `ink` on `surface`. Second headline line in `highlight` (teal), emphasis words and the "vs." in `accent` (red).
-- **Backgrounds:** `surface` (cream) for Day; `deco-navy` for Night (an evening email, a story, the awards dinner).
-- **Buttons:** the main call to action is `classic-red` with `on-red` text. Every other button uses `action` with `on-action`.
-- **Gold:** `rule` for frames, double rules and plaque borders. Gold text only through `gold-text`.
-- **Sunset colors** (`sky-blue`, `sunset-pink`, `sun-gold`, `ocean-teal`) are for illustration, photo overlays and background shapes. Never use them for text.
-- **Team colors:** `team-marjcc` and `team-mbjcc` only when the two teams are being compared (leaderboard, team T-shirts, scoreboard, "Which team are you on?" posts). Do not use them as general brand colors.
+- **Grounds:** `felt-light`, `felt`, `felt-deep` (felt vignette); `felt-email` for email backgrounds.
+- **Gold:** `title-gold` for the wordmark, dates and accents; `frame-gold` for the frame.
+- **Silver:** `amp-silver` for the ampersand and secondary italic lines.
+- **Text:** `ink-light` (off-white) for all running text and SAVE THE DATE; `ink-muted` for legal lines.
+- **Team colors:** `team-marjcc` and `team-mbjcc` only where the two teams are compared (scoreboards, team shirts).
 
 ## Type
 
-All fonts are free on Google Fonts.
+All free on Google Fonts.
 
-- **Limelight** (`display`): the Art Deco display face. Headlines only, short, 3 to 6 words. Never for paragraphs or buttons.
-- **Josefin Sans** (`deco`): geometric caps like CLASSIC and MARJCC vs MBJCC in the logo. Eyebrows, the matchup line, buttons, labels.
-- **Mulish** (`body`): everything you read in sentences.
-- **Email:** email programs often ignore web fonts. Put headlines with Limelight in images, or let them fall back; set body text in the `email` family (Arial).
+- **Playfair Display** (`display`): the wordmark, SAVE THE DATE, big headlines, the ampersand. Italic for silver secondary lines.
+- **Bebas Neue** (`caps`): kickers, dates, venue, labels, games line. Always tracked wide (0.12–0.34em).
+- **Poppins** (`sans`, 600–700): the contact line and buttons.
+- **Email:** Georgia replaces Playfair and Arial replaces Bebas/Poppins in live text.
 
-Never retype the logo lettering. "GOLF & GAMES CLASSIC" as a logo always comes from the logo file.
+## Buttons
 
-## Composition: Art Deco on beige
-
-The approved save-the-date email is the master look. Every piece (email, posts, stories, videos, landing, print) is built from the same Art Deco parts, on one beige.
-
-- **One beige.** `deco-beige` is the ground of every piece and every section. Never change beige tones between sections; depth comes from gold lines and shapes, not from tinted panels. `deco-beige-deep` only frames the outside of an email or page.
-- **The top band.** Every piece opens with the color band: a `deco-navy` panel with cream sunburst rays, then flat blocks of `lagoon-teal`, `classic-red`, `band-gold` and `sunset-pink`, with `ocean-teal` scallops along the gold and pink blocks, and a `line-gold` double rule under it.
-- **The continuous frame.** A `line-gold` double line runs down both sides of the piece without a break. In email it is one HTML border with the images inside it, so it always lines up.
-- **The arch.** The event logo sits inside a gold double arch with soft `ray-tan` sunburst rays, stepped shoulders on both sides, a red keystone at the top and a gold base that closes it.
-- **Plaques.** The date goes on a stepped `deco-navy` plaque in `date-gold` Limelight; the venue sits centered under it in teal caps. The matchup goes on a pointed `lagoon-teal` plaque: TEAM MARJCC vs. TEAM MBJCC.
-- **Arch cards.** Golf and Mahjong each get an arch card: the golf ball on its tee, centered, with a crossed driver and iron behind it; the mahjong tiles. Caption in gold caps, line in Limelight.
-- **Dividers.** A gold fan with teal diamonds between double rules.
-- **Closing.** A `deco-navy` half-sun with rays holds "Two communities. One unforgettable day!", then rows of `ocean-teal` and `lagoon-teal` scallops edged in gold.
-- **Alignment is part of the brand.** Everything is symmetric and optically centered. Letter-spaced caps get a matching text indent so they truly center. Side lines line up from top to bottom.
-- **Never:** palm trees, sunset or ocean illustrations, glow, bokeh, gradients, or boxes in other tones of beige.
-- **Motion.** Rays fan open, color blocks slide in like a stepped curtain, gold lines draw themselves, scallops roll in, the logo builds inside the arch.
-- Interface elements (buttons, form fields) keep square corners (`radius-0`); a button sits in a gold double frame with diamonds on each side.
+White outlined pill (2px `ink-light` border, fully rounded), Poppins bold label, as on last year's REGISTER button. No button until there is a link; use "More details coming soon!" instead. On phones, labels never wrap.
 
 ## Imagery
 
-- The logo is the hero of the campaign. The original sunset key art (`golf-games-key-art.jpg`) shows playing cards, so do not use it in new pieces; keep it only as a color and mood reference.
-- Photos: real people from both communities on the course and at the mahjong tables, smiling, in sun. Golden-hour light fits the palette. Avoid stock photos of empty golf courses.
-- Illustration is limited to the Art Deco parts above and the logo objects (golf ball, tee, clubs, mahjong tiles). Never use palm trees or sunsets.
+- **Temporary photo:** the current photo is a placeholder cut from last year's flyer (cards removed). Replace it everywhere with a licensed stock photo: two golf irons crossed behind a golf ball, mahjong tiles on both sides, no cards, chips or dice, dark green felt, moody light, horizontal, at least 6000 px wide.
+- Event photos: real people from both communities on the course and at the mahjong tables.
 
 ## Channel specs
 
 | Channel | Size | Notes |
 |---|---|---|
-| Landing page hero | full width | Host logos in the header, then the event logo, date, venue, button; GMJF closes the page footer. See `LandingHero`. |
-| Email | 600px wide | Host logos at the top, logo header image, cream body, one red button, legal line, GMJF last. See `EmailTemplate`. |
-| Instagram / Facebook post | 1080 x 1080 | Host logos at the top, then logo or photo, headline; GMJF as the last band. See `SocialPost`. |
-| Instagram portrait post | 1080 x 1350 | Same as the square, with more room for the headline. |
-| Story / Reel cover | 1080 x 1920 | Keep the top 250px and bottom 340px free of text (app buttons cover them). Host logos just below the top safe zone; GMJF just above the bottom safe zone. |
-| Facebook event cover | 1920 x 1005 | Host logos top, event logo centered on navy or cream, GMJF at the bottom. |
-| Hole sign / sponsor sign | 24 x 18 in | Navy or cream, sponsor logo in the center, partner strip at the bottom. |
+| Flyer (digital) | 1200 × 1965 | The master layout. |
+| Flyer (print) | 8.5 × 11 in | Same layout, vector text. |
+| Email | 600 px wide | Flyer as header image, live text below on felt, legal line, GMJF last. |
+| Instagram post | 1080 × 1350 | Felt, frame, hosts on top, GMJF last. Carousels are one continuous panorama. |
+| Story / Reel | 1080 × 1920 | Text out of the top 250 px and bottom 340 px; GMJF just above the bottom zone. |
+| Entrance banner | 10 × 8 ft | Horizontal, vector, 1 in bleed, 3 in safe margin. |
 
-## Iconography
+## Motion
 
-The brand has no icon set of its own. Use the game objects from the logo (golf ball on a tee, mahjong tiles) only as they appear in the logo. For interface icons on the landing page (calendar, map pin, clock), use a simple 2px line icon set such as Lucide, in `ink`.
+Slow, elegant and cinematic: the gold frame drawing itself, a light sheen crossing the wordmark, gentle push-ins on the photo, faint gold dust, soft film grain. No bouncy or flashy motion.
 
 ## Still to confirm
 
-These are not decided yet. Do not invent them in materials; write "More details coming soon!" instead.
-
-- Start time and schedule of the day
-- Registration link, prices and what the fee includes
-- Sponsorship levels
-- Who benefits from the funds raised, and any fundraising goal
-- Contact person, phone and email
-- Official hashtag
-- Vector (SVG or PDF) files of the MARJCC and MBJCC logos, for sharper one-color versions in print
+- The licensed stock photo (replaces the placeholder everywhere)
+- Start times and schedule, registration link and prices, sponsorship levels, committee chairs
+- Who benefits from the funds raised; official hashtag
+- Vector files of the MARJCC, MBJCC and GMJF logos for print

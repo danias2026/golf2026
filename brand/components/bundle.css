@@ -1,64 +1,16 @@
-@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&family=Limelight&family=Mulish:wght@400;600;700&display=swap");
-
-/* Golf & Games Classic: shared brand classes. Every color comes from tokens.css. */
-
-.gg { background: var(--surface); color: var(--ink); font-family: var(--font-body); font-size: 17px; line-height: 1.6; }
-.gg *, .gg *::before, .gg *::after { box-sizing: border-box; }
-
-.gg-display { font-family: var(--font-display); font-weight: 400; line-height: 1.06; margin: 0; text-wrap: balance; color: var(--ink); }
-.gg-display em { font-style: normal; color: var(--highlight); }
-.gg-eyebrow { font-family: var(--font-deco); font-weight: 600; font-size: 14px; letter-spacing: .28em; text-transform: uppercase; color: var(--gold-text); margin: 0; }
-.gg-headline { font-family: var(--font-deco); font-weight: 700; letter-spacing: .04em; text-transform: uppercase; margin: 0; }
-.gg-lead { font-size: 20px; line-height: 1.5; margin: 0; }
-.gg-small { font-size: 14px; line-height: 1.5; color: var(--ink-muted); margin: 0; }
-
-/* Gold double rule */
-.gg-rule { height: 5px; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); width: 100%; }
-
-/* Buttons */
-.gg-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 14px 28px; border: 2px solid transparent; border-radius: var(--radius-0); font-family: var(--font-deco); font-weight: 700; font-size: 15px; letter-spacing: .14em; text-transform: uppercase; text-decoration: none; cursor: pointer; transition: background-color .15s, color .15s, border-color .15s; }
-.gg-btn:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
-.gg-btn--red { background: var(--classic-red); color: var(--on-red); }
-.gg-btn--red:hover { background: #C41E45; }
-.gg-btn--primary { background: var(--action); color: var(--on-action); }
-.gg-btn--primary:hover { background: var(--highlight); }
-.gg-btn--ghost { background: transparent; color: var(--ink); border-color: var(--rule); }
-.gg-btn--ghost:hover { border-color: var(--ink); }
-
-/* Host logo strip: one color, no box, always at the top */
-.gg-strip { background: transparent; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 24px 40px; padding: 20px 24px; }
-.gg-strip img { display: block; width: auto; max-width: 100%; }
-.gg-strip .gg-logo-marjcc { height: 56px; }
-.gg-strip .gg-logo-mbjcc { height: 44px; }
-.gg-strip .gg-logo-gmjf { height: 60px; }
-.gg-strip--compact { gap: 16px 24px; padding: 12px 16px; }
-.gg-strip--compact .gg-logo-marjcc { height: 40px; }
-.gg-strip--compact .gg-logo-mbjcc { height: 32px; }
-.gg-strip--compact .gg-logo-gmjf { height: 36px; }
-.gg-strip-divider { width: 1px; align-self: stretch; background: var(--lagoon-teal); opacity: .5; }
-.gg-strip--on-dark .gg-strip-divider { background: #FFFFFF; }
-
-/* GMJF footer: alone, always the last element of the piece */
-.gg-gmjf { background: var(--partner-ground); display: flex; justify-content: center; padding: 14px 16px 18px; border-top: 1px solid var(--rule); }
-.gg-gmjf img { display: block; height: 48px; width: auto; }
-.gg-gmjf--compact { padding: 8px 16px 10px; }
-.gg-gmjf--compact img { height: 30px; }
-
-/* Matchup plaque: pointed ends like the logo */
-.gg-plaque { position: relative; display: inline-flex; align-items: center; justify-content: center; gap: .5em; padding: 14px 44px; background: var(--surface-raised); color: var(--ink); font-family: var(--font-deco); font-weight: 700; font-size: 22px; letter-spacing: .06em; text-transform: uppercase; clip-path: polygon(22px 0, calc(100% - 22px) 0, 100% 50%, calc(100% - 22px) 100%, 22px 100%, 0 50%); }
-.gg-plaque-frame { display: inline-block; padding: 2px; background: var(--rule); clip-path: polygon(23px 0, calc(100% - 23px) 0, 100% 50%, calc(100% - 23px) 100%, 23px 100%, 0 50%); }
-.gg-plaque .gg-vs { color: var(--accent); font-weight: 600; font-style: italic; text-transform: lowercase; letter-spacing: 0; }
-
-/* Facts block */
-.gg-facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 20px 0; }
-.gg-fact dt { font-family: var(--font-deco); font-weight: 600; font-size: 13px; letter-spacing: .24em; text-transform: uppercase; color: var(--gold-text); }
-.gg-fact dd { margin: 4px 0 0; font-family: var(--font-deco); font-weight: 700; font-size: 20px; letter-spacing: .03em; text-transform: uppercase; color: var(--ink); }
-
-/* Flowing gold line: the signature element. Use an inline SVG path with class gg-line. */
-.gg-line { fill: none; stroke: var(--rule); stroke-width: 2; stroke-linecap: round; }
-.gg-line--thin { stroke-width: 1; }
-
-/* Arch panel */
-.gg-arch { background: var(--surface-raised); border: 2px solid var(--rule); border-radius: var(--radius-arch) var(--radius-arch) 0 0; }
-
-@media (prefers-reduced-motion: reduce) { .gg-btn { transition: none; } }
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Bebas+Neue&family=Poppins:wght@600;700&display=swap");
+/* Golf & Games Classic: felt brand classes. Colors come from tokens.css. */
+.gg{background:radial-gradient(ellipse at 50% 45%,var(--felt-light),var(--felt) 55%,var(--felt-deep));color:var(--ink-light);font-family:var(--font-sans)}
+.gg *,.gg *::before,.gg *::after{box-sizing:border-box}
+.gg-frame{border:3px solid var(--frame-gold)}
+.gg-wordmark{font-family:var(--font-display);color:var(--title-gold);line-height:.9;text-align:center;margin:0;white-space:nowrap}
+.gg-wordmark .amp{color:var(--amp-silver);font-size:1.2em;position:relative;top:.08em;margin:0 -.05em}
+.gg-caps{font-family:var(--font-caps);letter-spacing:.3em;text-indent:.3em;text-transform:uppercase;text-align:center;margin:0}
+.gg-gold{color:var(--title-gold)}
+.gg-rule{height:2px;background:var(--rule-light)}
+.gg-btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:12px 44px;border:2px solid var(--ink-light);border-radius:var(--radius-pill);color:var(--ink-light);background:transparent;font-family:var(--font-sans);font-weight:700;font-size:18px;text-decoration:none;white-space:nowrap}
+.gg-btn:hover{background:rgba(244,243,238,.1)}
+.gg-btn:focus-visible{outline:3px solid var(--title-gold);outline-offset:3px}
+.gg-hosts{display:flex;justify-content:space-between;align-items:center;padding:18px 24px}
+.gg-hosts .marjcc{height:60px}.gg-hosts .mbjcc{height:48px}
+.gg-gmjf{display:flex;justify-content:center;padding:14px}.gg-gmjf img{height:40px}

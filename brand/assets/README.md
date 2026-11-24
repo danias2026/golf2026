@@ -1,0 +1,1 @@
+The approved green-felt pieces. `photo-temp.jpg` is a TEMPORARY placeholder (last year's photo, cards removed, mirrored); replace it with the licensed stock photo (at least 6000 px wide) everywhere before print.

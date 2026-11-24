@@ -3,40 +3,31 @@
 <html><head><meta charset="utf-8"><title>Cover</title>
 <style>
 html,body{margin:0;height:100%}
-body{background:var(--surface);width:960px;height:340px;position:relative;overflow:hidden}
+body{background:var(--felt);width:960px;height:340px;position:relative;overflow:hidden}
 svg{position:absolute;left:0;top:0;display:block}
-.navy{fill:var(--deco-navy)} .ray{fill:var(--deco-beige)} .teal{fill:var(--lagoon-teal)} .red{fill:var(--classic-red)}
-.gold{fill:var(--band-gold)} .pink{fill:var(--sunset-pink)} .scal{fill:var(--ocean-teal)}
-.rule{stroke:var(--line-gold);stroke-width:2;fill:none}
-.txt{position:absolute;left:48px;top:150px;max-width:880px}
-h1{margin:0;font-family:var(--font-display);font-weight:400;font-size:64px;line-height:.95;color:var(--ink)}
-p{margin:16px 0 0;font-family:var(--font-body);font-size:14px;line-height:1.4;color:var(--ink-muted)}
+.deep{fill:var(--felt-deep)} .light{fill:var(--felt-light)} .gold{fill:var(--title-gold)}
+.frame{fill:none;stroke:var(--frame-gold);stroke-width:3}
+.amp{fill:var(--amp-silver);font-family:var(--font-display)}
+.rule{stroke:var(--amp-silver);stroke-width:2;opacity:.6}
+.txt{position:absolute;left:48px;bottom:48px;max-width:440px}
+h1{margin:0;font-family:var(--font-display);font-weight:400;font-size:62px;line-height:.95;color:var(--title-gold)}
+p{margin:14px 0 0;font-family:var(--font-sans);font-size:14px;line-height:1.4;color:var(--ink-light)}
 </style></head>
 <body>
-<svg width="960" height="124" viewBox="0 0 960 124" aria-hidden="true">
+<svg width="960" height="340" viewBox="0 0 960 340" aria-hidden="true">
   <!--
-    blocks: deco-navy 400x112 with deco-beige sunburst rays, lagoon-teal 160, classic-red 80, band-gold 200, sunset-pink 120; radius-0
-    arrangement: the brand's own top color band, a strip of unequal blocks across the top
-    pattern: the sunburst fan cut from the navy slab, plus ocean-teal half-round scallops (radius 16) along the gold and pink blocks
-    steps/radii: band 112, line-gold double rule 6 apart under it, gap below 24 (space-4); radius-0 corners
+    blocks: felt-deep 480x340 field and a felt-light 280x280 inner field on the right; a title-gold disc (radius 8) as the only warm accent; radius-0
+    arrangement: one tall felt slab on the right holding a framed panel, like last year's flyer
+    pattern: one oversized Playfair ampersand in amp-silver, clipped by the panel, plus two thin rules; chosen because the silver ampersand is the most specific shape of this brand
+    steps/radii: frame inset 36 (space-3), rules 16 apart (space-2); radius-0
   -->
-  <rect class="navy" x="0" y="0" width="400" height="112"/>
-  <g class="ray">
-    <polygon points="200,112 0,22 0,0 18,0"/><polygon points="200,112 60,0 96,0"/><polygon points="200,112 140,0 170,0"/>
-    <polygon points="200,112 186,0 214,0"/><polygon points="200,112 230,0 260,0"/><polygon points="200,112 304,0 340,0"/>
-    <polygon points="200,112 382,0 400,0 400,22"/>
-  </g>
-  <rect class="teal" x="400" y="0" width="160" height="112"/>
-  <rect class="red" x="560" y="0" width="80" height="112"/>
-  <rect class="gold" x="640" y="0" width="200" height="112"/>
-  <rect class="pink" x="840" y="0" width="120" height="112"/>
-  <g class="scal">
-    <path d="M640 112a16 16 0 0 1 32 0z"/><path d="M672 112a16 16 0 0 1 32 0z"/><path d="M704 112a16 16 0 0 1 32 0z"/><path d="M736 112a16 16 0 0 1 32 0z"/>
-    <path d="M768 112a16 16 0 0 1 32 0z"/><path d="M800 112a16 16 0 0 1 32 0z"/><path d="M832 112a16 16 0 0 1 32 0z"/><path d="M864 112a16 16 0 0 1 32 0z"/>
-    <path d="M896 112a16 16 0 0 1 32 0z"/><path d="M928 112a16 16 0 0 1 32 0z"/>
-  </g>
-  <line class="rule" x1="0" y1="116" x2="960" y2="116"/>
-  <line class="rule" x1="0" y1="122" x2="960" y2="122"/>
+  <rect class="deep" x="480" y="0" width="480" height="340"/>
+  <rect class="light" x="580" y="30" width="280" height="280"/>
+  <rect class="frame" x="516" y="36" width="408" height="268"/>
+  <clipPath id="pc"><rect x="580" y="30" width="280" height="280"/></clipPath>
+  <text class="amp" x="720" y="300" text-anchor="middle" font-size="330" clip-path="url(#pc)">&amp;</text>
+  <line class="rule" x1="560" y1="80" x2="880" y2="80"/><line class="rule" x1="560" y1="96" x2="880" y2="96"/>
+  <circle class="gold" cx="720" cy="88" r="8"/>
 </svg>
 <div class="txt">
   <h1>Golf &amp; Games<br>Classic 2027</h1>

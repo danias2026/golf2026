@@ -1,11 +1,3 @@
-The 600px email layout for every event email: save the date, invitation, reminders, sponsor thank-yous and post-event recap.
+The 600px email: the flyer as header image, then live text on felt (`felt-email`): intro, Golf / Mahjong, closing line, More details coming soon!, contact line, legal line with the MARJCC address and unsubscribe, GMJF last.
 
-**Structure, top to bottom:** event logo image (full width) → eyebrow with the date → display headline (second line in teal) → one or two short paragraphs → Golf / Mahjong pair → one red button → "More details coming soon!" while details are open → a flowing gold line → one legal line → GMJF footer, last. The host logos (MARJCC, MBJCC) sit at the very top, above the logo image.
-
-**Provide:** the eyebrow, headline, body copy, button label and link.
-
-**Rules**
-- Background stays `shore-cream` in every email, whatever the reader's dark mode.
-- Body in the `email` family (Arial). Limelight headlines fall back to Georgia in Outlook; that is acceptable.
-- Subject lines: plain sentence case, no emoji, under 50 characters. Example: "Save the date: Golf & Games Classic, March 12".
-- One red button per email.
+**Provide:** subject, intro, any changes to the lines. Live text uses Georgia and Arial. Built in `emails/` and sent with `emails/send.mjs` after a test to DaniaS@marjcc.org and approval.
