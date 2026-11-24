@@ -82,11 +82,6 @@ a{color:inherit}
 .card .caps{font-size:30px}
 .card p+p{margin-top:10px;font-family:var(--serif);font-style:italic;color:var(--silver);font-size:20px}
 
-.loop .sub{margin-top:12px;color:var(--silver);font-size:17px}
-.signup{margin:24px auto 0;max-width:560px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
-.signup input{flex:1 1 260px;min-width:0;padding:14px 22px;border-radius:999px;border:2px solid var(--silver);background:rgba(52,58,52,.6);color:var(--white);font:500 17px var(--sans)}
-.signup input::placeholder{color:#9BA197}
-.msg{margin-top:12px;min-height:1.4em;color:var(--gold);font-size:16px}
 
 .closing{padding-top:80px}
 .serif-close{font-family:var(--serif);font-size:clamp(28px,4.6vw,50px);line-height:1.15}
