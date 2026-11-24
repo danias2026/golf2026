@@ -1,24 +1,34 @@
-# Landing page: Golf & Games Classic 2027
+# Golf & Games Classic landing page (green-felt design)
 
-Sitio estático (HTML, CSS y un poco de JavaScript). No necesita compilar nada: la carpeta `landing/` se sube tal cual.
+A single static page (no build step): `index.html`, `styles.css`, `main.js`, `assets/`.
 
-## Archivos
-- `index.html`: la página. `styles.css`, `main.js`: estilos y animaciones.
-- `assets/`: piezas Art Deco en `assets/deco/` (franja, arco con el logo y los logos de MARJCC y MBJCC en verde azulado, placa, tarjetas, cierre, olas), `gmjf-logo-black.png` (siempre al final), favicon y `golf-games-classic-2027.ics` para el botón "Save the date".
-- `og-image.png`: la imagen que aparece al compartir el link en WhatsApp, Facebook, etc.
-- Diseño Art Deco beige: `index.html`, `styles.css` y `main.js` se editan a mano. Las piezas gráficas (`assets/deco/`) salen de las mismas fuentes que los emails (`emails/src-deco/parts.html`, en alta resolución con `save-the-date/src-deco/render-parts.cjs`). `render.js` vuelve a sacar las vistas previas y la imagen para compartir (`node render.js`).
+- Hero: last year's flyer layout on green felt with the gold frame (it draws itself on load), MARJCC and MBJCC in white at the top, the gold title with the silver ampersand (with a slow gold sheen), the photo, SAVE THE DATE, date, Team MARJCC vs. Team MBJCC, venue, and two white pill buttons: Add to Calendar (`assets/golf-games-classic-2027.ics`) and Google Calendar.
+- Sections: Two JCCs / One Tournament / One Friendly Rivalry!, the team matchup, Golf and Mahjong, The Details (Schedule, Registration, Sponsorship: "More details coming soon!"), Stay in the Loop, the closing line and the contact line (RoxanaM@marjcc.org).
+- Footer: event line, then the GMJF logo last.
+- Motion respects "reduce motion". Responsive down to 360 px wide.
 
-## Ver la página en tu computadora
-1. Abre una terminal en la carpeta `landing/`.
-2. Corre `python3 -m http.server 8000`.
-3. Abre http://localhost:8000 en el navegador.
+## Preview locally
+Open `index.html` in a browser, or serve the folder:
 
-## Publicarla (3 opciones fáciles)
-1. **Netlify Drop**: entra a https://app.netlify.com/drop y arrastra la carpeta `landing/`. Te da un link al momento; luego puedes conectar un dominio (por ejemplo golf.marjcc.org).
-2. **Vercel**: crea un proyecto desde el repositorio `danias2026/golf2026`, en "Root Directory" pon `landing`, sin comando de build. Cada cambio en GitHub se publica solo.
-3. **GitHub Pages**: en el repositorio, Settings → Pages, publica desde la rama y la carpeta `landing/` (o copia su contenido a una rama `gh-pages`).
+```bash
+python3 -m http.server 8080
+```
 
-## Antes de lanzarla
-- Cuando tengas el dominio final, cambia `og:image` en `index.html` por la URL completa, por ejemplo `https://golf.marjcc.org/og-image.png`; algunas redes no leen rutas relativas.
-- El formulario "Stay in the loop" todavía no guarda correos: solo muestra un mensaje de gracias. Para conectarlo a una audiencia de Resend hay que crear una función serverless (`/api/subscribe`) con la API key guardada en el servidor. Está marcado con un comentario `TODO (Resend)` en `index.html` y `main.js`.
-- Schedule, Registration y Sponsorship dicen "More details coming soon!" hasta que haya información.
+Then visit http://localhost:8080. To re-render `preview-desktop.png`, `preview-mobile.png`, `og-image.png` and `assets/favicon.png`:
+
+```bash
+node render.js
+```
+
+## Swap the photo
+The photo is a temporary placeholder. Replace `assets/event-photo.jpg` with the licensed stock photo (same file name) and run `node render.js`.
+
+## Before launch
+- Stay in the Loop form is a placeholder: it only shows a thank-you message. Connect it to a serverless function that adds the email to a Resend audience (see the `TODO (Resend)` comments in `index.html` and `main.js`).
+- Once there is a domain, set `og:image` in `index.html` to the full URL (for example `https://example.org/og-image.png`).
+- Add the Register button when registration opens (white outlined pill, same `.pill` class).
+
+## Hosting options
+1. Netlify Drop: drag the `landing/` folder onto https://app.netlify.com/drop.
+2. Vercel: import the repository and set the root directory to `landing/` (no build command).
+3. GitHub Pages: publish the `landing/` folder from the repository settings (Pages, deploy from a branch).
