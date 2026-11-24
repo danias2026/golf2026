@@ -4,7 +4,7 @@ Two templates, both from `info@marjcc.org` by default:
 
 | Template | Subject |
 |---|---|
-| `save-the-date/` | Save the date: Golf & Games Classic, March 12 |
+| `save-the-date/` | Save the Date: MARJCC vs MBJCC Golf & Games Classic, March 12 |
 | `reminder/` | Reminder: Save March 12 for the Golf & Games Classic |
 
 Each folder has `index.html`, `index.txt` and desktop/mobile previews (`preview.png`, `preview-mobile.png`).
@@ -43,3 +43,13 @@ npm run send -- --template save-the-date --audience <AUDIENCE_ID> --approved --s
 ```
 
 Options: `--sender info|roxana`, `--from "..."`, `--subject "..."`, `--dry-run`, `--inline-images`. Broadcasts need `ASSET_BASE_URL` (public URL of the `assets/` folder, no trailing slash). On your own computer, set `RESEND_API_KEY` and use `node send.mjs` with the same options.
+
+
+## Hosted images
+
+The save-the-date images are hosted on the MARJCC website:
+
+- https://marjcc.org/wp-content/uploads/2024/03/hero-save-the-date.jpg
+- https://marjcc.org/wp-content/uploads/2024/03/gmjf-logo-white.png
+
+`send.mjs` uses `https://marjcc.org/wp-content/uploads/2024/03` as the default `ASSET_BASE_URL`. The reminder email also needs `hero-reminder.jpg` uploaded to the same folder before it is sent.

@@ -27,7 +27,7 @@ const SENDERS = {
   roxana: 'Roxana · MARJCC <roxanam@marjcc.org>',
 };
 const SUBJECTS = {
-  'save-the-date': 'Save the date: Golf & Games Classic, March 12',
+  'save-the-date': 'Save the Date: MARJCC vs MBJCC Golf & Games Classic, March 12',
   reminder: 'Reminder: Save March 12 for the Golf & Games Classic',
 };
 const DEFAULT_SENDER = { 'save-the-date': 'info', reminder: 'info' };
@@ -104,7 +104,9 @@ if (!isTest && !match) {
 // ---- images ----
 const inline = opt['no-inline-images'] ? false : (opt['inline-images'] ? true : isTest);
 if (opt.audience && inline) fail('Los broadcasts no admiten imágenes adjuntas. Quita --inline-images y define ASSET_BASE_URL.');
-const base = (process.env.ASSET_BASE_URL || '').replace(/\/$/, '');
+// Images for the save-the-date email are hosted on the MARJCC website (uploaded Nov 2026).
+const DEFAULT_ASSET_BASE_URL = 'https://marjcc.org/wp-content/uploads/2024/03';
+const base = (process.env.ASSET_BASE_URL || DEFAULT_ASSET_BASE_URL).replace(/\/$/, '');
 if (!inline && !base) fail('Define ASSET_BASE_URL con la URL pública de la carpeta assets/ (o usa --inline-images para un envío individual).');
 
 let html = rawHtml;
