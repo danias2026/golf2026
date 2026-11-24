@@ -1,0 +1,18 @@
+/* Golf & Games Classic: green-felt design. Shared by flyer, letter and square. */
+:root{--gold:#DEC000;--frame:#D8C012;--silver:#B4BAB4;--white:#F4F3EE}
+*{box-sizing:border-box}html,body{margin:0}
+.piece{position:relative;overflow:hidden;background:#3A413A;color:var(--white);font-family:'Bebas Neue',Impact,sans-serif}
+.felt{position:absolute;inset:0;width:100%;height:100%}
+.frame{position:absolute;border:3px solid var(--frame)}
+.abs{position:absolute;left:0;right:0;text-align:center}
+.caps{letter-spacing:.32em;text-indent:.32em}
+.serif{font-family:'Playfair Display',Georgia,serif;font-weight:400;line-height:.95}
+.gold{color:var(--gold)}
+.goldg{background:linear-gradient(100deg,#C9A800 0%,#DEC000 35%,#FFF3A0 47%,#DEC000 58%,#B99A00 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.amp{font-family:'Playfair Display',Georgia,serif;color:var(--silver)}
+.rule{position:absolute;height:2px;background:rgba(244,243,238,.55)}
+.photo{position:absolute;background:url(../assets/event-photo.jpg) center/cover no-repeat;
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 14%,#000 82%,transparent 100%),linear-gradient(to right,transparent 0,#000 6%,#000 94%,transparent 100%);
+  -webkit-mask-composite:source-in;mask-composite:intersect}
+.nowrap{white-space:nowrap}
+.contact{font-family:Poppins,Arial,sans-serif;font-weight:700;line-height:1.35}

@@ -8,10 +8,10 @@
 - Resend: domain marjcc.org is verified. The API key is injected by the environment's network proxy; never ask for it in chat or write it to a file.
 
 ## Brand rules (details in brand/README.md)
-- MARJCC and MBJCC logos: always at the TOP, one color (white on dark, teal #006868 on light), no white box. MARJCC first.
+- MARJCC and MBJCC logos: always at the TOP, one color, white on the felt (MARJCC top-left, MBJCC top-right), no box.
 - GMJF logo: always alone at the very BOTTOM, like a footer.
 - Never break the event name across lines: keep "Golf & Games Classic" together (non-breaking spaces / white-space:nowrap).
 - Write "MBJCC" (short form) instead of "Miami Beach JCC". Venue stays "Miami Beach Golf Club".
 - Mahjong only: never show playing cards or card suits.
 - All event materials in English.
-- DESIGN UNDER REVIEW (Nov 24): the event team wants last year's green-felt flyer design (proposal-felt/) with this year's content: dark green felt, thin gold frame (#D8C012), Playfair Display gold title (#DEC000) with silver ampersand, Bebas Neue spaced caps, photo of crossed clubs + golf ball + mahjong tiles (no cards, chips or dice). Waiting for approval of the flyer + email before switching posts, stories, videos, landing and banner. The Art Deco and sunset looks are paused. NEVER palm trees.
+- OFFICIAL DESIGN (approved Nov 24): last year's green-felt flyer style with this year's content. Dark green felt, thin gold frame (#D8C012), Playfair Display gold title (#DEC000) with a big silver (#B4BAB4) ampersand, Bebas Neue spaced caps in off-white (#F4F3EE) and gold, white Playfair "SAVE THE DATE", photo of crossed clubs + golf ball + mahjong tiles on felt (no cards, chips or dice). Source of truth: proposal-felt/ and brand/README.md. The current photo is a TEMPORARY placeholder until the licensed stock photo arrives. The Art Deco and sunset looks are retired. NEVER palm trees.
