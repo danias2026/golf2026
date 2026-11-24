@@ -13,4 +13,5 @@
 - Never break the event name across lines: keep "Golf & Games Classic" together (non-breaking spaces / white-space:nowrap).
 - Write "MBJCC" (short form) instead of "Miami Beach JCC". Venue stays "Miami Beach Golf Club".
 - Mahjong only: never show playing cards or card suits.
-- All event materials in English. ONE look everywhere: the Instagram posts (instagram/src/build.js + base.css) are the master look for landing, emails, save the date, videos and print: sunset sky melting into a glowing sea, light rays, bokeh, layered waves with glowing gold lines, golf ball as a sun, floating tiles, big gold Limelight type. NEVER palm trees. No hard bands, boxes, geometric ray fans, scallop strips or color blocks.
+- All event materials in English.
+- DESIGN UNDER REVIEW (Nov 24): the event team wants last year's green-felt flyer design (proposal-felt/) with this year's content: dark green felt, thin gold frame (#D8C012), Playfair Display gold title (#DEC000) with silver ampersand, Bebas Neue spaced caps, photo of crossed clubs + golf ball + mahjong tiles (no cards, chips or dice). Waiting for approval of the flyer + email before switching posts, stories, videos, landing and banner. The Art Deco and sunset looks are paused. NEVER palm trees.
