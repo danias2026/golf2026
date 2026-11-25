@@ -108,7 +108,7 @@ pieces['posts/carousel'] = [{W:3240,H:1350,split:3}, () => `${felt(3240,1350,8)}
   <div class="abs caps" style="top:870px;font-size:30px;letter-spacing:.16em;text-indent:.16em">Team MARJCC <span class="gold">vs.</span> Team MBJCC</div>
   <div class="rule" style="left:240px;right:240px;top:924px"></div>
   <div class="abs serif" style="top:970px;font-size:50px;font-style:italic;color:var(--silver)">Two communities. One unforgettable day!</div>
-  <div class="abs caps gold" style="top:1060px;font-size:28px;letter-spacing:.24em;text-indent:.24em">More details coming soon!</div>
+  <div class="abs caps gold" style="top:1056px;font-size:26px;letter-spacing:.12em;text-indent:.12em">More details and sponsorship information coming soon!</div>
  </div>${dust(3240,1350,70,11)}`];
 // stories
 pieces['stories/01-save-the-date'] = [S, () => `${felt(1080,1920,12)}<div class="frame" style="left:40px;right:40px;top:230px;bottom:320px"></div>
@@ -119,7 +119,7 @@ pieces['stories/01-save-the-date'] = [S, () => `${felt(1080,1920,12)}<div class=
  <div class="abs serif nowrap" style="top:1180px;font-size:122px">SAVE THE DATE</div>
  <div class="abs caps gold" style="top:1318px;font-size:56px;letter-spacing:.12em;text-indent:.12em">Friday &nbsp;|&nbsp; March 12, 2027</div>
  <div class="abs caps" style="top:1390px;font-size:34px;letter-spacing:.16em;text-indent:.16em">Miami Beach Golf Club</div>
- <div class="abs caps gold" style="top:1450px;font-size:28px;letter-spacing:.22em;text-indent:.22em">More details coming soon!</div>
+ <div class="abs caps gold" style="top:1450px;font-size:25px;letter-spacing:.1em;text-indent:.1em">More details and sponsorship information coming soon!</div>
  ${gmjf(1080,1530,48)}${dust(1080,1920,34,13)}`];
 pieces['stories/02-mark-your-calendar'] = [S, () => `${felt(1080,1920,14)}<div class="frame" style="left:40px;right:40px;top:230px;bottom:320px"></div>
  ${logosTop(1080,262,80,80,62)}

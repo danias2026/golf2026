@@ -2,10 +2,16 @@
 
 Official hashtag: **#TBD** (replace `#OfficialHashtagTBD` below once chosen). Tag @marjcc and the MBJCC and GMJF accounts on every post.
 
+Add this contact block to the end of every caption (before the hashtags):
+
+> For more information, please contact:
+> MARJCC: Roxana Markus – RoxanaM@marjcc.org
+> MBJCC: Karen Sepsenwol – karen@mbjcc.org
+
 ## Feed posts (1080 x 1350)
 
 **posts/01-save-the-date.png**
-Save the date! The Golf & Games Classic is coming on March 12, 2027 at the Miami Beach Golf Club. A golf & mahjong tournament where Team MARJCC takes on Team MBJCC. More details coming soon! ⛳
+Save the date! The Golf & Games Classic is coming on March 12, 2027 at the Miami Beach Golf Club. A golf & mahjong tournament where Team MARJCC takes on Team MBJCC. More details and sponsorship information coming soon! ⛳
 #OfficialHashtagTBD #MARJCC #MBJCC #GolfAndMahjong #MiamiBeach
 
 **posts/02-friendly-rivalry.png**
@@ -25,7 +31,7 @@ Team MARJCC or Team MBJCC? Tell us in the comments which side you're on. March 1
 #OfficialHashtagTBD #MARJCC #MBJCC #PickYourTeam
 
 **Carousel (posts/carousel-1.png, carousel-2.png, carousel-3.png)**
-Save the date: March 12, 2027! Golf: May the best team win! Mahjong: Everyone plays together! Two communities. One unforgettable day! More details coming soon. Swipe to see more.
+Save the date: March 12, 2027! Golf: May the best team win! Mahjong: Everyone plays together! Two communities. One unforgettable day! More details and sponsorship information coming soon. Swipe to see more.
 #OfficialHashtagTBD #MARJCC #MBJCC #GolfAndMahjong
 
 ## Stories (1080 x 1920)

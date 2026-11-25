@@ -28,8 +28,8 @@ GOLF_MAHJONG = f'''<tr><td align="center" style="padding:22px 30px 4px">
   </tr></table>
 </td></tr>
 '''
-COMING = row(f'<div style="font-family:Arial,Helvetica,sans-serif;font-size:13px;letter-spacing:3px;font-weight:bold;white-space:nowrap;color:{GOLD}">MORE DETAILS COMING SOON!</div>', '6px 30px 0')
-CONTACT = row(f'<div style="font-family:Arial,Helvetica,sans-serif;font-size:16px;line-height:1.5;color:{WHITE};font-weight:bold">For more information, please contact<br><a href="mailto:RoxanaM@marjcc.org" style="color:{WHITE}">RoxanaM@marjcc.org</a></div>', '26px 30px 30px')
+COMING = row(f'<div style="font-family:Arial,Helvetica,sans-serif;font-size:13px;letter-spacing:2px;line-height:1.6;font-weight:bold;color:{GOLD}">MORE DETAILS AND SPONSORSHIP INFORMATION COMING SOON!</div>', '6px 30px 0')
+CONTACT = row(f'<div style="font-family:Arial,Helvetica,sans-serif;font-size:16px;line-height:1.5;color:{WHITE};font-weight:bold">For more information, please contact:<br><span style="font-weight:normal">MARJCC: Roxana Markus &ndash; </span><a href="mailto:RoxanaM@marjcc.org" style="color:{WHITE}">RoxanaM@marjcc.org</a><br><span style="font-weight:normal">MBJCC: Karen Sepsenwol &ndash; </span><a href="mailto:karen@mbjcc.org" style="color:{WHITE}">karen@mbjcc.org</a></div>', '26px 30px 30px')
 # Button placeholder for when there is a registration link (last year's white outlined pill).
 # On mobile keep white-space:nowrap and letter-spacing:2px so it never wraps.
 BUTTON_PLACEHOLDER = f'''<!-- BUTTON (add when there is a link):
@@ -91,9 +91,11 @@ Golf: May the best team win!
 Mahjong: Everyone plays together!
 
 Two communities. One unforgettable day!
-More details coming soon!
+More details and sponsorship information coming soon!
 
-For more information, please contact RoxanaM@marjcc.org
+For more information, please contact:
+MARJCC: Roxana Markus - RoxanaM@marjcc.org
+MBJCC: Karen Sepsenwol - karen@mbjcc.org
 
 ''' + FOOT,
     'reminder': f'''REMINDER
@@ -107,9 +109,11 @@ Miami Beach Golf Club
 Golf: May the best team win!
 Mahjong: Everyone plays together!
 
-More details coming soon!
+More details and sponsorship information coming soon!
 
-For more information, please contact RoxanaM@marjcc.org
+For more information, please contact:
+MARJCC: Roxana Markus - RoxanaM@marjcc.org
+MBJCC: Karen Sepsenwol - karen@mbjcc.org
 
 ''' + FOOT,
 }

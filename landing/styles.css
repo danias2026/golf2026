@@ -85,7 +85,8 @@ a{color:inherit}
 
 .closing{padding-top:80px}
 .serif-close{font-family:var(--serif);font-size:clamp(28px,4.6vw,50px);line-height:1.15}
-.soon{margin-top:14px;font-size:clamp(18px,2.6vw,26px);letter-spacing:.24em;text-indent:.24em;white-space:nowrap}
+.soon{margin-top:14px;font-size:clamp(17px,2.4vw,24px);letter-spacing:.16em;text-indent:.16em;text-wrap:balance}
+.contact .who{font-weight:500}
 .contact{margin-top:26px;font-weight:700;font-size:20px;line-height:1.45}
 
 .foot{max-width:1000px;margin:70px auto 0;padding:24px 8px 40px;border-top:3px solid var(--frame);text-align:center}

@@ -10,6 +10,8 @@
 ## Brand rules (details in brand/README.md)
 - MARJCC and MBJCC logos: always at the TOP, one color, white on the felt (MARJCC top-left, MBJCC top-right), no box.
 - GMJF logo: always alone at the very BOTTOM, like a footer.
+- Contacts on every piece (both hosts, MARJCC first): "For more information, please contact: MARJCC: Roxana Markus – RoxanaM@marjcc.org / MBJCC: Karen Sepsenwol – karen@mbjcc.org". On Instagram images, put them in the caption.
+- Closing line: "More details and sponsorship information coming soon!" (not "More details coming soon!").
 - Never break the event name across lines: keep "Golf & Games Classic" together (non-breaking spaces / white-space:nowrap).
 - Write "MBJCC" (short form) instead of "Miami Beach JCC". Venue stays "Miami Beach Golf Club".
 - Mahjong only: never show playing cards or card suits.

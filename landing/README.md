@@ -3,7 +3,7 @@
 A single static page (no build step): `index.html`, `styles.css`, `main.js`, `assets/`.
 
 - Hero: last year's flyer layout on green felt with the gold frame (it draws itself on load), MARJCC and MBJCC in white at the top, the gold title with the silver ampersand (with a slow gold sheen), the photo, SAVE THE DATE, date, Team MARJCC vs. Team MBJCC, venue, and two white pill buttons: Add to Calendar (`assets/golf-games-classic-2027.ics`) and Google Calendar.
-- Sections: Two JCCs / One Tournament / One Friendly Rivalry!, the team matchup, Golf and Mahjong, The Details (Schedule, Registration, Sponsorship: "More details coming soon!"), the closing line and the contact line (RoxanaM@marjcc.org).
+- Sections: Two JCCs / One Tournament / One Friendly Rivalry!, the team matchup, Golf and Mahjong, The Details (Schedule, Registration, Sponsorship: "More details and sponsorship information coming soon!"), the closing line and the contact line (RoxanaM@marjcc.org (MARJCC, Roxana Markus) and karen@mbjcc.org (MBJCC, Karen Sepsenwol)).
 - Footer: event line, then the GMJF logo last.
 - Motion respects "reduce motion". Responsive down to 360 px wide.
 

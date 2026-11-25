@@ -24,8 +24,15 @@ The event name is set, not drawn: **GOLF & GAMES** on one line and **CLASSIC** b
 - Golf: May the best team win!
 - Mahjong: Everyone plays together!
 - Two communities. One unforgettable day!
-- More details coming soon!
-- For more information, please contact RoxanaM@marjcc.org
+- More details and sponsorship information coming soon!
+
+**Contacts** (on every piece, both hosts, MARJCC first):
+
+- For more information, please contact:
+- MARJCC: Roxana Markus – RoxanaM@marjcc.org
+- MBJCC: Karen Sepsenwol – karen@mbjcc.org
+
+On Instagram images the contacts go in the caption; on the save-the-date pieces, emails, landing page, reels and banner they appear on the piece.
 
 **Voice.** Warm, classic and a little competitive, like a country-club invitation with a wink. The rivalry is on the course; at the mahjong tables everyone plays together. Never favor one JCC.
 
@@ -35,7 +42,7 @@ The event name is set, not drawn: **GOLF & GAMES** on one line and **CLASSIC** b
 
 - **Felt ground.** Every piece sits on `felt` green with a soft vignette (`felt-light` in the center to `felt-deep` at the edges) and a fine felt grain. No flat colors, no other backgrounds.
 - **Thin gold frame.** A single 3px `frame-gold` rectangle inset from the edges. Logos sit inside it at the top.
-- **Order of a full piece:** hosts → kicker "TWO JCCs. ONE TOURNAMENT." → wordmark → "MARJCC vs. MBJCC" → rule, "GOLF • MAHJONG", rule → photo → "SAVE THE DATE" in white Playfair → date in `title-gold` Bebas → matchup or venue → closing lines → contact line → GMJF.
+- **Order of a full piece:** hosts → kicker "TWO JCCs. ONE TOURNAMENT." → wordmark → "MARJCC vs. MBJCC" → rule, "GOLF • MAHJONG", rule → photo → "SAVE THE DATE" in white Playfair → date in `title-gold` Bebas → matchup or venue → closing lines → contact block (MARJCC and MBJCC contacts) → GMJF.
 - **Rules.** Thin off-white lines at 55% opacity above and below the games line.
 - **The photo.** Crossed golf irons behind a golf ball, mahjong tiles on both sides, on green felt, centered, fading softly into the felt. Close-ups of the ball or the tiles work for single posts.
 - **Sheen.** The gold title may carry a soft light sheen; a few faint gold specks are allowed. Nothing else decorative.
@@ -61,7 +68,7 @@ All free on Google Fonts.
 
 ## Buttons
 
-White outlined pill (2px `ink-light` border, fully rounded), Poppins bold label, as on last year's REGISTER button. No button until there is a link; use "More details coming soon!" instead. On phones, labels never wrap.
+White outlined pill (2px `ink-light` border, fully rounded), Poppins bold label, as on last year's REGISTER button. No button until there is a link; use "More details and sponsorship information coming soon!" instead. On phones, labels never wrap.
 
 ## Imagery
 

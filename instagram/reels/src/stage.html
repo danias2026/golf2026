@@ -132,9 +132,9 @@ if(MODE==='std'){
   const team=textLine(1418,34,'Team MARJCC vs. Team MBJCC','caps','var(--gold)','letter-spacing:.1em;text-indent:.1em');
   const venue=textLine(1460,32,'Miami Beach Golf Club','caps','var(--white)','letter-spacing:.12em;text-indent:.12em');
   // end card
-  const e2=textLine(1420,30,'More details coming soon!','caps','var(--gold)','letter-spacing:.2em;text-indent:.2em');
-  const e3=el(`<div class="L c" style="top:1464px;font-family:Poppins,Arial,sans-serif;font-weight:700;font-size:23px;line-height:1.3">For more information, please contact RoxanaM@marjcc.org</div>`);
-  const gm2=el(`<img class="L" src="gmjf-logo-white.png" style="left:${(W-96)/2}px;top:1522px;height:46px">`);
+  const e2=textLine(1420,24,'More details and sponsorship information coming soon!','caps','var(--gold)','letter-spacing:.1em;text-indent:.1em');
+  const e3=el(`<div class="L c" style="top:1458px;font-family:Poppins,Arial,sans-serif;font-weight:700;font-size:20px;line-height:1.28">For more information, please contact:<br><span style="font-weight:500">MARJCC: Roxana Markus &ndash;</span> RoxanaM@marjcc.org<br><span style="font-weight:500">MBJCC: Karen Sepsenwol &ndash;</span> karen@mbjcc.org</div>`);
+  const gm2=el(`<img class="L" src="gmjf-logo-white.png" style="left:${(W-76)/2}px;top:1542px;height:36px">`);
   render=(t)=>{
     st.style.filter=`brightness(${eoc(win(t,0,.8))})`;
     frameDraw(t,.1,1.6); glint(t,11.2,13.4);
@@ -183,8 +183,8 @@ if(MODE==='riv'){
   const e1=textLine(940,58,'Friday &nbsp;|&nbsp; March 12, 2027','caps','var(--gold)','letter-spacing:.12em;text-indent:.12em');
   const e1b=textLine(1012,32,'Miami Beach Golf Club','caps','var(--white)','letter-spacing:.12em;text-indent:.12em');
   const e2=el(`<div class="L c play" style="top:1110px;font-size:48px;line-height:1.15">Two communities.<br>One unforgettable day!</div>`);
-  const e3=textLine(1254,30,'More details coming soon!','caps','var(--gold)','letter-spacing:.2em;text-indent:.2em');
-  const e4=el(`<div class="L c" style="top:1306px;font-family:Poppins,Arial,sans-serif;font-weight:700;font-size:24px;line-height:1.35">For more information, please contact<br>RoxanaM@marjcc.org</div>`);
+  const e3=textLine(1250,26,'More details and sponsorship information coming soon!','caps','var(--gold)','letter-spacing:.1em;text-indent:.1em');
+  const e4=el(`<div class="L c" style="top:1300px;font-family:Poppins,Arial,sans-serif;font-weight:700;font-size:22px;line-height:1.35">For more information, please contact:<br><span style="font-weight:500">MARJCC: Roxana Markus &ndash;</span> RoxanaM@marjcc.org<br><span style="font-weight:500">MBJCC: Karen Sepsenwol &ndash;</span> karen@mbjcc.org</div>`);
   const gmj=el(`<img class="L" src="gmjf-logo-white.png" style="left:${(W-96)/2}px;top:1522px;height:46px">`);
   render=(t)=>{
     st.style.filter=`brightness(${eoc(win(t,0,.6))})`;
@@ -230,7 +230,7 @@ if(MODE==='loop'){
   const save=el(`<div class="L c play nowrap" style="top:900px;font-size:104px;line-height:1">SAVE THE DATE</div>`);
   const date=textLine(1022,52,'Friday &nbsp;|&nbsp; March 12, 2027','caps','var(--gold)','letter-spacing:.12em;text-indent:.12em');
   const venue=textLine(1086,30,'Miami Beach Golf Club','caps','var(--white)','letter-spacing:.12em;text-indent:.12em');
-  const more=textLine(1136,24,'More details coming soon!','caps','var(--gold)','letter-spacing:.2em;text-indent:.2em');
+  const more=textLine(1136,22,'More details and sponsorship information coming soon!','caps','var(--gold)','letter-spacing:.08em;text-indent:.08em');
   const gmj=el(`<img class="L" src="gmjf-logo-white.png" style="left:${(W-84)/2}px;top:1240px;height:40px">`);
   fr.setAttribute('stroke-dashoffset',0);
   T.chars.forEach(c=>{c.style.opacity=1});

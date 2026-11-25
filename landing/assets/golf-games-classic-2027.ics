@@ -9,7 +9,10 @@ DTSTAMP:20261123T000000Z
 DTSTART;VALUE=DATE:20270312
 DTEND;VALUE=DATE:20270313
 SUMMARY:Golf & Games Classic: MARJCC vs. MBJCC
-DESCRIPTION:Golf & Mahjong Tournament. Team MARJCC vs. Team MBJCC. More details coming soon!
+DESCRIPTION:Golf & Mahjong Tournament. Team MARJCC vs. Team MBJCC. More det
+ ails and sponsorship information coming soon!\nFor more information: MARJC
+ C - Roxana Markus\, RoxanaM@marjcc.org\; MBJCC - Karen Sepsenwol\, karen@m
+ bjcc.org
 LOCATION:Miami Beach Golf Club
 TRANSP:TRANSPARENT
 END:VEVENT
